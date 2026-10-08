@@ -31,6 +31,7 @@ import {
 import { queryKeys } from '@/api/query-keys'
 import { useCreateAnalysis } from '@/hooks/use-create-analysis'
 import { SaveStatusBadge } from '@/components/shared/save-status-badge'
+import { t } from '@/i18n'
 
 interface AnalysisEditorProps {
   // Core data
@@ -125,7 +126,8 @@ export const AnalysisEditor = ({
     },
     onError: (error) => {
       toast.error(
-        'Failed to save analysis: ' + (error instanceof Error ? error.message : 'Unknown error')
+        t('Failed to save analysis: ') +
+          (error instanceof Error ? error.message : t('Unknown error'))
       )
       setSaveStatus('unsaved')
     }
@@ -167,11 +169,12 @@ export const AnalysisEditor = ({
         queryKey: queryKeys.analyses.byInvestigation(investigationId || '')
       })
       onAnalysisDelete?.(investigationId)
-      toast.success('Analysis deleted')
+      toast.success(t('Analysis deleted'))
     },
     onError: (error) => {
       toast.error(
-        'Failed to delete analysis: ' + (error instanceof Error ? error.message : 'Unknown error')
+        t('Failed to delete analysis: ') +
+          (error instanceof Error ? error.message : t('Unknown error'))
       )
     }
   })
@@ -195,11 +198,12 @@ export const AnalysisEditor = ({
         return oldData.map((item) => (item.id === data.id ? data : item))
       })
       onAnalysisUpdate?.(data)
-      toast.success('Title updated')
+      toast.success(t('Title updated'))
     },
     onError: (error) => {
       toast.error(
-        'Failed to update title: ' + (error instanceof Error ? error.message : 'Unknown error')
+        t('Failed to update title: ') +
+          (error instanceof Error ? error.message : t('Unknown error'))
       )
     }
   })
@@ -214,13 +218,13 @@ export const AnalysisEditor = ({
 
   const deleteAnalysis = async () => {
     if (!analysis?.id) {
-      toast.error('No analysis selected')
+      toast.error(t('No analysis selected'))
       return
     }
     if (
       !(await confirm({
-        title: 'Delete analysis',
-        message: 'Are you sure you want to delete this analysis?'
+        title: t('Delete analysis'),
+        message: t('Are you sure you want to delete this analysis?')
       }))
     ) {
       return
@@ -304,12 +308,12 @@ export const AnalysisEditor = ({
                         >
                           <div className="flex flex-col items-start truncate text-ellipsis">
                             <span className="font-medium truncate text-ellipsis">
-                              {analysisItem.title || 'Untitled'}
+                              {analysisItem.title || t('Untitled')}
                             </span>
                             <span className="text-xs text-muted-foreground">
                               {analysisItem.id === currentAnalysisId
-                                ? 'Current'
-                                : 'Switch to this analysis'}
+                                ? t('Current')
+                                : t('Switch to this analysis')}
                             </span>
                           </div>
                         </Button>
@@ -346,7 +350,7 @@ export const AnalysisEditor = ({
                     className={`text-md font-medium truncate min-w-0 flex-1 ${canEdit ? 'cursor-pointer hover:text-primary' : ''}`}
                     onClick={canEdit ? () => setIsEditingTitle(true) : undefined}
                   >
-                    {titleValue || 'Untitled Analysis'}
+                    {titleValue || t('Untitled Analysis')}
                   </span>
                 )}
               </div>
@@ -376,7 +380,7 @@ export const AnalysisEditor = ({
                           }}
                         >
                           <ExternalLink className="w-4 h-4 mr-2" strokeWidth={1.5} />
-                          Open in full page
+                          {t('Open in full page')}
                         </Link>
                       </DropdownMenuItem>
                     )}
@@ -387,7 +391,7 @@ export const AnalysisEditor = ({
                         disabled={createMutation.isPending}
                       >
                         <PlusIcon className="w-4 h-4 mr-2" strokeWidth={1.5} />
-                        New analysis
+                        {t('New analysis')}
                       </DropdownMenuItem>
                     )}
                     {analysis && (
@@ -399,7 +403,7 @@ export const AnalysisEditor = ({
                           variant="destructive"
                         >
                           <Trash2 className="w-4 h-4 mr-2" strokeWidth={1.5} />
-                          Delete analysis
+                          {t('Delete analysis')}
                         </DropdownMenuItem>
                       </>
                     )}
@@ -433,7 +437,7 @@ export const AnalysisEditor = ({
               className="w-full h-full"
               editorContentClassName="p-5 min-h-[300px]"
               output="json"
-              placeholder={canEdit ? 'Enter your analysis...' : ''}
+              placeholder={canEdit ? t('Enter your analysis...') : ''}
               autofocus={canEdit}
               showToolbar={canEdit && showToolbar}
               editorClassName="focus:outline-hidden"
@@ -443,7 +447,7 @@ export const AnalysisEditor = ({
           </div>
         ) : (
           <div className="flex flex-col items-center justify-center h-full text-muted-foreground space-y-3">
-            <div>No analysis selected.</div>
+            <div>{t('No analysis selected.')}</div>
             {canEdit && (
               <Button
                 className="shadow-none"
@@ -452,7 +456,7 @@ export const AnalysisEditor = ({
                 disabled={createMutation.isPending}
               >
                 <PlusIcon className="w-4 h-4 mr-2" strokeWidth={1.5} />
-                Create your first analysis
+                {t('Create your first analysis')}
               </Button>
             )}
           </div>

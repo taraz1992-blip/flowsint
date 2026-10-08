@@ -4,6 +4,7 @@ import { sketchService } from '@/api/sketch-service'
 import { toast } from 'sonner'
 import { type GraphNode, type GraphEdge } from '@/types'
 import { useKeyboard } from '@/hooks/use-keyboard'
+import { t } from '@/i18n'
 
 type LinkCreationMode = 'idle' | 'linking'
 
@@ -84,9 +85,9 @@ export const useLinkCreation = (sketchId?: string) => {
         target: edge.target
       }
       toast.promise(sketchService.addEdge(sketchId, JSON.stringify(edgeData)), {
-        loading: 'Creating relation...',
-        success: 'Relation added.',
-        error: 'Failed to create relation.'
+        loading: t('Creating relation...'),
+        success: t('Relation added.'),
+        error: t('Failed to create relation.')
       })
     },
     [sketchId]

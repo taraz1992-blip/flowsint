@@ -2,6 +2,7 @@ import { type JSX, useCallback } from 'react'
 import { useNodesDisplaySettings, TYPE_TO_ICON } from '@/stores/node-display-settings'
 import * as LucideIcons from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { t } from '@/i18n'
 
 export type IconType = string
 
@@ -69,7 +70,7 @@ export const useIcon = (type: IconType, options?: UseIconOptions) => {
               maxWidth: imageSize,
               maxHeight: imageSize
             }}
-            alt={`${type} icon`}
+            alt={t('{{type}} icon', { type })}
           />
         )
 
@@ -90,7 +91,7 @@ export const useIcon = (type: IconType, options?: UseIconOptions) => {
                 maxWidth: borderedImageSize,
                 maxHeight: borderedImageSize
               }}
-              alt={`${type} icon`}
+              alt={t('{{type}} icon', { type })}
             />
           )
 

@@ -4,6 +4,7 @@ import { flowService } from '@/api/flow-service'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { queryKeys } from '@/api/query-keys'
 import { useLayoutStore } from '@/stores/layout-store'
+import { t } from '@/i18n'
 
 export function useLaunchFlow(askUser: boolean = false) {
   const { confirm } = useConfirm()
@@ -33,11 +34,14 @@ export function useLaunchFlow(askUser: boolean = false) {
     flow_id: string,
     sketch_id: string | null | undefined
   ) => {
-    if (!sketch_id) return toast.error('Could not find the graph.')
+    if (!sketch_id) return toast.error(t('Could not find the graph.'))
     if (askUser) {
       const confirmed = await confirm({
-        title: `${flow_id} scan`,
-        message: `You're about to launch ${flow_id} flow on ${node_ids.length} items.`
+        title: t('{{flow_id}} scan', { flow_id }),
+        message: t("You're about to launch {{flow_id}} flow on {{node_idsCount}} items.", {
+          flow_id,
+          node_idsCount: node_ids.length
+        })
       })
       if (!confirmed) return
     }
@@ -45,9 +49,9 @@ export function useLaunchFlow(askUser: boolean = false) {
     const count = node_ids.length
 
     toast.promise(launchFlowMutation.mutateAsync({ flowId: flow_id, body }), {
-      loading: 'Loading...',
-      success: () => `Flow ${flow_id} has been launched on ${count} node${count > 1 ? 's' : ''}.`,
-      error: () => `An error occurred launching flow.`
+      loading: t('Loading...'),
+      success: () => t('Flow {{flow_id}} has been launched on {{count}} node.', { flow_id, count }),
+      error: () => t('An error occurred launching flow.')
     })
     return
   }

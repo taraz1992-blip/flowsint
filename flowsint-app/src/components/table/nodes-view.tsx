@@ -17,6 +17,7 @@ import { CopyButton } from '../copy'
 import { GraphNode } from '@/types'
 import { formatDistanceToNow } from 'date-fns'
 import { usePermissions } from '@/hooks/use-can'
+import { t } from '@/i18n'
 
 export type RelationshipType = {
   source: GraphNode
@@ -119,7 +120,7 @@ const NodeItem = memo(function NodeItem({
         {/* Type */}
         <div>
           <Badge variant="outline" className="text-xs">
-            {node.nodeType || 'Unknown'}
+            {node.nodeType || t('Unknown')}
           </Badge>
         </div>
 
@@ -129,7 +130,7 @@ const NodeItem = memo(function NodeItem({
           <span className="truncate">
             {node.nodeMetadata?.created_at
               ? formatCreatedAt(node.nodeMetadata.created_at as string)
-              : 'Unknown'}
+              : t('Unknown')}
           </span>
         </div>
 
@@ -244,8 +245,8 @@ export default function NodesTable({ nodes }: NodesTableProps) {
         <div className="text-center space-y-4">
           <Link className="mx-auto h-12 w-12 text-muted-foreground" />
           <div>
-            <h3 className="text-lg font-semibold">No nodes found</h3>
-            <p className="text-muted-foreground">This sketch doesn&apos;t have any nodes yet.</p>
+            <h3 className="text-lg font-semibold">{t('No nodes found')}</h3>
+            <p className="text-muted-foreground">{t("This sketch doesn't have any nodes yet.")}</p>
           </div>
         </div>
       </div>
@@ -257,14 +258,17 @@ export default function NodesTable({ nodes }: NodesTableProps) {
       {/* Header with stats */}
       <div className="flex items-center justify-between">
         <div className="space-y-1">
-          <h2 className="text-2xl font-bold tracking-tight">Entities</h2>
+          <h2 className="text-2xl font-bold tracking-tight">{t('Entities')}</h2>
           <p className="text-muted-foreground">
-            {filteredNodes.length} of {nodes.length} nodes
+            {t('{{filteredNodesCount}} of {{nodesCount}} nodes', {
+              filteredNodesCount: filteredNodes.length,
+              nodesCount: nodes.length
+            })}
           </p>
         </div>
         <Badge variant="secondary" className="flex items-center gap-2">
           <Users className="h-4 w-4" />
-          {nodes.length} total
+          {t('{{nodesCount}} total', { nodesCount: nodes.length })}
         </Badge>
       </div>
 
@@ -273,7 +277,7 @@ export default function NodesTable({ nodes }: NodesTableProps) {
         <div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <Input
-            placeholder="Search nodes, nodes, or types..."
+            placeholder={t('Search nodes, nodes, or types...')}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="pl-10"
@@ -282,10 +286,10 @@ export default function NodesTable({ nodes }: NodesTableProps) {
         <Select value={selectedType} onValueChange={setSelectedType}>
           <SelectTrigger className="w-48">
             <Filter className="h-4 w-4 mr-2 text-muted-foreground" />
-            <SelectValue placeholder="Filter by type" />
+            <SelectValue placeholder={t('Filter by type')} />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="all">All types</SelectItem>
+            <SelectItem value="all">{t('All types')}</SelectItem>
             {nodeTypes.map((type) => (
               <SelectItem key={type} value={type}>
                 <span className="capitalize">{type}</span>
@@ -318,10 +322,10 @@ export default function NodesTable({ nodes }: NodesTableProps) {
           </div>
         )}
         <div></div> {/* Icon */}
-        <div className="text-left">Label</div>
-        <div>Data</div>
-        <div>Type</div>
-        <div>Created</div>
+        <div className="text-left">{t('Label')}</div>
+        <div>{t('Data')}</div>
+        <div>{t('Type')}</div>
+        <div>{t('Created')}</div>
         <div></div> {/* Actions */}
       </div>
 

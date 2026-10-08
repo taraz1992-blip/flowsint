@@ -12,6 +12,7 @@ import { useNodesDisplaySettings } from '@/stores/node-display-settings'
 import { Link } from '@tanstack/react-router'
 import { FileCode2, Calendar } from 'lucide-react'
 import { memo, useMemo } from 'react'
+import { t } from '@/i18n'
 
 function CategoryBadge({ category }: { category: string }) {
   const color = useNodesDisplaySettings(
@@ -44,14 +45,14 @@ export const EnricherItem = memo(({ enricher }: { enricher: any }) => {
             <p className=" line-clamp-2">{enricher.name}</p>
           </CardTitle>
           <CardDescription className="line-clamp-2">
-            {enricher.description || 'No description provided'}
+            {enricher.description || t('No description provided')}
           </CardDescription>
         </CardHeader>
         <CardContent className="pb-2">
           <div className="flex items-center text-sm text-muted-foreground">
             <FileCode2 className="h-4 w-4 mr-1" />
             <span>
-              {stepsCount} {stepsCount === 1 ? 'step' : 'steps'}
+              {stepsCount} {stepsCount === 1 ? t('step') : t('steps')}
             </span>
           </div>
         </CardContent>

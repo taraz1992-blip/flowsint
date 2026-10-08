@@ -3,6 +3,7 @@ import Loader from '@/components/loader'
 import { templateService } from '@/api/template-service'
 import { TemplateEditor } from '@/components/templates/template-editor'
 import { CONFIG } from '@/config'
+import { t } from '@/i18n'
 
 export const Route = createFileRoute('/_auth/dashboard/enrichers/$enricherId')({
   beforeLoad: async () => {
@@ -21,14 +22,16 @@ export const Route = createFileRoute('/_auth/dashboard/enrichers/$enricherId')({
     <div className="h-full w-full flex items-center justify-center">
       <div className="flex flex-col items-center gap-4">
         <Loader />
-        <p className="text-muted-foreground">Loading template...</p>
+        <p className="text-muted-foreground">{t('Loading template...')}</p>
       </div>
     </div>
   ),
   errorComponent: ({ error }) => (
     <div className="h-full w-full flex items-center justify-center">
       <div className="text-center">
-        <h2 className="text-lg font-semibold text-destructive mb-2">Error loading template</h2>
+        <h2 className="text-lg font-semibold text-destructive mb-2">
+          {t('Error loading template')}
+        </h2>
         <p className="text-muted-foreground">{error.message}</p>
       </div>
     </div>

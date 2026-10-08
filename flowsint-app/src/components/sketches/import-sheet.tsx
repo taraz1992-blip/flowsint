@@ -14,6 +14,7 @@ import { sketchService } from '@/api/sketch-service'
 import { toast } from 'sonner'
 import { useGraphSettingsStore } from '@/stores/graph-settings-store'
 import Loader from '../loader'
+import { t } from '@/i18n'
 
 interface ImportSheetProps {
   sketchId: string
@@ -49,7 +50,9 @@ export function ImportSheet({ sketchId }: ImportSheetProps) {
         .substring(selectedFile.name.lastIndexOf('.'))
       if (!ALLOWED_EXTENSIONS.includes(fileExtension)) {
         toast.error(
-          `Only ${ALLOWED_EXTENSIONS.join(', ')} files are supported. Please upload file with correct format.`
+          t('Only {{extensions}} files are supported. Please upload file with correct format.', {
+            extensions: ALLOWED_EXTENSIONS.join(', ')
+          })
         )
         return
       }
@@ -118,9 +121,9 @@ export function ImportSheet({ sketchId }: ImportSheetProps) {
       >
         {/* Header stays fixed */}
         <SheetHeader className="shrink-0 border-b bg-background p-0 h-19 px-6 justify-center flex-col flex items-start">
-          <SheetTitle>Import entities</SheetTitle>
+          <SheetTitle>{t('Import entities')}</SheetTitle>
           <SheetDescription>
-            Upload a TXT file with one value per line to import entities into your sketch
+            {t('Upload a TXT file with one value per line to import entities into your sketch')}
           </SheetDescription>
         </SheetHeader>
         <div className="flex flex-col grow overflow-hidden p-6">
@@ -139,8 +142,8 @@ export function ImportSheet({ sketchId }: ImportSheetProps) {
               <div className="flex flex-col items-center gap-4">
                 <Upload className="h-12 w-12 text-muted-foreground" />
                 <div>
-                  <p className="text-lg font-medium">Drag & drop your file here</p>
-                  <p className="text-sm text-muted-foreground mt-1">or click to browse</p>
+                  <p className="text-lg font-medium">{t('Drag & drop your file here')}</p>
+                  <p className="text-sm text-muted-foreground mt-1">{t('or click to browse')}</p>
                 </div>
                 <input
                   type="file"
@@ -151,13 +154,13 @@ export function ImportSheet({ sketchId }: ImportSheetProps) {
                 />
                 <Button asChild variant="outline">
                   <label htmlFor="file-upload" className="cursor-pointer">
-                    Browse files
+                    {t('Browse files')}
                   </label>
                 </Button>
                 <p className="text-xs text-muted-foreground">
-                  Supported format:{' '}
-                  <span className="font-bold">{ALLOWED_EXTENSIONS.join(', ')}</span> (one value per
-                  line)
+                  {t('Supported format:')}{' '}
+                  <span className="font-bold">{ALLOWED_EXTENSIONS.join(', ')}</span>{' '}
+                  {t('(one value per line)')}
                 </p>
               </div>
             </div>
@@ -166,7 +169,7 @@ export function ImportSheet({ sketchId }: ImportSheetProps) {
           {isAnalyzing && (
             <div className="flex flex-col items-center justify-center gap-4 py-12">
               <Loader />
-              <p className="text-sm text-muted-foreground">Analyzing file...</p>
+              <p className="text-sm text-muted-foreground">{t('Analyzing file...')}</p>
             </div>
           )}
 
@@ -178,7 +181,7 @@ export function ImportSheet({ sketchId }: ImportSheetProps) {
                 <p className="text-sm text-muted-foreground">{(file.size / 1024).toFixed(2)} KB</p>
               </div>
               <Button variant="outline" size="sm" onClick={handleReset}>
-                Remove
+                {t('Remove')}
               </Button>
             </div>
           )}

@@ -2,6 +2,7 @@ import { useParams } from '@tanstack/react-router'
 import type { Analysis } from '@/types'
 import { AnalysisEditor } from './analysis-editor'
 import AnalysisSkeleton from './analysis-skeleton'
+import { t } from '@/i18n'
 
 export const AnalysisPage = ({
   analysis,
@@ -28,7 +29,7 @@ export const AnalysisPage = ({
   }
 
   if (isError) {
-    return <div className="text-sm text-destructive">Error loading analysis.</div>
+    return <div className="text-sm text-destructive">{t('Error loading analysis.')}</div>
   }
 
   const handleAnalysisUpdate = () => {

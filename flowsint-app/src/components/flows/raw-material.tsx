@@ -7,6 +7,7 @@ import { Button } from '../ui/button'
 import { useQuery } from '@tanstack/react-query'
 import { SkeletonList } from '../shared/skeleton-list'
 import { flowService } from '@/api/flow-service'
+import { t } from '@/i18n'
 
 export default function RawMaterial() {
   const {
@@ -56,7 +57,7 @@ export default function RawMaterial() {
         <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
         <Input
           type="text"
-          placeholder="Search enrichers..."
+          placeholder={t('Search enrichers...')}
           className="pl-8 border! border-border"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
@@ -89,7 +90,7 @@ export default function RawMaterial() {
         ))}
         {Object.keys(filteredEnrichers).length === 0 && (
           <div className="text-center py-4 text-muted-foreground">
-            No enrichers found matching &quot;{searchTerm}&quot;
+            {t('No enrichers found matching "{{searchTerm}}"', { searchTerm })}
           </div>
         )}
       </div>

@@ -18,6 +18,7 @@ import { Textarea } from '@/components/ui/textarea'
 import { MemoizedMarkdown } from '@/components/chat/memoized-markdown'
 import { templateService } from '@/api/template-service'
 import { cn } from '@/lib/utils'
+import { t } from '@/i18n'
 
 interface ChatMessage {
   id: string
@@ -40,8 +41,8 @@ export interface AIChatPanelHandle {
 }
 
 const SUGGESTED_PROMPTS = [
-  { label: 'Generate a basic enricher', icon: Wand2 },
-  { label: 'Add an HTTP source', icon: Globe }
+  { label: t('Generate a basic enricher'), icon: Wand2 },
+  { label: t('Add an HTTP source'), icon: Globe }
 ]
 
 export const AIChatPanel = forwardRef<AIChatPanelHandle, AIChatPanelProps>(
@@ -78,7 +79,9 @@ export const AIChatPanel = forwardRef<AIChatPanelHandle, AIChatPanelProps>(
           const assistantMessage: ChatMessage = {
             id: crypto.randomUUID(),
             role: 'assistant',
-            content: `Here's the generated template:\n\n\`\`\`yaml\n${response.yaml_content}\n\`\`\``,
+            content: t("Here's the generated template:\n\n```yaml\n{{yamlContent}}\n```", {
+              yamlContent: response.yaml_content
+            }),
             timestamp: new Date(),
             yamlContent: response.yaml_content
           }
@@ -88,7 +91,9 @@ export const AIChatPanel = forwardRef<AIChatPanelHandle, AIChatPanelProps>(
           const errorMessage: ChatMessage = {
             id: crypto.randomUUID(),
             role: 'assistant',
-            content: `I encountered an error: ${(error as Error).message}. Please try again.`,
+            content: t('I encountered an error: {{message}}. Please try again.', {
+              message: (error as Error).message
+            }),
             timestamp: new Date()
           }
           setMessages((prev) => [...prev, errorMessage])
@@ -132,7 +137,7 @@ export const AIChatPanel = forwardRef<AIChatPanelHandle, AIChatPanelProps>(
     const handleApply = useCallback(
       (yaml: string) => {
         onApplyYaml(yaml)
-        toast.success('Applied to editor')
+        toast.success(t('Applied to editor'))
       },
       [onApplyYaml]
     )
@@ -149,7 +154,7 @@ export const AIChatPanel = forwardRef<AIChatPanelHandle, AIChatPanelProps>(
             <div className="p-1 rounded-md bg-primary/10">
               <Sparkles className="h-3.5 w-3.5 text-primary" />
             </div>
-            <span className="text-sm font-medium">AI Assistant</span>
+            <span className="text-sm font-medium">{t('AI Assistant')}</span>
           </div>
           {messages.length > 0 && (
             <Button
@@ -159,7 +164,7 @@ export const AIChatPanel = forwardRef<AIChatPanelHandle, AIChatPanelProps>(
               className="h-7 px-2 text-xs text-muted-foreground hover:text-foreground"
             >
               <Trash2 className="h-3 w-3 mr-1" />
-              Clear
+              {t('Clear')}
             </Button>
           )}
         </div>
@@ -207,7 +212,7 @@ export const AIChatPanel = forwardRef<AIChatPanelHandle, AIChatPanelProps>(
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
-              placeholder="Describe the enricher you need..."
+              placeholder={t('Describe the enricher you need...')}
               disabled={isLoading}
               className="min-h-[44px] max-h-[120px] resize-none pr-12 py-3 px-4 rounded-xl bg-muted/30 border-border/50 focus-visible:ring-1 focus-visible:ring-primary/30 focus-visible:border-primary/50 text-sm"
             />
@@ -231,7 +236,7 @@ export const AIChatPanel = forwardRef<AIChatPanelHandle, AIChatPanelProps>(
             </Button>
           </div>
           <p className="text-[10px] text-muted-foreground/50 mt-1.5 px-1">
-            Enter to send &middot; Shift+Enter for new line
+            {t('Enter to send · Shift+Enter for new line')}
           </p>
         </div>
       </div>
@@ -251,10 +256,11 @@ function EmptyState({ onPromptClick }: { onPromptClick: (prompt: string) => void
       <div className="p-3 rounded-2xl bg-primary/5 border border-primary/10 mb-4">
         <Sparkles className="h-8 w-8 text-primary/30" />
       </div>
-      <h3 className="text-sm font-medium mb-1">Template Assistant</h3>
+      <h3 className="text-sm font-medium mb-1">{t('Template Assistant')}</h3>
       <p className="text-xs text-muted-foreground mb-6 max-w-[260px] leading-relaxed">
-        Describe the enricher you want to build. I understand OSINT concepts, HTTP APIs, and data
-        enrichment workflows.
+        {t(
+          'Describe the enricher you want to build. I understand OSINT concepts, HTTP APIs, and data enrichment workflows.'
+        )}
       </p>
       <div className="w-full max-w-[280px] space-y-1.5">
         {SUGGESTED_PROMPTS.map((prompt) => (
@@ -285,7 +291,7 @@ function MessageItem({
     const textToCopy = message.yamlContent || message.content
     await navigator.clipboard.writeText(textToCopy)
     setCopied(true)
-    toast.success('Copied to clipboard')
+    toast.success(t('Copied to clipboard'))
     setTimeout(() => setCopied(false), 2000)
   }
 
@@ -293,7 +299,7 @@ function MessageItem({
     return (
       <div className="py-2">
         <div className="flex items-center gap-1.5 mb-1">
-          <span className="text-xs font-medium text-muted-foreground">You</span>
+          <span className="text-xs font-medium text-muted-foreground">{t('You')}</span>
         </div>
         <p className="text-sm leading-relaxed">{message.content}</p>
       </div>
@@ -304,7 +310,7 @@ function MessageItem({
     <div className="py-2">
       <div className="flex items-center gap-1.5 mb-1">
         <Bot className="h-3 w-3 text-primary/70" />
-        <span className="text-xs font-medium text-muted-foreground">Assistant</span>
+        <span className="text-xs font-medium text-muted-foreground">{t('Assistant')}</span>
       </div>
       <div className="text-sm leading-relaxed">
         <MemoizedMarkdown content={message.content} id={message.id} />
@@ -317,7 +323,7 @@ function MessageItem({
             className="h-7 text-xs gap-1.5 rounded-lg"
           >
             <ArrowDownToLine className="h-3 w-3" />
-            Apply to Editor
+            {t('Apply to Editor')}
           </Button>
           <Button
             variant="outline"
@@ -326,7 +332,7 @@ function MessageItem({
             className="h-7 text-xs gap-1.5 rounded-lg"
           >
             {copied ? <Check className="h-3 w-3" /> : <Copy className="h-3 w-3" />}
-            {copied ? 'Copied' : 'Copy'}
+            {copied ? t('Copied') : t('Copy')}
           </Button>
         </div>
       )}
@@ -339,7 +345,7 @@ function TypingIndicator() {
     <div className="py-2">
       <div className="flex items-center gap-1.5 mb-1">
         <Bot className="h-3 w-3 text-primary/70" />
-        <span className="text-xs font-medium text-muted-foreground">Assistant</span>
+        <span className="text-xs font-medium text-muted-foreground">{t('Assistant')}</span>
       </div>
       <div className="flex items-center gap-1.5 py-1">
         <div className="w-1.5 h-1.5 rounded-full bg-muted-foreground/40 animate-bounce [animation-delay:0ms]" />

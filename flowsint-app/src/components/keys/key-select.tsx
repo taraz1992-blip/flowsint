@@ -8,6 +8,7 @@ import {
 } from '@/components/ui/select'
 import { keyService } from '@/api/key-service'
 import { type Key as KeyType } from '@/types/key'
+import { t } from '@/i18n'
 
 export default function KeySelector({
   onChange,
@@ -32,7 +33,7 @@ export default function KeySelector({
   return (
     <Select onValueChange={handleValueChange} value={value?.id || ''} disabled={isLoading}>
       <SelectTrigger className="w-full">
-        <SelectValue placeholder="Select a key" />
+        <SelectValue placeholder={t('Select a key')} />
       </SelectTrigger>
       <SelectContent>
         {keys.map((key: KeyType) => (

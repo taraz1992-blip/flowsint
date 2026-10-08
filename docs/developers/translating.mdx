@@ -1,0 +1,115 @@
+---
+title: "Translating the interface"
+description: "How the Flowsint interface is translated, how to add a new language, and how to keep translations in sync with the code."
+category: "Developers"
+order: 12
+author: "Flowsint Team"
+tags: ["tutorial", "developers", "i18n", "translation", "localization"]
+version: "1.2.8"
+last_updated_at: "2026-10-08"
+---
+
+## How it works
+
+The interface (`flowsint-app`) uses [i18next](https://www.i18next.com/). Every user-facing string in the code is written in English and wrapped in a translation call:
+
+```tsx
+import { t } from '@/i18n'
+
+<Button>{t('Save')}</Button>
+toast.success(t('Template {{name}} saved', { name }))
+```
+
+The **English text is the key**. There is no separate identifier to invent or look up: what you read in the code is what you translate.
+
+Translations live in one flat file per language in [`flowsint-app/src/locales/`](https://github.com/reconurge/flowsint/tree/main/flowsint-app/src/locales):
+
+```
+src/locales/
+  en.json   ← English, the reference (value = key)
+  ru.json   ← Russian
+  …
+```
+
+If a translation is missing or left empty (`""`), Flowsint falls back to English, so a partial translation is perfectly fine.
+
+The language is chosen automatically from the browser settings, and can be changed with the language button in the status bar (bottom right) or on the login page. The choice is remembered in the browser.
+
+## Adding a language
+
+You don't need to touch any code.
+
+1. Copy `en.json` to `<code>.json`, using the [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes) code of the language (`de`, `fr`, `es`, `pt-BR`, `zh`…).
+2. Set the language name, written **in that language**, as it should appear in the picker:
+
+   ```json
+   { "_meta": { "name": "Deutsch" } }
+   ```
+
+3. Translate the values (the right-hand side). Never change the keys.
+4. Run the checks:
+
+   ```bash
+   cd flowsint-app
+   yarn i18n:check
+   ```
+
+5. Open a pull request. The language shows up in the picker as soon as the file exists.
+
+To start with an empty template instead of a copy of English, run `yarn i18n:sync` after creating a file that only contains `_meta`: every key is added with an empty value, ready to be filled in.
+
+## Rules for translators
+
+**Keep placeholders unchanged.** `{{name}}` is replaced by a value at runtime. Translate the sentence around it, and move it where your grammar needs it, but don't rename or remove it:
+
+```json
+"Failed to create: {{message}}": "Не удалось создать: {{message}}"
+```
+
+**Keep tags unchanged.** Some strings contain markup, such as `<b>…</b>`, that wraps formatted words. Keep the same tags around the equivalent words:
+
+```json
+"Only one node will be kept, and all <b>relationships</b> will be merged": "Останется только один узел, а все <b>связи</b> будут объединены"
+```
+
+**Plurals.** Strings that depend on a number have one entry per plural form of the language, named `<key>_one`, `<key>_other`, and so on. English has `one` and `other`; Russian has `one`, `few`, `many` and `other`; some languages have only `other`. `yarn i18n:sync` creates exactly the forms your language needs:
+
+```json
+"{{count}} error_one": "{{count}} error",
+"{{count}} error_other": "{{count}} errors"
+```
+
+See the [i18next plural rules](https://www.i18next.com/translation-function/plurals) for the forms of your language. In `one`, `{{count}}` may be written as a word if your language does that.
+
+**Don't translate** product, tool and technology names (Flowsint, Neo4j, Sherlock…), node types coming from the backend, or code identifiers.
+
+## Adding or changing strings in the code
+
+- Wrap every new user-facing string: `t('Some text')`. Use `t` from `@/i18n` in components, hooks, stores and utilities alike.
+- Write real sentences with `{{placeholders}}` instead of gluing fragments together. Word order differs between languages, so `t('Deleted {{count}} nodes', { count })` is translatable while `t('Deleted') + ' ' + n` is not.
+- Use `count` (and only `count`) as the option name for plurals.
+- For text that contains markup, use `<Trans>` with the English sentence as `i18nKey`:
+
+  ```tsx
+  import { Trans } from 'react-i18next'
+
+  <Trans
+    i18nKey={'Add a <code>MISTRAL_API_KEY</code> in your vault'}
+    components={{ code: <code className="rounded bg-muted px-1" /> }}
+  />
+  ```
+
+- After changing strings, run `yarn i18n:sync` to add the new keys to every language file (empty for non-English languages, filled for `en.json`), then fill in `en.json` plural forms if needed.
+
+### Commands
+
+| Command | What it does |
+| --- | --- |
+| `yarn i18n:sync` | Adds the keys found in the code to every locale file. Missing translations are left empty and fall back to English. |
+| `yarn i18n:sync --prune` | Same, and removes keys that are no longer used in the code. |
+| `yarn i18n:check` | Fails if a key used in the code is missing from a locale file, or if placeholders, tags or plural forms don't match. Prints the translation coverage of each language. |
+
+## Notes
+
+- Many labels are computed when the page loads, so changing the language reloads the page.
+- The backend (API messages, enricher names and descriptions) is not translated yet; this guide covers the web interface only.

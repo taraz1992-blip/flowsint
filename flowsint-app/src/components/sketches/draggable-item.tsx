@@ -6,6 +6,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 import { useNodesDisplaySettings } from '@/stores/node-display-settings'
 import { useActionItems } from '@/hooks/use-action-items'
 import { findActionItemByKey } from '@/lib/action-items'
+import { t } from '@/i18n'
 
 interface DraggableItemProps {
   label: string
@@ -78,7 +79,7 @@ export const DraggableItem = memo(function DraggableItem({
           </button>
         </TooltipTrigger>
         <TooltipContent>
-          {disabled ? 'This item is not available' : 'Drag and drop to add to the graph'}
+          {disabled ? t('This item is not available') : t('Drag and drop to add to the graph')}
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>

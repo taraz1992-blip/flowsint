@@ -8,6 +8,7 @@ import { useChatState } from '@/stores/use-chat-store'
 import { useParams } from '@tanstack/react-router'
 import { queryKeys } from '@/api/query-keys'
 import { toUIMessage } from '@/types/chat'
+import { t } from '@/i18n'
 
 export const useChat = () => {
   const currentChatId = useChatState((s) => s.currentChatId)
@@ -41,7 +42,8 @@ export const useChat = () => {
     onError: (error) => {
       console.error('Chat error:', error)
       toast.error(
-        'Failed to get AI response: ' + (error instanceof Error ? error.message : 'Unknown error')
+        t('Failed to get AI response: ') +
+          (error instanceof Error ? error.message : t('Unknown error'))
       )
     }
   })
@@ -74,12 +76,12 @@ export const useChat = () => {
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: queryKeys.chats.list })
       setCurrentChatId(data.id)
-      toast.success('New chat created successfully!')
+      toast.success(t('New chat created successfully!'))
     },
     onError: (error) => {
       console.error('Error creating chat:', error)
       toast.error(
-        'Failed to create chat: ' + (error instanceof Error ? error.message : 'Unknown error')
+        t('Failed to create chat: ') + (error instanceof Error ? error.message : t('Unknown error'))
       )
     }
   })
@@ -92,19 +94,19 @@ export const useChat = () => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: queryKeys.chats.list })
-      toast.success('Chat deleted successfully!')
+      toast.success(t('Chat deleted successfully!'))
     },
     onError: (error) => {
       console.error('Error deleting chat:', error)
       toast.error(
-        'Failed to delete chat: ' + (error instanceof Error ? error.message : 'Unknown error')
+        t('Failed to delete chat: ') + (error instanceof Error ? error.message : t('Unknown error'))
       )
     }
   })
 
   const handleSendMessage = async (text: string, context?: string[]) => {
     if (!text.trim()) {
-      toast.error('Please enter a prompt')
+      toast.error(t('Please enter a prompt'))
       return
     }
 
@@ -117,7 +119,7 @@ export const useChat = () => {
       try {
         const newChat = await createChatMutation.mutateAsync({
           title: chatTitle,
-          description: 'Chat created from analysis'
+          description: t('Chat created from analysis')
         })
         if (!newChat?.id) return
         // sendMessage will fire once transport updates via the new currentChatId
@@ -151,7 +153,7 @@ export const useChat = () => {
     try {
       await createChatMutation.mutateAsync({
         title: chatTitle,
-        description: 'Chat created from analysis'
+        description: t('Chat created from analysis')
       })
     } catch (error) {
       console.error('Failed to create new chat:', error)
@@ -160,7 +162,7 @@ export const useChat = () => {
 
   const deleteCurrentChat = async () => {
     if (!currentChatId) {
-      toast.error('No chat to delete')
+      toast.error(t('No chat to delete'))
       return
     }
     try {

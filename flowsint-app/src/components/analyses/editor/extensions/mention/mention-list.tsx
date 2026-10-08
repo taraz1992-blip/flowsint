@@ -2,6 +2,7 @@ import { forwardRef, useImperativeHandle, useState } from 'react'
 import { cn } from '@/lib/utils'
 import { ItemType } from '@/stores/node-display-settings'
 import { useIcon } from '@/hooks/use-icon'
+import { t } from '@/i18n'
 
 export interface MentionItem {
   nodeLabel: string
@@ -88,7 +89,7 @@ const MentionList = forwardRef<MentionListRef, MentionListProps>((props, ref) =>
           ))}
         </div>
       ) : (
-        <div className="px-2 py-1.5 text-sm text-muted-foreground">No results</div>
+        <div className="px-2 py-1.5 text-sm text-muted-foreground">{t('No results')}</div>
       )}
     </div>
   )

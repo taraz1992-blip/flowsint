@@ -33,6 +33,17 @@ npx vitest run                      # unit tests
 yarn build                          # full build
 ```
 
+### Translations (`flowsint-app`)
+
+User-facing strings go through `t('English text')` (see [the translation guide](docs/developers/translating.mdx)). After adding or changing a string, from `flowsint-app/`:
+
+```bash
+yarn i18n:sync    # add the new keys to every language file
+yarn i18n:check   # verify placeholders, tags and plural forms
+```
+
+Adding a language is just adding a file to `flowsint-app/src/locales/`.
+
 ## What the pre-commit hook does for you
 
 `lint-staged` runs automatically on `git commit` and handles:

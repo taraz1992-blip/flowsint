@@ -8,6 +8,7 @@ import { ArrowRight } from 'lucide-react'
 import { memo, useCallback, useRef } from 'react'
 import { GraphEdge, GraphNode } from '@/types'
 import { useVirtualizer } from '@tanstack/react-virtual'
+import { t } from '@/i18n'
 
 const ITEM_HEIGHT = 36 // 32px badge height + 4px gap
 
@@ -48,7 +49,7 @@ const Relationships = memo(
     if (relationships.length === 0) {
       return (
         <div className="flex items-center justify-center h-full text-muted-foreground text-sm">
-          No relationships found
+          {t('No relationships found')}
         </div>
       )
     }

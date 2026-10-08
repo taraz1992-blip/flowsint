@@ -4,6 +4,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 import default_content from '@/components/analyses/default_content.json'
 import { queryKeys } from '@/api/query-keys'
 import { toast } from 'sonner'
+import { t } from '@/i18n'
 
 export const useCreateAnalysis = (
   investigationId: string,
@@ -14,7 +15,7 @@ export const useCreateAnalysis = (
   return useMutation({
     mutationFn: async () => {
       const newAnalysis: Partial<Analysis> = {
-        title: 'Untitled Analysis',
+        title: t('Untitled Analysis'),
         investigation_id: investigationId,
         content: default_content
       }
@@ -26,11 +27,12 @@ export const useCreateAnalysis = (
         queryKey: queryKeys.analyses.byInvestigation(investigationId || '')
       })
       onAnalysisCreate?.(investigationId)
-      toast.success('New analysis created')
+      toast.success(t('New analysis created'))
     },
     onError: (error) => {
       toast.error(
-        'Failed to create analysis: ' + (error instanceof Error ? error.message : 'Unknown error')
+        t('Failed to create analysis: ') +
+          (error instanceof Error ? error.message : t('Unknown error'))
       )
     }
   })

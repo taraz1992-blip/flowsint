@@ -6,6 +6,7 @@ import { type DetectionResult } from '@/types/sketch'
 import { useDebounce } from '@/hooks/use-debounce'
 import { toast } from 'sonner'
 import { v4 as uuidv4 } from 'uuid'
+import { t } from '@/i18n'
 
 interface QuickAddState {
   active: boolean
@@ -144,7 +145,7 @@ export const useQuickAdd = (sketchId?: string) => {
         replaceNode(tempId, newNode.id, newNode.nodeProperties)
       }
     } catch {
-      toast.error('Could not create node.')
+      toast.error(t('Could not create node.'))
     }
   }, [state.text, state.detection, state.graphPosition, sketchId, addNode, replaceNode])
 

@@ -9,12 +9,14 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { Button } from './ui/button'
 import { ModeToggle } from './mode-toggle'
+import { LanguageToggle } from './language-toggle'
 import { authService } from '@/api/auth-service'
 import { useCallback } from 'react'
 import { Link, useNavigate } from '@tanstack/react-router'
 import { UserAvatar } from './ui/avatar'
 import { useAuthStore } from '@/stores/auth-store'
 import { getDisplayName } from '@/lib/user-display'
+import { t } from '@/i18n'
 
 export function NavUser() {
   const navigate = useNavigate()
@@ -51,21 +53,24 @@ export function NavUser() {
             </div>
           </div>
         </DropdownMenuLabel>
-        <DropdownMenuLabel className="text-xs font-light opacity-60">Preferences</DropdownMenuLabel>
+        <DropdownMenuLabel className="text-xs font-light opacity-60">
+          {t('Preferences')}
+        </DropdownMenuLabel>
         <div className="flex text-sm items-center justify-between px-3">
-          Theme
+          {t('Theme')}
+          <LanguageToggle />
           <ModeToggle />
         </div>
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
           <Link to="/dashboard/profile">
             <UserIcon />
-            Profile
+            {t('Profile')}
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem onClick={logout}>
           <LogOut />
-          Log out
+          {t('Log out')}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

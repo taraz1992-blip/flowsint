@@ -4,6 +4,7 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { cn } from '@/lib/utils'
+import { t } from '@/i18n'
 
 interface TagsInputProps {
   id?: string | undefined
@@ -70,7 +71,7 @@ function TagsInput({
             disabled={disabled}
           >
             <X className="h-3 w-3" />
-            <span className="sr-only">Delete tag {tag}</span>
+            <span className="sr-only">{t('Delete tag {{tag}}', { tag })}</span>
           </Button>
         </Badge>
       ))}
@@ -83,7 +84,7 @@ function TagsInput({
           onKeyDown={handleKeyDown}
           onBlur={addTag}
           className="w-full bg-transparent outline-none placeholder:text-muted-foreground/30 focus:bg-muted/20 px-1 rounded transition-colors"
-          placeholder={placeholder ?? 'Empty'}
+          placeholder={placeholder ?? t('Empty')}
         />
       ) : (
         <Input

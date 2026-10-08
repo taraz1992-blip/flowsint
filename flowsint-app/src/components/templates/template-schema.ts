@@ -1,3 +1,4 @@
+import { t } from '@/i18n'
 // JSON Schema for template YAML validation - matches flowsint_core/templates/types.py
 export const templateSchema = {
   type: 'object',
@@ -7,20 +8,20 @@ export const templateSchema = {
     name: {
       type: 'string',
       minLength: 1,
-      description: 'Name of the template'
+      description: t('Name of the template')
     },
     description: {
       type: 'string',
-      description: 'Description of the template'
+      description: t('Description of the template')
     },
     category: {
       type: 'string',
       minLength: 1,
-      description: 'Category of the template'
+      description: t('Category of the template')
     },
     version: {
       type: 'number',
-      description: 'Version of the template'
+      description: t('Version of the template')
     },
     input: {
       type: 'object',
@@ -29,12 +30,12 @@ export const templateSchema = {
       properties: {
         type: {
           type: 'string',
-          description: 'Flowsint Type the template takes as input'
+          description: t('Flowsint Type the template takes as input')
         },
         key: {
           type: 'string',
           default: 'nodeLabel',
-          description: 'Key to use for input mapping'
+          description: t('Key to use for input mapping')
         }
       }
     },
@@ -49,21 +50,21 @@ export const templateSchema = {
             type: 'string',
             minLength: 1,
             maxLength: 128,
-            description: 'Name of the secret (used as {{secrets.NAME}} in template)'
+            description: t('Name of the secret (used as {{secrets.NAME}} in template)')
           },
           required: {
             type: 'boolean',
             default: true,
-            description: 'Whether this secret is required for the template'
+            description: t('Whether this secret is required for the template')
           },
           description: {
             type: 'string',
-            description: 'Description of what this secret is used for'
+            description: t('Description of what this secret is used for')
           }
         }
       },
       default: [],
-      description: 'List of secrets required by this template (fetched from vault)'
+      description: t('List of secrets required by this template (fetched from vault)')
     },
     request: {
       type: 'object',
@@ -73,34 +74,34 @@ export const templateSchema = {
         method: {
           type: 'string',
           enum: ['GET', 'POST'],
-          description: 'HTTP method'
+          description: t('HTTP method')
         },
         url: {
           type: 'string',
-          description: 'URL template with {{key}} placeholders'
+          description: t('URL template with {{key}} placeholders')
         },
         headers: {
           type: 'object',
           additionalProperties: { type: 'string' },
           default: {},
-          description: 'HTTP headers'
+          description: t('HTTP headers')
         },
         params: {
           type: 'object',
           additionalProperties: { type: 'string' },
           default: {},
-          description: 'Query parameters'
+          description: t('Query parameters')
         },
         body: {
           type: ['string', 'null'],
-          description: 'Request body (for POST requests)'
+          description: t('Request body (for POST requests)')
         },
         timeout: {
           type: 'number',
           minimum: 1,
           maximum: 300,
           default: 30,
-          description: 'Request timeout in seconds'
+          description: t('Request timeout in seconds')
         }
       }
     },
@@ -111,16 +112,16 @@ export const templateSchema = {
       properties: {
         type: {
           type: 'string',
-          description: 'Flowsint Type that the template returns'
+          description: t('Flowsint Type that the template returns')
         },
         is_array: {
           type: 'boolean',
           default: false,
-          description: 'Whether the response is an array that should produce multiple outputs'
+          description: t('Whether the response is an array that should produce multiple outputs')
         },
         array_path: {
           type: ['string', 'null'],
-          description: "Dot-notation path to array in response (e.g., 'data.results')"
+          description: t("Dot-notation path to array in response (e.g., 'data.results')")
         }
       }
     },
@@ -132,13 +133,13 @@ export const templateSchema = {
         expect: {
           type: 'string',
           enum: ['json', 'xml', 'text'],
-          description: 'Expected response format'
+          description: t('Expected response format')
         },
         map: {
           type: 'object',
           additionalProperties: { type: 'string' },
           default: {},
-          description: 'Mapping from output type attributes to response keys'
+          description: t('Mapping from output type attributes to response keys')
         }
       }
     },
@@ -151,23 +152,23 @@ export const templateSchema = {
           minimum: 0,
           maximum: 10,
           default: 3,
-          description: 'Maximum number of retry attempts'
+          description: t('Maximum number of retry attempts')
         },
         backoff_factor: {
           type: 'number',
           minimum: 0.1,
           maximum: 10,
           default: 0.5,
-          description: 'Multiplier for exponential backoff (seconds)'
+          description: t('Multiplier for exponential backoff (seconds)')
         },
         retry_on_status: {
           type: 'array',
           items: { type: 'integer' },
           default: [429, 500, 502, 503, 504],
-          description: 'HTTP status codes that should trigger a retry'
+          description: t('HTTP status codes that should trigger a retry')
         }
       },
-      description: 'Retry configuration for failed requests'
+      description: t('Retry configuration for failed requests')
     }
   }
 }
