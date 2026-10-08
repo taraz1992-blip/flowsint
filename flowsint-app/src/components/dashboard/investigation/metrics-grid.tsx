@@ -10,10 +10,10 @@ export function MetricsGrid({ investigation }: CaseOverviewPageProps) {
   const analysisCount = investigation.analyses?.length || 0
   const metrics = useMemo(
     () => [
-      { label: 'Sketches', value: sketchCount, icon: Network },
-      { label: 'Analyses', value: analysisCount, icon: FileText },
-      { label: 'Entities', value: '_', icon: Users },
-      { label: 'Relations', value: '_', icon: Shield }
+      { label: 'Скетчи', value: sketchCount, icon: Network },
+      { label: 'Анализы', value: analysisCount, icon: FileText },
+      { label: 'Сущности', value: '_', icon: Users },
+      { label: 'Связи', value: '_', icon: Shield }
       // { label: "Files", value: "34", icon: Paperclip },
       // { label: "Tasks", value: "6/15", icon: CheckCircle },
     ],

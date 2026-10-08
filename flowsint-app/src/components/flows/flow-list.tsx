@@ -48,8 +48,8 @@ const FlowsList = () => {
   if (error)
     return (
       <ErrorState
-        title="Couldn't load flows"
-        description="Something went wrong while fetching data. Please try again."
+        title="Не удалось загрузить потоки"
+        description="Что-то пошло не так при загрузке данных. Попробуйте ещё раз."
         error={error}
         onRetry={() => refetch()}
       />
@@ -66,7 +66,7 @@ const FlowsList = () => {
         <Input
           type="search"
           className="h-7"
-          placeholder="Search flows..."
+          placeholder="Поиск потоков..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
@@ -80,10 +80,10 @@ const FlowsList = () => {
                 to={`/dashboard/flows/$flowId`}
                 params={{ flowId: flow.id }}
                 className="block px-4 py-3 hover:bg-muted cursor-pointer"
-                title={flow.description || 'No description'}
+                title={flow.description || 'Нет описания'}
               >
                 <div className="font-semibold text-sm truncate">
-                  {flow.name || '(Unnamed flow)'}
+                  {flow.name || '(Поток без названия)'}
                 </div>
                 <div className="flex items-center gap-2 mt-1 text-xs text-muted-foreground">
                   {flow.category && (
@@ -107,7 +107,7 @@ const FlowsList = () => {
         </ul>
       ) : (
         <div className="flex-1 flex items-center justify-center p-4 text-center text-muted-foreground">
-          {searchQuery ? 'No matching flows found' : 'No flows found'}
+          {searchQuery ? 'Подходящие потоки не найдены' : 'Потоки не найдены'}
         </div>
       )}
     </div>

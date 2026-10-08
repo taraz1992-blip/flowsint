@@ -45,7 +45,7 @@ export default function NewSketch({ children }: NewSketchProps) {
     mutationFn: sketchService.create,
     onSuccess: (result) => {
       if ('id' in result && result.id) {
-        toast.success('New sketch created.')
+        toast.success('Новый скетч создан.')
         router.navigate({
           to: `/dashboard/investigations/${investigationId}/graph/${result.id}`
         })
@@ -61,7 +61,7 @@ export default function NewSketch({ children }: NewSketchProps) {
         }
         if (sketchId) setOpen(false)
       } else {
-        toast.error(('error' in result && result.error) || 'Failed to create sketch.')
+        toast.error(('error' in result && result.error) || 'Не удалось создать скетч.')
       }
     },
     onError: (error) => {
@@ -71,7 +71,7 @@ export default function NewSketch({ children }: NewSketchProps) {
 
   async function onSubmit(data: FormValues) {
     if (!investigationId) {
-      toast.error('A sketch must be related to an investigation.')
+      toast.error('Скетч должен быть связан с расследованием.')
       return
     }
 
@@ -90,11 +90,11 @@ export default function NewSketch({ children }: NewSketchProps) {
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="grid gap-4 py-4">
         <div className="grid gap-2">
-          <Label htmlFor="title">Sketch name</Label>
+          <Label htmlFor="title">Название скетча</Label>
           <Input
             id="title"
             {...register('title', { required: 'Title is required' })}
-            placeholder="Fraud suspicion"
+            placeholder="Подозрение на мошенничество"
             aria-invalid={errors.title ? 'true' : 'false'}
           />
           {errors.title && (
@@ -104,11 +104,11 @@ export default function NewSketch({ children }: NewSketchProps) {
           )}
         </div>
         <div className="grid gap-2">
-          <Label htmlFor="description">Description</Label>
+          <Label htmlFor="description">Описание</Label>
           <Input
             id="description"
             {...register('description')}
-            placeholder="Phishing domain external scope"
+            placeholder="Внешний охват фишингового домена"
           />
         </div>
       </div>
@@ -123,10 +123,10 @@ export default function NewSketch({ children }: NewSketchProps) {
           }}
           disabled={isSubmitting}
         >
-          Cancel
+          Отмена
         </Button>
         <Button type="submit" disabled={isSubmitting}>
-          {isSubmitting ? 'Saving...' : 'Save'}
+          {isSubmitting ? 'Сохранение...' : 'Сохранить'}
         </Button>
       </DialogFooter>
     </form>
@@ -139,8 +139,8 @@ export default function NewSketch({ children }: NewSketchProps) {
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>New sketch</DialogTitle>
-          <DialogDescription>Create a new blank sketch.</DialogDescription>
+          <DialogTitle>Новый скетч</DialogTitle>
+          <DialogDescription>Создать новый пустой скетч.</DialogDescription>
         </DialogHeader>
         {formContent}
       </DialogContent>

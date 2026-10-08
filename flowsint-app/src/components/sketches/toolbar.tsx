@@ -135,15 +135,15 @@ export const Toolbar = memo(function Toolbar({ isLoading }: { isLoading: boolean
     try {
       refetchGraph()
     } catch {
-      toast.error('Failed to refresh graph data')
+      toast.error('Не удалось обновить данные графа')
     }
   }, [refetchGraph])
 
   const handleApplyForceLayout = useCallback(async () => {
     const confirmed = await confirm({
-      title: 'Apply force layout?',
+      title: 'Применить силовую раскладку?',
       message:
-        'This will reset all node positions and regenerate them using the force-directed layout algorithm. Current positions will be lost.'
+        'Все позиции узлов будут сброшены и пересчитаны силовым алгоритмом раскладки. Текущие позиции будут потеряны.'
     })
 
     if (!confirmed) {
@@ -151,19 +151,19 @@ export const Toolbar = memo(function Toolbar({ isLoading }: { isLoading: boolean
     }
     try {
       regenerateLayout('force')
-      toast.success('Force layout applied successfully')
+      toast.success('Силовая раскладка успешно применена')
     } catch (error) {
       toast.error(
-        `Failed to apply layout: ${error instanceof Error ? error.message : 'Unknown error'}`
+        `Failed to apply layout: ${error instanceof Error ? error.message : 'Неизвестная ошибка'}`
       )
     }
   }, [confirm, regenerateLayout])
 
   const handleApplyHierarchyLayout = useCallback(async () => {
     const confirmed = await confirm({
-      title: 'Apply hierarchy layout?',
+      title: 'Применить иерархическую раскладку?',
       message:
-        'This will reset all node positions and regenerate them using the hierarchical layout algorithm. Current positions will be lost.'
+        'Все позиции узлов будут сброшены и пересчитаны иерархическим алгоритмом раскладки. Текущие позиции будут потеряны.'
     })
 
     if (!confirmed) {
@@ -171,10 +171,10 @@ export const Toolbar = memo(function Toolbar({ isLoading }: { isLoading: boolean
     }
     try {
       regenerateLayout('hierarchy')
-      toast.success('Hierarchy layout applied successfully')
+      toast.success('Иерархическая раскладка успешно применена')
     } catch (error) {
       toast.error(
-        `Failed to apply layout: ${error instanceof Error ? error.message : 'Unknown error'}`
+        `Failed to apply layout: ${error instanceof Error ? error.message : 'Неизвестная ошибка'}`
       )
     }
   }, [confirm, regenerateLayout])
@@ -210,10 +210,10 @@ export const Toolbar = memo(function Toolbar({ isLoading }: { isLoading: boolean
         } else {
           await sketchService.exportSketch(sketchId, format)
         }
-        toast.success(`Sketch exported as ${format.toUpperCase()}`)
+        toast.success(`Скетч экспортирован как ${format.toUpperCase()}`)
       } catch (error) {
         toast.error(
-          `Failed to export sketch: ${error instanceof Error ? error.message : 'Unknown error'}`
+          `Failed to export sketch: ${error instanceof Error ? error.message : 'Неизвестная ошибка'}`
         )
       }
     },
@@ -234,25 +234,25 @@ export const Toolbar = memo(function Toolbar({ isLoading }: { isLoading: boolean
         <FloatingBar className="bottom-3 left-3">
           <ToolbarButton
             icon={<ZoomIn className="h-4 w-4 opacity-70" />}
-            tooltip="Zoom In"
+            tooltip="Приблизить"
             onClick={zoomIn}
             disabled={(view !== 'graph' && view !== 'map') || isSelectorModeActive || !zoomIn}
           />
           <ToolbarButton
             icon={<Minus className="h-4 w-4 opacity-70" />}
-            tooltip="Zoom Out"
+            tooltip="Отдалить"
             onClick={zoomOut}
             disabled={(view !== 'graph' && view !== 'map') || isSelectorModeActive}
           />
           <ToolbarButton
             icon={<Maximize className="h-4 w-4 opacity-70" />}
-            tooltip="Fit to View"
+            tooltip="Вписать в экран"
             onClick={zoomToFit}
             disabled={(view !== 'graph' && view !== 'map') || isSelectorModeActive}
           />
           <ToolbarButton
             icon={<Focus className="h-4 w-4 opacity-70" />}
-            tooltip="Zoom to Selection"
+            tooltip="Приблизить к выделению"
             onClick={zoomToSelection}
             disabled={view !== 'graph' || isSelectorModeActive || selectedNodes.length < 2}
           />
@@ -283,7 +283,7 @@ export const Toolbar = memo(function Toolbar({ isLoading }: { isLoading: boolean
                   )}
                 </Button>
               </TooltipTrigger>
-              <TooltipContent>Select (hold S)</TooltipContent>
+              <TooltipContent>Выделение (удерживайте S)</TooltipContent>
             </Tooltip>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -303,7 +303,7 @@ export const Toolbar = memo(function Toolbar({ isLoading }: { isLoading: boolean
                         <ChevronDown className="h-3 w-3 opacity-50" />
                       </Button>
                     </TooltipTrigger>
-                    <TooltipContent>Selection mode</TooltipContent>
+                    <TooltipContent>Режим выделения</TooltipContent>
                   </Tooltip>
                 </div>
               </DropdownMenuTrigger>
@@ -313,14 +313,15 @@ export const Toolbar = memo(function Toolbar({ isLoading }: { isLoading: boolean
                   className={cn(selectionMode === 'lasso' && 'bg-accent')}
                 >
                   <LassoSelect className="h-4 w-4 mr-2" />
-                  Lasso
+                  
+                  Лассо
                 </DropdownMenuItem>
                 <DropdownMenuItem
                   onClick={() => handleSelectMode('rectangle')}
                   className={cn(selectionMode === 'rectangle' && 'bg-accent')}
                 >
                   <SquareDashed className="h-4 w-4 mr-2" />
-                  Rectangle
+                  Прямоугольник
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -328,14 +329,14 @@ export const Toolbar = memo(function Toolbar({ isLoading }: { isLoading: boolean
           <Separator className="w-full" />
           <ToolbarButton
             icon={<GitPullRequestArrow className="h-4 w-4 opacity-70" />}
-            tooltip="Connect"
+            tooltip="Подключить"
             onClick={handleOpenAddRelationDialog}
             disabled={!canEdit || !areExactlyTwoSelected}
             badge={areExactlyTwoSelected ? 2 : null}
           />
           <ToolbarButton
             icon={<Merge className="h-4 w-4 opacity-70" />}
-            tooltip="Merge"
+            tooltip="Объединить"
             onClick={handleOpenMergeDialog}
             disabled={!canEdit || !areMergeable}
             badge={areMergeable ? selectedNodes.length : null}
@@ -344,13 +345,13 @@ export const Toolbar = memo(function Toolbar({ isLoading }: { isLoading: boolean
           <Separator className="w-full" />
           <ToolbarButton
             icon={<NetworkIcon className="h-4 w-4 opacity-70" />}
-            tooltip="Force layout"
+            tooltip="Силовая раскладка"
             onClick={handleApplyForceLayout}
             disabled={!canEdit || isLoading || view !== 'graph'}
           />
           <ToolbarButton
             icon={<GitFork strokeWidth={1.4} className="h-4 w-4 opacity-70 rotate-180" />}
-            tooltip="Hierarchy layout"
+            tooltip="Иерархическая раскладка"
             onClick={handleApplyHierarchyLayout}
             disabled={!canEdit || isLoading || view !== 'graph'}
           />
@@ -364,7 +365,7 @@ export const Toolbar = memo(function Toolbar({ isLoading }: { isLoading: boolean
           <ToolbarButton
             disabled={isLoading}
             icon={<FunnelPlus className={cn('h-4 w-4 opacity-70')} />}
-            tooltip="Filters"
+            tooltip="Фильтры"
             toggled={hasFilters}
           />
         </Filters>
@@ -387,20 +388,20 @@ export const Toolbar = memo(function Toolbar({ isLoading }: { isLoading: boolean
                     <Download className="h-4 w-4 opacity-70" />
                   </Button>
                 </TooltipTrigger>
-                <TooltipContent>Export</TooltipContent>
+                <TooltipContent>Экспорт</TooltipContent>
               </Tooltip>
             </div>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="min-w-[140px]">
-            <DropdownMenuItem onClick={() => handleExport('json')}>Export as JSON</DropdownMenuItem>
-            <DropdownMenuItem onClick={() => handleExport('png')}>Export as PNG</DropdownMenuItem>
+            <DropdownMenuItem onClick={() => handleExport('json')}>Экспорт в JSON</DropdownMenuItem>
+            <DropdownMenuItem onClick={() => handleExport('png')}>Экспорт в PNG</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
         <ToolbarButton
           onClick={handleRefresh}
           disabled={isLoading}
           icon={<RotateCw className={cn('h-4 w-4 opacity-70', isLoading && 'animate-spin')} />}
-          tooltip="Refresh"
+          tooltip="Обновить"
         />
       </FloatingBar>
     </>

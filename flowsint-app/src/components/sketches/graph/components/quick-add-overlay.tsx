@@ -78,7 +78,7 @@ export const QuickAddOverlay = ({
           onKeyDown={handleKeyDown}
           onBlur={onCancel}
           className="h-8 min-w-[200px] max-w-[320px] text-sm shadow-lg border-border/80 bg-background"
-          placeholder="Type to add..."
+          placeholder="Введите, чтобы добавить..."
         />
         {loading && (
           <div className="shrink-0">

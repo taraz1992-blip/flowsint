@@ -48,8 +48,8 @@ function FlowPage() {
 
   return (
     <PageLayout
-      title="Flows"
-      description="Create and manage your flow flows."
+      title="Потоки"
+      description="Создавайте потоки и управляйте ими."
       isLoading={isLoading}
       loadingComponent={
         <div className="p-2">
@@ -59,8 +59,8 @@ function FlowPage() {
       error={error}
       errorComponent={
         <ErrorState
-          title="Couldn't load flows"
-          description="Something went wrong while fetching data. Please try again."
+          title="Не удалось загрузить потоки"
+          description="Что-то пошло не так при загрузке данных. Попробуйте ещё раз."
           error={error}
           onRetry={() => refetch()}
         />
@@ -69,7 +69,7 @@ function FlowPage() {
         <NewFlow>
           <Button size="sm" data-tour-id="create-flow">
             <PlusIcon className="w-4 h-4 mr-2" />
-            New flow
+            Новый поток
           </Button>
         </NewFlow>
       }
@@ -80,15 +80,15 @@ function FlowPage() {
             <div className="rounded-full bg-muted/50 p-4 mb-4">
               <FileX className="w-8 h-8 text-muted-foreground" />
             </div>
-            <h3 className="text-xl font-semibold mb-2">No flow yet</h3>
+            <h3 className="text-xl font-semibold mb-2">Потоков пока нет</h3>
             <p className="text-muted-foreground mb-6 max-w-md">
-              Get started by creating your first flow. You can use flows to process and manipulate
-              your data in powerful ways.
+              
+              Начните с создания первого потока. Потоки позволяют мощно обрабатывать и преобразовывать ваши данные.
             </p>
             <NewFlow>
               <Button>
                 <PlusIcon className="w-4 h-4 mr-2" />
-                Create your first flow
+                Создайте первый поток
               </Button>
             </NewFlow>
           </div>
@@ -129,12 +129,12 @@ function FlowPage() {
                         <CardHeader className="pb-2">
                           <div className="flex items-start justify-between">
                             <CardTitle className="text-lg font-medium group-hover:text-primary transition-colors">
-                              {flow.name || '(Unnamed flow)'}
+                              {flow.name || '(Поток без названия)'}
                             </CardTitle>
                             <FileCode2 className="w-4 h-4 text-muted-foreground" />
                           </div>
                           <CardDescription className="line-clamp-2 mt-1">
-                            {flow.description || 'No description provided'}
+                            {flow.description || 'Описание не указано'}
                           </CardDescription>
                         </CardHeader>
                         <CardContent>

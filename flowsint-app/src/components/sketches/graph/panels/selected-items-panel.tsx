@@ -24,7 +24,7 @@ const SelectedItemsPanel = () => {
     <div className="w-full flex flex-col h-full">
       <div className="p-2 flex items-center justify-between border-b">
         <div className="ml-2 text-sm truncate text-ellipsis">
-          <span className="font-semibold">{selectedNodes.length}</span> selected items
+          <span className="font-semibold">{selectedNodes.length}</span>  выбрано элементов
         </div>
         <ActionBar />
       </div>
@@ -44,7 +44,7 @@ const SelectedNodeItem = memo(({ node }: { node: GraphNode; color: string }) => 
       className="flex w-full items-center justify-between text-left border border-border gap-1.5 text-xs p-2 py-1.5"
     >
       <span className="inline-flex items-center gap-2 truncate text-ellipsis">
-        <span className="truncate text-ellipsis">{node.nodeLabel || 'Unknown'}</span>
+        <span className="truncate text-ellipsis">{node.nodeLabel || 'Неизвестно'}</span>
       </span>
       <TypeBadge type={node?.nodeType} />
     </Badge>
@@ -68,7 +68,7 @@ export const SelectedList = () => {
           className="flex w-full items-center justify-between text-left border border-border gap-1.5 text-xs p-2 py-1.5"
         >
           <span className="flex items-center gap-2 truncate text-ellipsis">
-            <span className="truncate text-ellipsis">{remainingCount}+ other</span>
+            <span className="truncate text-ellipsis">ещё {remainingCount}</span>
           </span>
         </Badge>
       )}
@@ -100,8 +100,8 @@ const ActionBar = () => {
     if (!selectedNodes.length || !sketchId) return
     if (
       !(await confirm({
-        title: `You are about to delete ${selectedNodes.length} node(s).`,
-        message: 'The action is irreversible.'
+        title: `Вы собираетесь удалить узлы: ${selectedNodes.length}.`,
+        message: 'Это действие необратимо.'
       }))
     )
       return
@@ -116,9 +116,9 @@ const ActionBar = () => {
         )
       })(),
       {
-        loading: `Deleting ${selectedNodes.length} node(s)...`,
-        success: 'Nodes deleted successfully.',
-        error: 'Failed to delete selected nodes.'
+        loading: `Удаление узлов: ${selectedNodes.length}...`,
+        success: 'Узлы успешно удалены.',
+        error: 'Не удалось удалить выбранные узлы.'
       }
     )
   }, [selectedNodes, confirm, removeNodes, clearSelectedNodes, sketchId])
@@ -146,7 +146,7 @@ const ActionBar = () => {
               </div>
             </TooltipTrigger>
             <TooltipContent>
-              <p>Ask AI</p>
+              <p>Спросить ИИ</p>
             </TooltipContent>
           </Tooltip>
         )}
@@ -171,7 +171,7 @@ const ActionBar = () => {
               </div>
             </TooltipTrigger>
             <TooltipContent>
-              <p>Delete {selectedNodes.length} nodes</p>
+              <p>Удалить {selectedNodes.length}  узлов</p>
             </TooltipContent>
           </Tooltip>
         )}
@@ -188,9 +188,9 @@ const ActionBar = () => {
             </TooltipTrigger>
             <TooltipContent>
               {!shareSameType ? (
-                <p>All selected items are not the same type</p>
+                <p>Выбранные элементы имеют разные типы</p>
               ) : (
-                <p>Launch enricher</p>
+                <p>Запустить обогатитель</p>
               )}
             </TooltipContent>
           </Tooltip>
@@ -210,7 +210,7 @@ const ActionBar = () => {
             </div>
           </TooltipTrigger>
           <TooltipContent>
-            <p>Clear selection</p>
+            <p>Снять выделение</p>
           </TooltipContent>
         </Tooltip>
       </TooltipProvider>

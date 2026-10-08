@@ -1,0 +1,5 @@
+# Русифицированный фронтенд: сначала `docker build -t flowsint-app-ru:local flowsint-app`
+# Запуск: docker compose -f docker-compose.prod.yml -f docker-compose.ru.yml up -d
+services:
+  app:
+    image: flowsint-app-ru:local

@@ -87,13 +87,13 @@ const EnricherItem = memo(({ enricher, category }: EnricherItemProps) => {
                 {enricher.type !== 'type' && (
                   <div className="mt-2 text-xs">
                     <div className="flex items-center gap-1">
-                      <span className="font-medium">Input:</span>
+                      <span className="font-medium">Вход:</span>
                       <span className="text-muted-foreground truncate text-ellipsis">
                         {enricher.inputs.type}
                       </span>
                     </div>
                     <div className="flex items-center gap-1">
-                      <span className="font-medium">Output:</span>
+                      <span className="font-medium">Выход:</span>
                       <span className="text-muted-foreground truncate text-ellipsis">
                         {enricher.outputs.type}
                       </span>
@@ -117,7 +117,7 @@ const EnricherItem = memo(({ enricher, category }: EnricherItemProps) => {
                   <TriangleAlert className="h-4 w-4 text-yellow-500" />
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p>Configuration required</p>
+                  <p>Требуется настройка</p>
                 </TooltipContent>
               </Tooltip>
             </div>
@@ -134,27 +134,28 @@ const EnricherItem = memo(({ enricher, category }: EnricherItemProps) => {
             {isConfigurationRequired && (
               <div>
                 <Badge variant={'outline'} className=" top-3 right-3">
-                  Configuration required <TriangleAlert className="h-4 w-4 text-orange-500" />
+                  
+                  Требуется настройка <TriangleAlert className="h-4 w-4 text-orange-500" />
                 </Badge>
               </div>
             )}
             <div className="space-y-2">
               <h4 className="font-medium text-sm" style={{ color: borderInputColor }}>
-                Description
+                Описание
               </h4>
               <p className="text-sm text-muted-foreground">
-                {enricher.description || 'No description available'}
+                {enricher.description || 'Описание недоступно'}
               </p>
             </div>
             <div className="space-y-2">
               <h4 className="font-medium text-sm" style={{ color: borderInputColor }}>
-                Module
+                Модуль
               </h4>
               <p className="text-sm text-muted-foreground">{enricher.module}</p>
             </div>
             <div className="space-y-2">
               <h4 className="font-medium text-sm" style={{ color: borderInputColor }}>
-                Input Properties
+                Входные свойства
               </h4>
               <div className="space-y-1">
                 {enricher?.inputs?.properties?.map((prop, index) => (
@@ -167,7 +168,7 @@ const EnricherItem = memo(({ enricher, category }: EnricherItemProps) => {
             </div>
             <div className="space-y-2">
               <h4 className="font-medium text-sm" style={{ color: borderOutputColor }}>
-                Output Properties
+                Выходные свойства
               </h4>
               <div className="space-y-1">
                 {enricher?.outputs?.properties?.map((prop, index) => (

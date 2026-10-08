@@ -143,8 +143,8 @@ export default function BackgroundContextMenu({
     if (!selectedNodes.length || !sketchId) return
     if (
       !(await confirm({
-        title: `You are about to delete ${selectedNodes.length} node(s).`,
-        message: 'The action is irreversible.'
+        title: `Вы собираетесь удалить узлы: ${selectedNodes.length}.`,
+        message: 'Это действие необратимо.'
       }))
     )
       return
@@ -159,9 +159,9 @@ export default function BackgroundContextMenu({
         )
       })(),
       {
-        loading: `Deleting ${selectedNodes.length} node(s)...`,
-        success: 'Nodes deleted successfully.',
-        error: 'Failed to delete selected nodes.'
+        loading: `Удаление узлов: ${selectedNodes.length}...`,
+        success: 'Узлы успешно удалены.',
+        error: 'Не удалось удалить выбранные узлы.'
       }
     )
   }, [selectedNodes, confirm, removeNodes, clearSelectedNodes, sketchId])
@@ -183,7 +183,7 @@ export default function BackgroundContextMenu({
           {/* Header with title and action buttons */}
           <div className="px-3 py-2 border-b gap-1 border-border flex items-center justify-between shrink-0">
             <div className="flex text-xs items-center gap-1 truncate">
-              <span className="block truncate">{selectedNodes.length} selected</span>
+              <span className="block truncate">{selectedNodes.length}  выбрано</span>
               {isSameType && <span className="block">- {sharedType}</span>}
             </div>
             <div className="grow" />
@@ -198,13 +198,13 @@ export default function BackgroundContextMenu({
                         className="h-6 p-0 hover:bg-muted opacity-70 hover:opacity-100 text-destructive hover:text-destructive"
                         onClick={handleDeleteNodes}
                       >
-                        <Trash2 className="h-3 w-3" strokeWidth={1.5} /> Delete{' '}
+                        <Trash2 className="h-3 w-3" strokeWidth={1.5} />  Удалить{' '}
                         {selectedNodeIds.length}
                       </Button>
                     </div>
                   </TooltipTrigger>
                   <TooltipContent>
-                    <p>Delete {selectedNodeIds.length} node(s)</p>
+                    <p>Удалить {selectedNodeIds.length}  узлов</p>
                   </TooltipContent>
                 </Tooltip>
               </div>
@@ -221,11 +221,11 @@ export default function BackgroundContextMenu({
                   onClick={(e) => e.stopPropagation()}
                 >
                   <Zap className="h-3 w-3 mr-1" />
-                  Enrichers
+                  Обогатители
                 </TabsTrigger>
                 <TabsTrigger value="flows" className="flex-1" onClick={(e) => e.stopPropagation()}>
                   <FileCode2 className="h-3 w-3 mr-1" />
-                  Flows
+                  Потоки
                 </TabsTrigger>
               </TabsList>
             </Tabs>
@@ -241,7 +241,7 @@ export default function BackgroundContextMenu({
                   <Search className="absolute left-2 top-1/2 transform -translate-y-1/2 h-3 w-3 text-muted-foreground" />
                   <Input
                     type="search"
-                    placeholder="Search enrichers..."
+                    placeholder="Поиск обогатителей..."
                     value={enrichersSearchQuery}
                     onChange={(e) => {
                       e.stopPropagation()
@@ -285,9 +285,9 @@ export default function BackgroundContextMenu({
                                 <BadgeCheck className="h-3 w-3 text-green-400" />
                               )}{' '}
                             </span>{' '}
-                            {enricher.name || '(Unnamed enricher)'}
+                            {enricher.name || '(Обогатитель без названия)'}
                             {enricher.params_schema?.length ? (
-                              <span title="Requires configuration">
+                              <span title="Требуется настройка">
                                 <Settings className="h-3 w-3 text-muted-foreground shrink-0" />
                               </span>
                             ) : null}
@@ -308,7 +308,7 @@ export default function BackgroundContextMenu({
                 ) : (
                   <div className="p-4 text-center">
                     <p className="text-sm text-muted-foreground">
-                      {enrichersSearchQuery ? 'No enrichers found' : 'No enrichers available'}
+                      {enrichersSearchQuery ? 'Обогатители не найдены' : 'Нет доступных обогатителей'}
                     </p>
                   </div>
                 )}
@@ -323,7 +323,7 @@ export default function BackgroundContextMenu({
                   <Search className="absolute left-2 top-1/2 transform -translate-y-1/2 h-3 w-3 text-muted-foreground" />
                   <Input
                     type="search"
-                    placeholder="Search flows..."
+                    placeholder="Поиск потоков..."
                     value={flowsSearchQuery}
                     onChange={(e) => {
                       e.stopPropagation()
@@ -367,7 +367,7 @@ export default function BackgroundContextMenu({
                                 <BadgeCheck className="h-3 w-3 text-green-400" />
                               )}{' '}
                             </span>{' '}
-                            {flow.name || '(Unnamed flow)'}
+                            {flow.name || '(Поток без названия)'}
                           </p>
                           {flow.description && (
                             <p className="text-xs text-muted-foreground truncate">
@@ -385,7 +385,7 @@ export default function BackgroundContextMenu({
                 ) : (
                   <div className="p-4 text-center">
                     <p className="text-sm text-muted-foreground">
-                      {flowsSearchQuery ? 'No flows found' : 'No flows available'}
+                      {flowsSearchQuery ? 'Потоки не найдены' : 'Нет доступных потоков'}
                     </p>
                   </div>
                 )}
@@ -419,7 +419,7 @@ const DefaultBackgroundMenu = memo(() => {
   if (!canCreate) {
     return (
       <div className="flex-1 grow text-sm overflow-hidden min-h-0 p-3">
-        <p className="text-muted-foreground text-xs">View only</p>
+        <p className="text-muted-foreground text-xs">Только просмотр</p>
       </div>
     )
   }
@@ -430,13 +430,13 @@ const DefaultBackgroundMenu = memo(() => {
         className="w-full rounded-t-md flex items-center gap-2 p-2 hover:bg-muted text-left transition-colors"
         onClick={handleOpenNewAddItemDialog}
       >
-        <Plus className="h-4 w-4 opacity-60" /> Add a new entity
+        <Plus className="h-4 w-4 opacity-60" />  Добавить новую сущность
       </button>
       <button
         className="w-full rounded-b-md flex items-center gap-2 p-2 hover:bg-muted text-left transition-colors"
         onClick={handleOpenImportDialog}
       >
-        <Download className="h-4 w-4 opacity-60" /> Import entities
+        <Download className="h-4 w-4 opacity-60" />  Импорт сущностей
       </button>
     </div>
   )
@@ -477,7 +477,7 @@ const SubActions = memo(({ selectedNodes }: SubActionsProps) => {
 
   return (
     <div className="flex flex-col gap-1">
-      <CopyButton label={`Copy ${selectedNodes.length} items as txt`} content={contentToCopy} />
+      <CopyButton label={`Копировать элементы (${selectedNodes.length}) как txt`} content={contentToCopy} />
       <Button
         variant="ghost"
         size="sm"
@@ -485,7 +485,8 @@ const SubActions = memo(({ selectedNodes }: SubActionsProps) => {
         onClick={handleExportJson}
       >
         <FileJson className="h-4 w-4 opacity-60" />
-        Export {selectedNodes.length} node(s), {selectedEdges.length} edge(s) as JSON
+        
+        Экспорт в JSON: узлов — {selectedNodes.length}, рёбер — {selectedEdges.length}
       </Button>
     </div>
   )

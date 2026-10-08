@@ -154,8 +154,8 @@ const TableBody = ({
           <td colSpan={table.getHeaderGroups()[0]?.headers.length || 1}>
             <div className="flex items-center justify-center h-32 text-muted-foreground">
               <div className="text-center">
-                <div className="text-md font-medium">No data found yet.</div>
-                <div className="text-xs">No nodes to display</div>
+                <div className="text-md font-medium">Данных пока нет.</div>
+                <div className="text-xs">Нет узлов для отображения</div>
               </div>
             </div>
           </td>

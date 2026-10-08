@@ -38,22 +38,22 @@ const ROLE_CONFIG: Record<
   { label: string; icon: typeof Eye; className: string }
 > = {
   owner: {
-    label: 'Owner',
+    label: 'Владелец',
     icon: Crown,
     className: 'bg-amber-500/15 text-amber-700 border-amber-500/30 dark:text-amber-400'
   },
   admin: {
-    label: 'Admin',
+    label: 'Администратор',
     icon: Shield,
     className: 'bg-purple-500/15 text-purple-700 border-purple-500/30 dark:text-purple-400'
   },
   editor: {
-    label: 'Editor',
+    label: 'Редактор',
     icon: Pencil,
     className: 'bg-blue-500/15 text-blue-700 border-blue-500/30 dark:text-blue-400'
   },
   viewer: {
-    label: 'Viewer',
+    label: 'Наблюдатель',
     icon: Eye,
     className: 'bg-zinc-500/15 text-zinc-700 border-zinc-500/30 dark:text-zinc-400'
   }
@@ -80,8 +80,8 @@ export function CaseHeader({ investigation }: CaseOverviewPageProps) {
 
   const handleDeleteInvestigation = async () => {
     const confirmed = await confirm({
-      title: 'Delete Investigation',
-      message: `Are you sure you want to delete "${investigation.name}"? This will also delete all sketches within it. This action cannot be undone.`
+      title: 'Удалить расследование',
+      message: `Вы уверены, что хотите удалить «${investigation.name}»? Все скетчи внутри него тоже будут удалены. Это действие нельзя отменить.`
     })
 
     if (confirmed) {
@@ -106,9 +106,9 @@ export function CaseHeader({ investigation }: CaseOverviewPageProps) {
         })
 
       toast.promise(deletePromise, {
-        loading: 'Deleting investigation...',
+        loading: 'Удаление расследования...',
         success: () => `Investigation "${investigation.name}" has been deleted`,
-        error: 'Failed to delete investigation'
+        error: 'Не удалось удалить расследование'
       })
     }
   }
@@ -118,7 +118,7 @@ export function CaseHeader({ investigation }: CaseOverviewPageProps) {
       {/* Breadcrumb */}
       <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
         <Link to={'/dashboard'} className="hover:text-foreground cursor-pointer transition-colors">
-          Cases
+          Дела
         </Link>
         <span>/</span>
         <span className="text-foreground">{investigation.name}</span>
@@ -149,10 +149,10 @@ export function CaseHeader({ investigation }: CaseOverviewPageProps) {
 
           {/* Inline properties */}
           <div className="flex items-center gap-4 text-sm">
-            <PropertyPill label="Status" value={investigation.status} valueClass="text-success" />
-            <PropertyPill label="Priority" value="Medium" valueClass="text-primary" />
+            <PropertyPill label="Статус" value={investigation.status} valueClass="text-success" />
+            <PropertyPill label="Приоритет" value="Medium" valueClass="text-primary" />
             <PropertyPill
-              label="Updated"
+              label="Обновлено"
               value={lastUpdated}
               icon={<Clock className="w-3 h-3" />}
             />
@@ -178,7 +178,7 @@ export function CaseHeader({ investigation }: CaseOverviewPageProps) {
               <DropdownMenuContent align="end" className="w-48">
                 <DropdownMenuItem onClick={handleDeleteInvestigation} className="text-destructive">
                   <Trash2 className="w-4 h-4 mr-2" />
-                  Delete
+                  Удалить
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -195,7 +195,8 @@ export function CaseHeader({ investigation }: CaseOverviewPageProps) {
         {canManage && (
           <ShareDialog investigationId={investigation.id}>
             <button className="text-xs text-muted-foreground hover:text-foreground transition-colors ml-1">
-              + Invite
+              
+              + Пригласить
             </button>
           </ShareDialog>
         )}

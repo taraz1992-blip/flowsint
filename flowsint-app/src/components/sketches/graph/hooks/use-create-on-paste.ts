@@ -92,6 +92,6 @@ const createNode = async (
       replaceNode(node.id, newNode.id, newNode.nodeProperties)
     }
   } catch {
-    toast.error('Could not create node.')
+    toast.error('Не удалось создать узел.')
   }
 }

@@ -90,10 +90,10 @@ export default function CaseSelector() {
               >
                 <span className="text-ellipsis truncate">
                   {id === 'overview' || !id
-                    ? 'Overview'
+                    ? 'Обзор'
                     : investigation?.sketches?.find((s: Sketch) => s.id === id)?.title ||
                       analyses?.find((a: Analysis) => a.id === id)?.title ||
-                      'Overview'}
+                      'Обзор'}
                 </span>
                 <ChevronDown className="w-4 h-4 shrink-0" />
               </Button>
@@ -104,7 +104,7 @@ export default function CaseSelector() {
               <div className="relative">
                 <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
                 <Input
-                  placeholder="Search sketches and analyses..."
+                  placeholder="Поиск скетчей и анализов..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="pl-8 h-8 text-sm"
@@ -123,7 +123,7 @@ export default function CaseSelector() {
                 >
                   <span className="text-left truncate flex items-center gap-1 text-muted-foreground">
                     <Home strokeWidth={1.5} />
-                    <ArrowLeft strokeWidth={1.5} /> back to case
+                    <ArrowLeft strokeWidth={1.5} />  назад к делу
                   </span>
                 </Button>
               </div>
@@ -173,7 +173,7 @@ export default function CaseSelector() {
                   className="w-full justify-start gap-2 h-auto py-1.5 px-2 rounded-none hover:bg-accent text-muted-foreground hover:text-foreground text-sm"
                 >
                   <Plus className="w-4 h-4" />
-                  <span className="text-left truncate">Create new sketch</span>
+                  <span className="text-left truncate">Создать новый скетч</span>
                 </Button>
               </NewSketch>
             </div>

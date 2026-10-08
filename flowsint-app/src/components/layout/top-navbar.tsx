@@ -84,7 +84,7 @@ export const TopNavbar = memo(() => {
             <>
               <Switch checked={isOpenAnalysis} onCheckedChange={handleToggleAnalysis} id="notes" />
               <Label htmlFor="notes">
-                Toggle notes
+                Показать/скрыть заметки
                 <span className="text-[.7rem] -ml-1 opacity-60">({isMac ? '⌘' : 'ctrl'}L)</span>
               </Label>
             </>
@@ -146,15 +146,15 @@ export function InvestigationMenu({
     e.stopPropagation()
 
     const confirmed = await confirm({
-      title: 'Delete Sketch',
-      message: `Are you sure you want to delete this sketch ? This action cannot be undone.`
+      title: 'Удалить скетч',
+      message: `Вы уверены, что хотите удалить этот скетч? Это действие нельзя отменить.`
     })
 
     if (confirmed) {
       toast.promise(deleteSketchMutation.mutateAsync(sketchId), {
-        loading: 'Deleting sketch...',
+        loading: 'Удаление скетча...',
         success: () => `Sketch has been deleted`,
-        error: 'Failed to delete sketch'
+        error: 'Не удалось удалить скетч'
       })
     }
   }
@@ -169,14 +169,14 @@ export function InvestigationMenu({
         </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56" align="start">
-        <DropdownMenuLabel>Settings</DropdownMenuLabel>
+        <DropdownMenuLabel>Настройки</DropdownMenuLabel>
         <DropdownMenuGroup>
           <DropdownMenuItem onClick={toggleSettingsModal}>
-            General
+            Общие
             <DropdownMenuShortcut>⌘G</DropdownMenuShortcut>
           </DropdownMenuItem>
           <DropdownMenuItem onClick={toggleKeyboardShortcutsModal}>
-            Keyboard shortcuts
+            Горячие клавиши
             <DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
           </DropdownMenuItem>
         </DropdownMenuGroup>
@@ -198,7 +198,7 @@ export function InvestigationMenu({
             rel="noopener noreferrer"
             href="https://github.com/reconurge/flowsint/issues"
           >
-            Support
+            Поддержка
           </a>
         </DropdownMenuItem>
         <DropdownMenuItem disabled>API</DropdownMenuItem>
@@ -206,11 +206,11 @@ export function InvestigationMenu({
           <>
             <DropdownMenuSeparator />
             <DropdownMenuItem onClick={() => setImportModalOpen(true)}>
-              <Upload /> Import entities
+              <Upload />  Импорт сущностей
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem onClick={handleDelete} variant="destructive">
-              Delete sketch
+              Удалить скетч
             </DropdownMenuItem>
           </>
         )}

@@ -81,22 +81,22 @@ const ActionItems: Array<{
   {
     key: 'onView',
     icon: <Maximize className="size-4" />,
-    tooltip: 'View image'
+    tooltip: 'Просмотр изображения'
   },
   {
     key: 'onDownload',
     icon: <Download className="size-4" />,
-    tooltip: 'Download image'
+    tooltip: 'Скачать изображение'
   },
   {
     key: 'onCopy',
     icon: <Copy className="size-4" />,
-    tooltip: 'Copy image to clipboard'
+    tooltip: 'Копировать изображение в буфер обмена'
   },
   {
     key: 'onCopyLink',
     icon: <Link2 className="size-4" />,
-    tooltip: 'Copy image link',
+    tooltip: 'Копировать ссылку на изображение',
     isLink: true
   }
 ]
@@ -126,7 +126,7 @@ export const ImageActions: React.FC<ImageActionsProps> = React.memo(
             <DropdownMenuTrigger asChild>
               <ActionButton
                 icon={<MoreHorizontal className="size-4" />}
-                tooltip="Open menu"
+                tooltip="Открыть меню"
                 onClick={(e) => e.preventDefault()}
               />
             </DropdownMenuTrigger>

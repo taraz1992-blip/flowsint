@@ -18,14 +18,14 @@ export const Sidebar = memo(() => {
   const togglePanel = useLayoutStore((s) => s.togglePanel)
 
   const navItems: NavItem[] = [
-    { icon: Home, label: 'Dashboard', href: '/dashboard/' },
-    { icon: Workflow, label: 'Flows', href: '/dashboard/flows' },
-    { icon: Shapes, label: 'Custom types', href: '/dashboard/custom-types' },
-    { icon: Lock, label: 'Vault', href: '/dashboard/vault' }
+    { icon: Home, label: 'Панель', href: '/dashboard/' },
+    { icon: Workflow, label: 'Потоки', href: '/dashboard/flows' },
+    { icon: Shapes, label: 'Пользовательские типы', href: '/dashboard/custom-types' },
+    { icon: Lock, label: 'Хранилище', href: '/dashboard/vault' }
   ]
 
   if (CONFIG.ENRICHER_TEMPLATES_FEATURE_FLAG)
-    navItems.push({ icon: Puzzle, label: 'Enrichers', href: '/dashboard/enrichers' })
+    navItems.push({ icon: Puzzle, label: 'Обогатители', href: '/dashboard/enrichers' })
 
   const commonClasses = 'flex items-center justify-center h-12 w-full rounded-sm hover:bg-muted'
 
@@ -76,7 +76,7 @@ export const Sidebar = memo(() => {
               </div>
             </TooltipTrigger>
             <TooltipContent side="right">
-              Toggle panel
+              Показать/скрыть панель
               <span className="text-[.7rem] ml-1 opacity-60">({isMac ? '⌘' : 'ctrl'}B)</span>
             </TooltipContent>
           </Tooltip>

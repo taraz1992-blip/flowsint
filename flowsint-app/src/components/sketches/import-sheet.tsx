@@ -49,7 +49,7 @@ export function ImportSheet({ sketchId }: ImportSheetProps) {
         .substring(selectedFile.name.lastIndexOf('.'))
       if (!ALLOWED_EXTENSIONS.includes(fileExtension)) {
         toast.error(
-          `Only ${ALLOWED_EXTENSIONS.join(', ')} files are supported. Please upload file with correct format.`
+          `Поддерживаются только файлы: ${ALLOWED_EXTENSIONS.join(', ')}. Загрузите файл в правильном формате.`
         )
         return
       }
@@ -118,9 +118,9 @@ export function ImportSheet({ sketchId }: ImportSheetProps) {
       >
         {/* Header stays fixed */}
         <SheetHeader className="shrink-0 border-b bg-background p-0 h-19 px-6 justify-center flex-col flex items-start">
-          <SheetTitle>Import entities</SheetTitle>
+          <SheetTitle>Импорт сущностей</SheetTitle>
           <SheetDescription>
-            Upload a TXT file with one value per line to import entities into your sketch
+            Загрузите TXT-файл с одним значением в строке, чтобы импортировать сущности в скетч
           </SheetDescription>
         </SheetHeader>
         <div className="flex flex-col grow overflow-hidden p-6">
@@ -139,8 +139,8 @@ export function ImportSheet({ sketchId }: ImportSheetProps) {
               <div className="flex flex-col items-center gap-4">
                 <Upload className="h-12 w-12 text-muted-foreground" />
                 <div>
-                  <p className="text-lg font-medium">Drag & drop your file here</p>
-                  <p className="text-sm text-muted-foreground mt-1">or click to browse</p>
+                  <p className="text-lg font-medium">Перетащите файл сюда</p>
+                  <p className="text-sm text-muted-foreground mt-1">или нажмите, чтобы выбрать</p>
                 </div>
                 <input
                   type="file"
@@ -151,13 +151,13 @@ export function ImportSheet({ sketchId }: ImportSheetProps) {
                 />
                 <Button asChild variant="outline">
                   <label htmlFor="file-upload" className="cursor-pointer">
-                    Browse files
+                    Выбрать файлы
                   </label>
                 </Button>
                 <p className="text-xs text-muted-foreground">
-                  Supported format:{' '}
-                  <span className="font-bold">{ALLOWED_EXTENSIONS.join(', ')}</span> (one value per
-                  line)
+                  
+                  Поддерживаемый формат:{' '}
+                  <span className="font-bold">{ALLOWED_EXTENSIONS.join(', ')}</span>  (по одному значению в строке)
                 </p>
               </div>
             </div>
@@ -166,7 +166,7 @@ export function ImportSheet({ sketchId }: ImportSheetProps) {
           {isAnalyzing && (
             <div className="flex flex-col items-center justify-center gap-4 py-12">
               <Loader />
-              <p className="text-sm text-muted-foreground">Analyzing file...</p>
+              <p className="text-sm text-muted-foreground">Анализ файла...</p>
             </div>
           )}
 
@@ -178,7 +178,7 @@ export function ImportSheet({ sketchId }: ImportSheetProps) {
                 <p className="text-sm text-muted-foreground">{(file.size / 1024).toFixed(2)} KB</p>
               </div>
               <Button variant="outline" size="sm" onClick={handleReset}>
-                Remove
+                Убрать
               </Button>
             </div>
           )}

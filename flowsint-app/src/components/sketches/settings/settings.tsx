@@ -114,7 +114,7 @@ function DynamicSetting({ categoryId, settingKey, setting, onValueChange }: Dyna
           <div className="flex items-center space-x-2">
             <Switch checked={setting.value} onCheckedChange={onValueChange} />
             <span className="text-sm text-muted-foreground">
-              {setting.value ? 'Enabled' : 'Disabled'}
+              {setting.value ? 'Включено' : 'Отключено'}
             </span>
           </div>
         </SettingItem>
@@ -125,7 +125,7 @@ function DynamicSetting({ categoryId, settingKey, setting, onValueChange }: Dyna
         <SettingItem label={displayName} description={setting.description} inline={true}>
           <Select value={setting.value} onValueChange={onValueChange}>
             <SelectTrigger className="h-9 w-48">
-              <SelectValue placeholder="Select option" />
+              <SelectValue placeholder="Выберите вариант" />
             </SelectTrigger>
             <SelectContent>
               {setting.options?.map((option: any) => (
@@ -145,7 +145,7 @@ function DynamicSetting({ categoryId, settingKey, setting, onValueChange }: Dyna
             type="text"
             value={setting.value}
             onChange={(e) => onValueChange(e.target.value)}
-            placeholder="Enter value"
+            placeholder="Введите значение"
             className="h-10"
           />
         </SettingItem>
@@ -157,7 +157,7 @@ function DynamicSetting({ categoryId, settingKey, setting, onValueChange }: Dyna
           <Textarea
             value={setting.value}
             onChange={(e) => onValueChange(e.target.value)}
-            placeholder="Enter value"
+            placeholder="Введите значение"
             rows={4}
             className="resize-none"
           />
@@ -178,7 +178,7 @@ function DynamicSetting({ categoryId, settingKey, setting, onValueChange }: Dyna
             type="number"
             value={setting.value}
             onChange={(e) => onValueChange(Number(e.target.value))}
-            placeholder="Enter number"
+            placeholder="Введите число"
             min={setting.min}
             max={setting.max}
             step={setting.step}
@@ -190,7 +190,7 @@ function DynamicSetting({ categoryId, settingKey, setting, onValueChange }: Dyna
     default:
       return (
         <SettingItem label={displayName} description={setting.description} inline={false}>
-          <div className="text-sm text-muted-foreground">Unknown setting type: {setting.type}</div>
+          <div className="text-sm text-muted-foreground">Неизвестный тип настройки: {setting.type}</div>
         </SettingItem>
       )
   }
@@ -278,14 +278,14 @@ function NodeColorsSection() {
   return (
     <div className="space-y-6">
       <div className="space-y-1">
-        <h3 className="text-lg font-semibold text-foreground">Node</h3>
+        <h3 className="text-lg font-semibold text-foreground">Узел</h3>
         <p className="text-sm text-muted-foreground">
-          Customize the node styles for each type in the graph visualization.
+          Настройте стили узлов для каждого типа в визуализации графа.
         </p>
       </div>
       <div className="border-b flex items-center gap-2 pb-4">
         <Button variant="outline" size="sm" onClick={handleReset} className="grow shadow-none">
-          Reset to default
+          Сбросить по умолчанию
         </Button>
         <Button
           variant="outline"
@@ -293,7 +293,7 @@ function NodeColorsSection() {
           onClick={handleRandomizeColors}
           className="grow shadow-none"
         >
-          Randomize
+          Случайно
         </Button>
       </div>
       <div className="pr-4">
@@ -353,9 +353,11 @@ function DynamicSection({ categoryId, category, title, description }: DynamicSec
           <p className="text-sm text-muted-foreground">{description}</p>
         </div>
         <div className="text-sm text-muted-foreground">
-          No settings available for category: {category}
+          
+          Нет настроек для категории: {category}
           <br />
-          Available categories: {Object.keys(category || {}).join(', ')}
+          
+          Доступные категории: {Object.keys(category || {}).join(', ')}
         </div>
       </div>
     )
@@ -376,9 +378,9 @@ function DynamicSection({ categoryId, category, title, description }: DynamicSec
       {categoryId === 'graph' && (
         <div className="border-b pb-6">
           <div className="space-y-1">
-            <h4 className="text-md font-semibold text-foreground">Force graph presets</h4>
+            <h4 className="text-md font-semibold text-foreground">Пресеты силового графа</h4>
             <p className="text-sm text-muted-foreground">
-              Apply predefined configurations for different graph layouts.
+              Применить готовые конфигурации для разных раскладок графа.
             </p>
           </div>
           <div className="grid grid-cols-2 gap-2 mt-4">
@@ -389,7 +391,7 @@ function DynamicSection({ categoryId, category, title, description }: DynamicSec
                 size="sm"
                 onClick={() => {
                   applyPreset(presetName)
-                  toast.success('Settings saved. Re-apply a layout to see changes.')
+                  toast.success('Настройки сохранены. Примените раскладку заново, чтобы увидеть изменения.')
                 }}
                 className="justify-start shadow-none"
               >
@@ -404,7 +406,7 @@ function DynamicSection({ categoryId, category, title, description }: DynamicSec
               onClick={() => resetSettings()}
               className="w-full shadow-none"
             >
-              Reset to defaults
+              Сбросить по умолчанию
             </Button>
           </div>
         </div>
@@ -496,12 +498,12 @@ export default function GlobalSettings() {
       queryClient.invalidateQueries({
         queryKey: queryKeys.sketches.detail(id)
       })
-      toast.success('Sketch updated successfully')
+      toast.success('Скетч успешно обновлён')
       setSettingsModalOpen(false)
     },
     onError: (error) => {
       toast.error(
-        'Failed to update sketch: ' + (error instanceof Error ? error.message : 'Unknown error')
+        'Не удалось обновить скетч: ' + (error instanceof Error ? error.message : 'Неизвестная ошибка')
       )
     }
   })
@@ -523,9 +525,10 @@ export default function GlobalSettings() {
       <Sheet open={settingsModalOpen} onOpenChange={setSettingsModalOpen}>
         <SheetContent className="w-full sm:max-w-xl">
           <SheetHeader>
-            <SheetTitle>General settings</SheetTitle>
+            <SheetTitle>Общие настройки</SheetTitle>
             <SheetDescription>
-              Make changes to your sketch settings here. Click save when you&apos;re done.
+              
+              Измените настройки скетча здесь. Нажмите «Сохранить», когда закончите.
             </SheetDescription>
           </SheetHeader>
           <div className="grid gap-4 mt-6">
@@ -552,11 +555,11 @@ export default function GlobalSettings() {
       <Sheet open={settingsModalOpen} onOpenChange={setSettingsModalOpen}>
         <SheetContent className="w-full sm:max-w-xl">
           <SheetHeader>
-            <SheetTitle>General settings</SheetTitle>
-            <SheetDescription>Error loading sketch data. Please try again.</SheetDescription>
+            <SheetTitle>Общие настройки</SheetTitle>
+            <SheetDescription>Ошибка загрузки данных скетча. Попробуйте ещё раз.</SheetDescription>
           </SheetHeader>
           <div className="grid gap-4 mt-6">
-            <Button onClick={() => refetch()}>Retry</Button>
+            <Button onClick={() => refetch()}>Повторить</Button>
           </div>
         </SheetContent>
       </Sheet>
@@ -568,43 +571,43 @@ export default function GlobalSettings() {
       return (
         <div className="space-y-6">
           <div className="space-y-1">
-            <h3 className="text-lg font-semibold text-foreground">Sketch information</h3>
+            <h3 className="text-lg font-semibold text-foreground">Информация о скетче</h3>
             <p className="text-sm text-muted-foreground">
-              Configure the basic details and metadata for your sketch.
+              Настройте основные сведения и метаданные скетча.
             </p>
           </div>
 
           <div className="space-y-5">
             <TextSetting
-              label="Title"
-              description="The name of your sketch"
+              label="Заголовок"
+              description="Название вашего скетча"
               value={formData.title}
               onValueChange={canEdit ? (value) => handleInputChange('title', value) : () => {}}
-              placeholder="Enter sketch title"
+              placeholder="Введите название скетча"
             />
 
             <TextareaSetting
-              label="Description"
-              description="A brief description of what this sketch represents"
+              label="Описание"
+              description="Краткое описание того, что представляет этот скетч"
               value={formData.description}
               onValueChange={
                 canEdit ? (value) => handleInputChange('description', value) : () => {}
               }
-              placeholder="Enter sketch description"
+              placeholder="Введите описание скетча"
               rows={4}
             />
 
             <SelectSetting
-              label="Status"
-              description="The current status of this sketch"
+              label="Статус"
+              description="Текущий статус этого скетча"
               value={formData.status}
               onValueChange={canEdit ? (value) => handleInputChange('status', value) : () => {}}
               options={[
-                { value: 'active', label: 'Active' },
-                { value: 'inactive', label: 'Inactive' },
-                { value: 'archived', label: 'Archived' }
+                { value: 'active', label: 'Активно' },
+                { value: 'inactive', label: 'Неактивно' },
+                { value: 'archived', label: 'В архиве' }
               ]}
-              placeholder="Select status"
+              placeholder="Выберите статус"
             />
           </div>
 
@@ -612,7 +615,7 @@ export default function GlobalSettings() {
             <div className="flex gap-3 pt-6">
               <SheetClose asChild>
                 <Button variant="outline" type="button" className="flex-1 shadow-none">
-                  Cancel
+                  Отмена
                 </Button>
               </SheetClose>
               <Button
@@ -621,7 +624,7 @@ export default function GlobalSettings() {
                 onClick={handleSubmit}
                 className="flex-1 shadow-none"
               >
-                {updateMutation.isPending ? 'Saving...' : 'Save changes'}
+                {updateMutation.isPending ? 'Сохранение...' : 'Сохранить изменения'}
               </Button>
             </div>
           )}
@@ -647,15 +650,15 @@ export default function GlobalSettings() {
       )
     }
 
-    return <div>Section not found.</div>
+    return <div>Раздел не найден.</div>
   }
 
   return (
     <Sheet open={settingsModalOpen} onOpenChange={setSettingsModalOpen}>
       <SheetContent className="w-full sm:max-w-2xl flex flex-col overflow-hidden p-0">
         <SheetHeader className="px-6 pt-6 pb-4">
-          <SheetTitle>Sketch settings</SheetTitle>
-          <SheetDescription>Configure your sketch settings and preferences.</SheetDescription>
+          <SheetTitle>Настройки скетча</SheetTitle>
+          <SheetDescription>Настройте параметры скетча.</SheetDescription>
         </SheetHeader>
         <Tabs
           value={activeSection}
@@ -671,7 +674,7 @@ export default function GlobalSettings() {
                 </TabsTrigger>
               ))}
               <TabsTrigger value="nodecolors" className="h-9">
-                Node
+                Узел
               </TabsTrigger>
             </TabsList>
           </div>
@@ -800,36 +803,36 @@ export function KeyboardShortcuts() {
     {
       category: 'Navigation & panels',
       items: [
-        { key: `${modKey}+L`, description: 'Toggle analysis panel' },
-        { key: `${modKey}+B`, description: 'Toggle panel' },
-        { key: `${modKey}+D`, description: 'Toggle console' },
-        { key: `${modKey}+J`, description: 'Open command palette' }
+        { key: `${modKey}+L`, description: 'Показать/скрыть панель анализа' },
+        { key: `${modKey}+B`, description: 'Показать/скрыть панель' },
+        { key: `${modKey}+D`, description: 'Показать/скрыть консоль' },
+        { key: `${modKey}+J`, description: 'Открыть палитру команд' }
       ]
     },
     {
       category: 'Graph',
       items: [
-        { key: `S`, description: 'Hold to activate selection' },
-        { key: `Shift`, description: 'Hold while clicking on nodes to add to selection' }
+        { key: `S`, description: 'Удерживайте для включения выделения' },
+        { key: `Shift`, description: 'Удерживайте и нажимайте на узлы, чтобы добавить их в выделение' }
       ]
     },
     {
       category: 'Settings',
       items: [
-        { key: `${modKey}+G`, description: 'Toggle graph settings' },
-        { key: `${modKey}+K`, description: 'Toggle keyboard shortcuts' }
+        { key: `${modKey}+G`, description: 'Показать/скрыть настройки графа' },
+        { key: `${modKey}+K`, description: 'Показать/скрыть горячие клавиши' }
       ]
     },
     {
       category: 'Chat & assistant',
       items: [
-        { key: `${modKey}+E`, description: 'Toggle chat assistant' },
-        { key: 'Escape', description: 'Close chat assistant' }
+        { key: `${modKey}+E`, description: 'Показать/скрыть чат-ассистента' },
+        { key: 'Escape', description: 'Закрыть чат-ассистента' }
       ]
     },
     {
       category: 'File operations',
-      items: [{ key: `${modKey}+S`, description: 'Save (Analysis/Flow)' }]
+      items: [{ key: `${modKey}+S`, description: 'Сохранить (анализ/поток)' }]
     }
   ]
 
@@ -837,8 +840,8 @@ export function KeyboardShortcuts() {
     <Sheet open={keyboardShortcutsOpen} onOpenChange={setKeyboardShortcutsOpen}>
       <SheetContent className="w-full sm:max-w-lg overflow-y-auto py-3">
         <SheetHeader>
-          <SheetTitle>Keyboard Shortcuts</SheetTitle>
-          <SheetDescription>Here is the list of all available keyboard shortcuts.</SheetDescription>
+          <SheetTitle>Горячие клавиши</SheetTitle>
+          <SheetDescription>Список всех доступных горячих клавиш.</SheetDescription>
         </SheetHeader>
         <div className="space-y-6 mt-6  p-4">
           {shortcuts.map((category) => (

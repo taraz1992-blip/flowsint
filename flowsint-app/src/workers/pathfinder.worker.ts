@@ -115,7 +115,7 @@ self.onmessage = (event: MessageEvent<PathfinderMessage>) => {
   } catch (error) {
     self.postMessage({
       type: 'error',
-      error: error instanceof Error ? error.message : 'Unknown error'
+      error: error instanceof Error ? error.message : 'Неизвестная ошибка'
     })
   }
 }

@@ -43,7 +43,8 @@ export const StatusBar = memo(() => {
             >
               <Terminal strokeWidth={1.4} className="h-3 w-3" />
               <span>
-                Console {isOpenConsole ? '(Open)' : ''}{' '}
+                
+                Консоль {isOpenConsole ? '(Открыто)' : ''}{' '}
                 <span className="text-[.7rem] opacity-60">({isMac ? '⌘' : 'ctrl'}D)</span>
               </span>
             </Button>
@@ -60,7 +61,8 @@ export const StatusBar = memo(() => {
                   <ZapOff strokeWidth={1.4} className="h-3 w-3" />
                 )}
                 <span>
-                  Scans{' '}
+                  
+                  Сканирования{' '}
                   <span className="text-xs opacity-80">
                     {isLoading ? '(-)' : `(${scans?.length ?? 0})`}
                   </span>
@@ -76,12 +78,12 @@ export const StatusBar = memo(() => {
         <Link to="/dashboard/vault">
           <Button variant="ghost" size="sm" className="h-6 gap-1 text-xs">
             <Unlock strokeWidth={1.4} className="h-3 w-3 opacity-60" />
-            <span>Vault</span>
+            <span>Хранилище</span>
           </Button>
         </Link>
         {/* <Button variant="ghost" size="sm" className="h-6 gap-1 text-xs">
                     <Trash strokeWidth={1.4} className="h-3 w-3 opacity-60" />
-                    <span>Trash</span>
+                    <span>Корзина</span>
                 </Button> */}
         {/* <Legend /> */}
         <InfoDialog />

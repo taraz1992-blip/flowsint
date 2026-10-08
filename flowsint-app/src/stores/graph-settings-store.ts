@@ -20,246 +20,246 @@ const DEFAULT_SETTINGS = {
   information: {},
   general: {
     showFlow: {
-      name: 'Show Flow Assistant',
+      name: 'Показывать ассистента потока',
       type: 'boolean',
       value: false,
-      description: 'Display Flo, your AI assistant.'
+      description: 'Показать Flo, вашего ИИ-ассистента.'
     },
     autoZoomOnCurrentNode: {
-      name: 'Auto-zoom on Node Selection',
+      name: 'Автомасштаб при выборе узла',
       type: 'boolean',
       value: true,
-      description: 'Automatically zoom to the current node when it changes.'
+      description: 'Автоматически приближать к текущему узлу при его смене.'
     },
     showMinimap: {
-      name: 'Show Minimap',
+      name: 'Показывать миникарту',
       type: 'boolean',
       value: true,
-      description: 'Display the minimap overview of the graph.'
+      description: 'Показывать миникарту графа.'
     },
     showBackground: {
-      name: 'Show Background',
+      name: 'Показывать фон',
       type: 'boolean',
       value: true,
-      description: 'Display the dotted background pattern on the graph.'
+      description: 'Показывать точечный фон на графе.'
     },
     autoColorLinksByNodeType: {
-      name: 'Auto Color Links by Node Type',
+      name: 'Автоцвет связей по типу узла',
       type: 'boolean',
       value: true,
-      description: 'Automatically color links based on their target node type.'
+      description: 'Автоматически окрашивать связи по типу целевого узла.'
     }
   },
   graph: {
     nodeOutlined: {
-      name: 'Node style (outlined/fill)',
+      name: 'Стиль узла (контур/заливка)',
       type: 'boolean',
       value: false,
-      description: 'Node style, filled by default.'
+      description: 'Стиль узла, по умолчанию с заливкой.'
     },
     dotStyle: {
-      name: 'Node style (dot/card)',
+      name: 'Стиль узла (точка/карточка)',
       type: 'boolean',
       value: true,
-      description: 'Node style, dot or card.'
+      description: 'Стиль узла: точка или карточка.'
     },
     nodeSize: {
-      name: 'Node Size',
+      name: 'Размер узла',
       type: 'number',
       value: 30,
       min: 0.2,
       max: 100,
       step: 0.1,
-      description: 'Defines the width of the link between two nodes.'
+      description: 'Определяет толщину связи между двумя узлами.'
     },
     nodeWeightMultiplierSize: {
-      name: 'Node Weight Multiplier',
+      name: 'Множитель веса узла',
       type: 'number',
       value: 1.2,
       min: 0.1,
       max: 8.0,
       step: 0.01,
-      description: 'Defines how a node size varies depending on the weight (number of relations).'
+      description: 'Определяет, как размер узла зависит от веса (числа связей).'
     },
     linkWidth: {
-      name: 'Link Width',
+      name: 'Толщина связей',
       type: 'number',
       value: 0.8,
       min: 0.3,
       max: 10,
       step: 0.05,
-      description: 'Defines the width of the link between two nodes.'
+      description: 'Определяет толщину связи между двумя узлами.'
     },
     nodeLabelFontSize: {
-      name: 'Node Label Font Size',
+      name: 'Размер шрифта подписей узлов',
       type: 'number',
       value: 60,
       min: 10,
       max: 200,
       step: 5,
       description:
-        'Adjusts the font size of node labels (percentage of base size, scales with zoom)'
+        'Размер шрифта подписей узлов (в процентах от базового, масштабируется с зумом)'
     },
     linkLabelFontSize: {
-      name: 'Link Label Font Size',
+      name: 'Размер шрифта подписей связей',
       type: 'number',
       value: 60,
       min: 10,
       max: 200,
       step: 5,
       description:
-        'Adjusts the font size of link labels (percentage of base size, scales with zoom)'
+        'Размер шрифта подписей связей (в процентах от базового, масштабируется с зумом)'
     },
     linkLabelHorizontal: {
-      name: 'Horizontal Link Labels',
+      name: 'Горизонтальные подписи связей',
       type: 'boolean',
       value: false,
-      description: 'Display link labels horizontally instead of following the edge angle.'
+      description: 'Показывать подписи связей горизонтально, а не вдоль угла ребра.'
     },
     dagLevelDistance: {
-      name: 'DAG Level Distance',
+      name: 'Расстояние между уровнями DAG',
       type: 'number',
       value: 50,
       min: 0,
       max: 100,
       step: 1,
       description:
-        'Distance between different graph depths when using DAG (directed acyclic graph) layout mode'
+        'Расстояние между уровнями глубины графа в режиме раскладки DAG (ориентированный ациклический граф)'
     },
     d3ForceChargeStrength: {
-      name: 'Force Charge Strength',
+      name: 'Сила заряда',
       type: 'number',
       value: -150,
       min: -500,
       max: 0,
       step: 5,
       description:
-        'Base repulsion strength (adaptive: highly connected nodes/cluster hubs repel 2-3x more to separate clusters)'
+        'Базовая сила отталкивания (адаптивная: сильно связанные узлы и центры кластеров отталкиваются в 2–3 раза сильнее, чтобы разделять кластеры)'
     },
     d3ForceLinkDistance: {
-      name: 'Force Link Distance',
+      name: 'Расстояние связей',
       type: 'number',
       value: 35,
       min: 10,
       max: 200,
       step: 1,
-      description: 'Target distance between connected nodes (higher = nodes further apart)'
+      description: 'Целевое расстояние между связанными узлами (больше = дальше друг от друга)'
     },
     d3ForceLinkStrength: {
-      name: 'Force Link Strength',
+      name: 'Сила связей',
       type: 'number',
       value: 1.0,
       min: 0,
       max: 2,
       step: 0.1,
       description:
-        'Strength of links to maintain their target distance (higher = stronger cluster cohesion, lower = weaker clusters)'
+        'Сила связей, удерживающих целевое расстояние (больше = плотнее кластеры, меньше = слабее)'
     },
     linkDirectionalArrowRelPos: {
-      name: 'Arrow Relative Position',
+      name: 'Относительное положение стрелки',
       type: 'number',
       value: 1,
       min: 0,
       max: 1,
       step: 0.01,
       description:
-        'Position of directional arrows along the link line (0 = source node, 1 = target node, 0.5 = middle)'
+        'Положение стрелок направления вдоль связи (0 = исходный узел, 1 = целевой узел, 0.5 = середина)'
     },
     linkDirectionalArrowLength: {
-      name: 'Arrow Length',
+      name: 'Длина стрелки',
       type: 'number',
       value: 1.2,
       min: 1,
       max: 10,
       step: 0.1,
-      description: 'Length of the arrow heads that indicate link direction'
+      description: 'Длина наконечников стрелок, показывающих направление связи'
     },
     linkDirectionalParticleSpeed: {
-      name: 'Particle Speed',
+      name: 'Скорость частиц',
       type: 'number',
       value: 0.005,
       min: 0,
       max: 0.05,
       step: 0.001,
-      description: 'Speed of moving particles along links (higher = faster movement)'
+      description: 'Скорость движения частиц по связям (больше = быстрее)'
     },
     cooldownTicks: {
-      name: 'Cooldown Ticks',
+      name: 'Тики остывания',
       type: 'number',
       value: 200,
       min: 50,
       max: 1000,
       step: 10,
-      description: 'Number of simulation frames to render before stopping and freezing the layout'
+      description: 'Число кадров симуляции до остановки и фиксации раскладки'
     },
     cooldownTime: {
-      name: 'Cooldown Time',
+      name: 'Время остывания',
       type: 'number',
       value: 15000,
       min: 1000,
       max: 60000,
       step: 1000,
       description:
-        'Maximum time in milliseconds to run the simulation before stopping (15000 = 15 seconds)'
+        'Максимальное время работы симуляции в миллисекундах (15000 = 15 секунд)'
     },
     d3AlphaDecay: {
-      name: 'Alpha Decay',
+      name: 'Затухание альфа',
       type: 'number',
       value: 0.06,
       min: 0,
       max: 0.3,
       step: 0.005,
       description:
-        'Rate at which the simulation intensity decays (higher = faster convergence, lower = longer simulation)'
+        'Скорость затухания интенсивности симуляции (больше = быстрее сходится, меньше = дольше работает)'
     },
     d3AlphaMin: {
-      name: 'Alpha Minimum',
+      name: 'Минимум альфа',
       type: 'number',
       value: 0.001,
       min: 0,
       max: 0.1,
       step: 0.001,
       description:
-        'Minimum simulation intensity threshold - simulation stops when reaching this value'
+        'Минимальный порог интенсивности симуляции — симуляция останавливается при его достижении'
     },
     d3VelocityDecay: {
-      name: 'Velocity Decay',
+      name: 'Затухание скорости',
       type: 'number',
       value: 0.75,
       min: 0,
       max: 1,
       step: 0.01,
       description:
-        'Velocity decay factor that simulates friction/resistance (higher = more damping, nodes slow down faster)'
+        'Коэффициент затухания скорости, имитирующий трение (больше = сильнее торможение, узлы замедляются быстрее)'
     },
     collisionRadius: {
-      name: 'Collision Radius',
+      name: 'Радиус столкновений',
       type: 'number',
       value: 22,
       min: 10,
       max: 50,
       step: 1,
       description:
-        'Radius of collision detection around nodes (prevents node overlap and improves readability)'
+        'Радиус обнаружения столкновений вокруг узлов (не даёт узлам перекрываться и улучшает читаемость)'
     },
     collisionStrength: {
-      name: 'Collision Strength',
+      name: 'Сила столкновений',
       type: 'number',
       value: 0.95,
       min: 0,
       max: 1,
       step: 0.05,
-      description: 'Strength of collision force (1 = fully rigid collision, 0 = no collision)'
+      description: 'Сила столкновений (1 = полностью жёсткие, 0 = без столкновений)'
     },
     centerGravity: {
-      name: 'Center Gravity',
+      name: 'Гравитация к центру',
       type: 'number',
       value: 0.15,
       min: 0,
       max: 1,
       step: 0.05,
       description:
-        'Gravity force pulling all nodes toward the center (prevents clusters from drifting apart, higher = stronger pull to center)'
+        'Сила притяжения всех узлов к центру (не даёт кластерам разлетаться, больше = сильнее притяжение)'
     }
     // warmupTicks: {
     //   type: 'number',

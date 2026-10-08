@@ -44,19 +44,19 @@ const ROLE_OPTIONS: {
 }[] = [
   {
     value: 'admin',
-    label: 'Admin',
+    label: 'Администратор',
     icon: Shield,
     className: 'bg-purple-500/15 text-purple-700 border-purple-500/30 dark:text-purple-400'
   },
   {
     value: 'editor',
-    label: 'Editor',
+    label: 'Редактор',
     icon: Pencil,
     className: 'bg-blue-500/15 text-blue-700 border-blue-500/30 dark:text-blue-400'
   },
   {
     value: 'viewer',
-    label: 'Viewer',
+    label: 'Наблюдатель',
     icon: Eye,
     className: 'bg-zinc-500/15 text-zinc-700 border-zinc-500/30 dark:text-zinc-400'
   }
@@ -67,22 +67,22 @@ const ROLE_BADGE: Record<
   { label: string; icon: typeof Eye; className: string }
 > = {
   owner: {
-    label: 'Owner',
+    label: 'Владелец',
     icon: Crown,
     className: 'bg-amber-500/15 text-amber-700 border-amber-500/30 dark:text-amber-400'
   },
   admin: {
-    label: 'Admin',
+    label: 'Администратор',
     icon: Shield,
     className: 'bg-purple-500/15 text-purple-700 border-purple-500/30 dark:text-purple-400'
   },
   editor: {
-    label: 'Editor',
+    label: 'Редактор',
     icon: Pencil,
     className: 'bg-blue-500/15 text-blue-700 border-blue-500/30 dark:text-blue-400'
   },
   viewer: {
-    label: 'Viewer',
+    label: 'Наблюдатель',
     icon: Eye,
     className: 'bg-zinc-500/15 text-zinc-700 border-zinc-500/30 dark:text-zinc-400'
   }
@@ -179,7 +179,7 @@ export function ShareDialog({ investigationId, children }: ShareDialogProps) {
       })
       setQuery('')
       setSelectedEmail('')
-      toast.success('Collaborator added')
+      toast.success('Участник добавлен')
     },
     onError: (error: any) => {
       const message = error?.message || 'Failed to add collaborator'
@@ -194,9 +194,9 @@ export function ShareDialog({ investigationId, children }: ShareDialogProps) {
       queryClient.invalidateQueries({
         queryKey: queryKeys.investigations.collaborators(investigationId)
       })
-      toast.success('Role updated')
+      toast.success('Роль обновлена')
     },
-    onError: () => toast.error('Failed to update role')
+    onError: () => toast.error('Не удалось обновить роль')
   })
 
   const removeMutation = useMutation({
@@ -206,9 +206,9 @@ export function ShareDialog({ investigationId, children }: ShareDialogProps) {
       queryClient.invalidateQueries({
         queryKey: queryKeys.investigations.collaborators(investigationId)
       })
-      toast.success('Collaborator removed')
+      toast.success('Участник удалён')
     },
-    onError: () => toast.error('Failed to remove collaborator')
+    onError: () => toast.error('Не удалось удалить участника')
   })
 
   const handleInvite = () => {
@@ -221,9 +221,9 @@ export function ShareDialog({ investigationId, children }: ShareDialogProps) {
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent className="sm:max-w-xl gap-0 p-0 overflow-hidden">
         <DialogHeader className="px-5 pt-5 pb-4">
-          <DialogTitle className="text-base">Share investigation</DialogTitle>
+          <DialogTitle className="text-base">Поделиться расследованием</DialogTitle>
           <DialogDescription className="text-sm text-muted-foreground">
-            Invite collaborators and manage access.
+            Приглашайте участников и управляйте доступом.
           </DialogDescription>
         </DialogHeader>
 
@@ -232,7 +232,7 @@ export function ShareDialog({ investigationId, children }: ShareDialogProps) {
           <div className="flex items-center gap-2">
             <div className="relative flex-1">
               <Input
-                placeholder="Search by name or email..."
+                placeholder="Поиск по имени или эл. почте..."
                 value={query}
                 onChange={(e) => handleQueryChange(e.target.value)}
                 onKeyDown={(e) => {
@@ -293,7 +293,7 @@ export function ShareDialog({ investigationId, children }: ShareDialogProps) {
               disabled={!selectedEmail.trim() || addMutation.isPending}
             >
               <UserPlus className="w-4 h-4 mr-1.5" />
-              Invite
+              Пригласить
             </Button>
           </div>
         </div>
@@ -318,7 +318,7 @@ export function ShareDialog({ investigationId, children }: ShareDialogProps) {
           ) : collaborators.length === 0 ? (
             <div className="py-10 flex flex-col items-center gap-2 text-center">
               <Users className="w-8 h-8 text-muted-foreground/30" />
-              <p className="text-sm text-muted-foreground">No collaborators yet</p>
+              <p className="text-sm text-muted-foreground">Участников пока нет</p>
             </div>
           ) : (
             <div className="p-2">
@@ -399,7 +399,7 @@ export function ShareDialog({ investigationId, children }: ShareDialogProps) {
             <Separator />
             <div className="px-5 py-3">
               <p className="text-xs text-muted-foreground">
-                {collaborators.length} member{collaborators.length !== 1 ? 's' : ''} have access
+                Участников с доступом: {collaborators.length}
               </p>
             </div>
           </>

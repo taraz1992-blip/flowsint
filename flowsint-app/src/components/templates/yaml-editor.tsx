@@ -96,7 +96,7 @@ export function YamlEditor({ value, onChange, onValidate, readOnly = false }: Ya
           }}
           loading={
             <div className="flex items-center justify-center h-full text-muted-foreground">
-              Loading editor...
+              Загрузка редактора...
             </div>
           }
         />

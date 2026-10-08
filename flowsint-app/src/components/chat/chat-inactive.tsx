@@ -16,14 +16,13 @@ export default function ChatInactive({ onClose }: { onClose: any }) {
       <div className="w-14 h-14 mb-5 text-muted-foreground/30">
         <KeyRound className="w-full h-full" strokeWidth={1.5} />
       </div>
-      <h3 className="text-sm font-medium text-foreground mb-1">API key required</h3>
+      <h3 className="text-sm font-medium text-foreground mb-1">Требуется API-ключ</h3>
       <p className="text-sm text-muted-foreground text-center max-w-[260px] mb-5">
-        Add a <code className="text-xs bg-muted px-1.5! py-0.5! rounded">MISTRAL_API_KEY</code> in
-        your vault to start using the chat assistant
+        Добавьте <code className="text-xs bg-muted px-1.5! py-0.5! rounded">MISTRAL_API_KEY</code> в хранилище, чтобы начать пользоваться чат-ассистентом
       </p>
       <Link to="/dashboard/vault">
         <Button size="sm" className="h-8 text-xs gap-1.5">
-          Go to Vault
+          Перейти в хранилище
         </Button>
       </Link>
     </div>

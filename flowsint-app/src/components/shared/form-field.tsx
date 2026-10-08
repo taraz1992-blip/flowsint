@@ -66,10 +66,10 @@ const MyForm = () => {
       <form onSubmit={methods.handleSubmit(onSubmit)}>
         <FormField
           name="username"
-          label="Nom d'utilisateur"
+          label="Имя пользователя"
           registerOptions={{ required: 'Ce champ is required' }}
         />
-        <button type="submit">Envoyer</button>
+        <button type="submit">Отправить</button>
       </form>
     </FormProvider>
   );
@@ -87,11 +87,11 @@ const MyForm = () => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <FormField
         name="username"
-        label="Nom d'utilisateur"
+        label="Имя пользователя"
         {...register("username", { required: 'Ce champ is required' })}
         error={errors.username}
       />
-      <button type="submit">Envoyer</button>
+      <button type="submit">Отправить</button>
     </form>
   );
 };

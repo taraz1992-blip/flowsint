@@ -46,7 +46,7 @@ export function FlowControls({
             </Button>
           </TooltipTrigger>
           <TooltipContent>
-            <p>Save flow</p>
+            <p>Сохранить поток</p>
           </TooltipContent>
         </Tooltip>
 
@@ -64,7 +64,7 @@ export function FlowControls({
               </Button>
             </TooltipTrigger>
             <TooltipContent>
-              <p>Delete flow</p>
+              <p>Удалить поток</p>
             </TooltipContent>
           </Tooltip>
         )}
@@ -82,7 +82,7 @@ export function FlowControls({
             </Button>
           </TooltipTrigger>
           <TooltipContent>
-            <p>Auto Layout</p>
+            <p>Автораскладка</p>
           </TooltipContent>
         </Tooltip>
 
@@ -93,7 +93,7 @@ export function FlowControls({
             </Button>
           </TooltipTrigger>
           <TooltipContent>
-            <p>Fit View</p>
+            <p>Вписать в экран</p>
           </TooltipContent>
         </Tooltip>
 
@@ -104,7 +104,7 @@ export function FlowControls({
             </Button>
           </TooltipTrigger>
           <TooltipContent>
-            <p>Zoom In</p>
+            <p>Приблизить</p>
           </TooltipContent>
         </Tooltip>
 
@@ -115,7 +115,7 @@ export function FlowControls({
             </Button>
           </TooltipTrigger>
           <TooltipContent>
-            <p>Zoom Out</p>
+            <p>Отдалить</p>
           </TooltipContent>
         </Tooltip>
       </Panel>

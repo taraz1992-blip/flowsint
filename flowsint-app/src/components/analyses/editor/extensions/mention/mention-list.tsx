@@ -88,7 +88,7 @@ const MentionList = forwardRef<MentionListRef, MentionListProps>((props, ref) =>
           ))}
         </div>
       ) : (
-        <div className="px-2 py-1.5 text-sm text-muted-foreground">No results</div>
+        <div className="px-2 py-1.5 text-sm text-muted-foreground">Нет результатов</div>
       )}
     </div>
   )

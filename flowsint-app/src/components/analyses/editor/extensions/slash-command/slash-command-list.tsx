@@ -82,7 +82,7 @@ const SlashCommandList = forwardRef<SlashCommandListRef, SlashCommandListProps>(
   if (!props.items.length) {
     return (
       <div className="z-50 w-[280px] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md">
-        <div className="px-2 py-1.5 text-sm text-muted-foreground">No results</div>
+        <div className="px-2 py-1.5 text-sm text-muted-foreground">Нет результатов</div>
       </div>
     )
   }

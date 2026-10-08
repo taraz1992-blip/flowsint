@@ -61,7 +61,7 @@ export function TemplateIOBar({
         onValueChange={onInputTypeChange}
         groups={groups}
         flat={flat}
-        placeholder="Input type"
+        placeholder="Тип входных данных"
       />
 
       <ArrowRight className="h-3.5 w-3.5 text-muted-foreground/50 shrink-0" />
@@ -71,7 +71,7 @@ export function TemplateIOBar({
         onValueChange={onOutputTypeChange}
         groups={groups}
         flat={flat}
-        placeholder="Output type"
+        placeholder="Тип выходных данных"
       />
     </div>
   )

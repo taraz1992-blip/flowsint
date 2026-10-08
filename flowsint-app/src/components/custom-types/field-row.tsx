@@ -26,20 +26,20 @@ export interface SchemaField {
 }
 
 const FIELD_TYPES = [
-  { value: 'string', label: 'Text' },
-  { value: 'number', label: 'Number' },
-  { value: 'integer', label: 'Integer' },
-  { value: 'boolean', label: 'Boolean' },
-  { value: 'array', label: 'List' },
-  { value: 'object', label: 'Object' }
+  { value: 'string', label: 'Текст' },
+  { value: 'number', label: 'Число' },
+  { value: 'integer', label: 'Целое число' },
+  { value: 'boolean', label: 'Логический' },
+  { value: 'array', label: 'Список' },
+  { value: 'object', label: 'Объект' }
 ] as const
 
 const FIELD_FORMATS = [
-  { value: 'none', label: 'None' },
-  { value: 'email', label: 'Email' },
+  { value: 'none', label: 'Нет' },
+  { value: 'email', label: 'Эл. почта' },
   { value: 'uri', label: 'URL' },
-  { value: 'date', label: 'Date' },
-  { value: 'date-time', label: 'Date & Time' },
+  { value: 'date', label: 'Дата' },
+  { value: 'date-time', label: 'Дата и время' },
   { value: 'ipv4', label: 'IPv4' },
   { value: 'ipv6', label: 'IPv6' }
 ] as const
@@ -107,7 +107,7 @@ export function FieldRow({ field, onUpdate, onDelete }: FieldRowProps) {
               <Input
                 value={field.title}
                 onChange={(e) => onUpdate({ title: e.target.value })}
-                placeholder="Display name"
+                placeholder="Отображаемое имя"
                 className="h-8 text-sm border-transparent bg-transparent hover:border-border focus:border-border focus:bg-background transition-colors"
               />
               <Select value={field.type} onValueChange={(v: string) => onUpdate({ type: v })}>
@@ -156,11 +156,11 @@ export function FieldRow({ field, onUpdate, onDelete }: FieldRowProps) {
             <div className="px-10 pb-3 space-y-3">
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-1.5">
-                  <label className="text-xs font-medium text-muted-foreground">Description</label>
+                  <label className="text-xs font-medium text-muted-foreground">Описание</label>
                   <Textarea
                     value={field.description || ''}
                     onChange={(e) => onUpdate({ description: e.target.value })}
-                    placeholder="Describe what this field is for..."
+                    placeholder="Опишите, для чего это поле..."
                     rows={2}
                     className="text-sm resize-none"
                   />
@@ -168,7 +168,7 @@ export function FieldRow({ field, onUpdate, onDelete }: FieldRowProps) {
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
                     <label className="text-xs font-medium text-muted-foreground">
-                      Required field
+                      Обязательное поле
                     </label>
                     <Switch
                       checked={field.required}

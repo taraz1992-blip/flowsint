@@ -170,7 +170,7 @@ const EnricherNode = memo(({ data, isConnectable }: EnricherNodeProps) => {
                   <TriangleAlert className="h-4 w-4 text-yellow-500" />
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p>Configuration required</p>
+                  <p>Требуется настройка</p>
                 </TooltipContent>
               </Tooltip>
             </div>

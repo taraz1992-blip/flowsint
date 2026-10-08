@@ -49,16 +49,16 @@ export function ToolCard({ tool }: ToolCardProps) {
             }
           >
             <Key className="h-3 w-3 mr-1" />
-            {tool.apiKeyRequired === 'paid' ? 'Paid API Key' : 'Free API Key'}
+            {tool.apiKeyRequired === 'paid' ? 'Платный API-ключ' : 'Бесплатный API-ключ'}
           </Badge>
         )}
         {tool.active ? (
           <Badge className="bg-green-500/15 text-green-500 text-xs shadow-none border-green-500/30">
-            Active
+            Активно
           </Badge>
         ) : (
           <Badge className="bg-orange-500/15 text-orange-500 text-xs shadow-none border-orange-500/30">
-            Coming soon
+            Скоро
           </Badge>
         )}
       </div>

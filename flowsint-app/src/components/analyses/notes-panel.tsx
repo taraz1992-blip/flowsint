@@ -68,7 +68,7 @@ export const AnalysisPanel = memo(() => {
   }
 
   if (isError) {
-    return <div className="text-sm text-destructive">Error loading analyses.</div>
+    return <div className="text-sm text-destructive">Ошибка загрузки анализов.</div>
   }
 
   return (

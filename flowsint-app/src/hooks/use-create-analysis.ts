@@ -14,7 +14,7 @@ export const useCreateAnalysis = (
   return useMutation({
     mutationFn: async () => {
       const newAnalysis: Partial<Analysis> = {
-        title: 'Untitled Analysis',
+        title: 'Анализ без названия',
         investigation_id: investigationId,
         content: default_content
       }
@@ -26,11 +26,11 @@ export const useCreateAnalysis = (
         queryKey: queryKeys.analyses.byInvestigation(investigationId || '')
       })
       onAnalysisCreate?.(investigationId)
-      toast.success('New analysis created')
+      toast.success('Новый анализ создан')
     },
     onError: (error) => {
       toast.error(
-        'Failed to create analysis: ' + (error instanceof Error ? error.message : 'Unknown error')
+        'Не удалось создать анализ: ' + (error instanceof Error ? error.message : 'Неизвестная ошибка')
       )
     }
   })

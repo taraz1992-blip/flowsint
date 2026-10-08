@@ -129,7 +129,7 @@ export const TerminalLogViewer = ({ logs, onRefresh, onClear }: TerminalLogViewe
           size="icon"
           onClick={handleRefresh}
           className="h-7 w-7 bg-background/80 backdrop-blur-sm hover:bg-background/90 border border-border/50"
-          title="Refresh logs"
+          title="Обновить логи"
         >
           <RotateCcw className="w-3.5 h-3.5 opacity-60" strokeWidth={1.7} />
         </Button>
@@ -138,7 +138,7 @@ export const TerminalLogViewer = ({ logs, onRefresh, onClear }: TerminalLogViewe
           size="icon"
           onClick={handleClearTerminal}
           className="h-7 w-7 bg-background/80 backdrop-blur-sm hover:bg-background/90 border border-border/50"
-          title="Clear terminal"
+          title="Очистить терминал"
         >
           <Trash2 className="w-3.5 h-3.5 opacity-60" strokeWidth={1.7} />
         </Button>

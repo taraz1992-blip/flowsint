@@ -189,7 +189,7 @@ export const columns: ColumnDef<GraphNode>[] = [
           className="h-7"
           onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
         >
-          Label
+          Метка
           <ArrowUpDown className="h-4 w-4" />
         </Button>
       )
@@ -205,7 +205,7 @@ export const columns: ColumnDef<GraphNode>[] = [
           className="h-7"
           onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
         >
-          Type
+          Тип
           <ArrowUpDown className="h-4 w-4" />
         </Button>
       )
@@ -235,7 +235,7 @@ export const columns: ColumnDef<GraphNode>[] = [
           className="h-7"
           onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
         >
-          Status
+          Статус
           <ArrowUpDown className="h-4 w-4" />
         </Button>
       )
@@ -268,7 +268,7 @@ export const columns: ColumnDef<GraphNode>[] = [
           className="h-7"
           onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
         >
-          Source
+          Источник
           <ArrowUpDown className="h-4 w-4" />
         </Button>
       )
@@ -291,7 +291,7 @@ export const columns: ColumnDef<GraphNode>[] = [
           className="h-7"
           onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
         >
-          Confidence
+          Достоверность
           <ArrowUpDown className="h-4 w-4" />
         </Button>
       )
@@ -326,7 +326,7 @@ export const columns: ColumnDef<GraphNode>[] = [
           className="h-7"
           onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
         >
-          Risk Level
+          Уровень риска
           <ArrowUpDown className="h-4 w-4" />
         </Button>
       )
@@ -357,7 +357,7 @@ export const columns: ColumnDef<GraphNode>[] = [
           className="h-7"
           onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
         >
-          Last Updated
+          Последнее обновление
           <ArrowUpDown className="h-4 w-4" />
         </Button>
       )
@@ -389,13 +389,13 @@ export const columns: ColumnDef<GraphNode>[] = [
                   variant="ghost"
                   className="h-8 w-8 p-0 hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors duration-500"
                 >
-                  <span className="sr-only">Open menu</span>
+                  <span className="sr-only">Открыть меню</span>
                   <MoreVertical className="h-4 w-4" />
                 </Button>
               </div>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuLabel>Actions</DropdownMenuLabel>
+              <DropdownMenuLabel>Действия</DropdownMenuLabel>
               <DropdownMenuItem></DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>

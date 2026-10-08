@@ -67,7 +67,7 @@ const ParamsDialog = () => {
           onValueChange={(value) => setParams({ ...params, [param.name]: value })}
         >
           <SelectTrigger id={param.name} className="w-full">
-            <SelectValue placeholder={`Select ${param.name}`} />
+            <SelectValue placeholder={`Выберите ${param.name}`} />
           </SelectTrigger>
           <SelectContent>
             {param.options.map((option) => (
@@ -98,7 +98,8 @@ const ParamsDialog = () => {
       <DialogContent className="!w-[90vw] !max-w-[900px] h-[90vh] overflow-y-auto flex flex-col">
         <DialogHeader>
           <DialogTitle>
-            Configure <span className="text-primary">{selectedNode.data.class_name}</span>
+            
+            Настроить <span className="text-primary">{selectedNode.data.class_name}</span>
           </DialogTitle>
           <div className={cn('justify-start', 'flex w-full')}>
             <div className={cn('w-full', 'p-3 rounded-xl max-w-full', 'flex flex-col gap-2')}>
@@ -108,8 +109,8 @@ const ParamsDialog = () => {
         </DialogHeader>
         <Tabs defaultValue="parameters" className="w-full">
           <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="parameters">Parameters</TabsTrigger>
-            <TabsTrigger value="documentation">Documentation</TabsTrigger>
+            <TabsTrigger value="parameters">Параметры</TabsTrigger>
+            <TabsTrigger value="documentation">Документация</TabsTrigger>
           </TabsList>
           <TabsContent value="parameters" className="space-y-4 mt-4">
             <div className="grid gap-4">
@@ -141,9 +142,9 @@ const ParamsDialog = () => {
 
         <DialogFooter className="mt-auto">
           <Button variant="outline" onClick={() => setOpenParamsDialog(false)}>
-            Cancel
+            Отмена
           </Button>
-          <Button onClick={handleSave}>Save configuration</Button>
+          <Button onClick={handleSave}>Сохранить конфигурацию</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

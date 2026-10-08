@@ -70,8 +70,8 @@ const GraphPageContent = () => {
   return (
     <div className="h-full w-full flex items-center justify-center">
       <div className="text-center">
-        <h2 className="text-lg font-semibold mb-2">Type not supported</h2>
-        <p className="text-muted-foreground">The type &quot;{type}&quot; is not supported yet.</p>
+        <h2 className="text-lg font-semibold mb-2">Тип не поддерживается</h2>
+        <p className="text-muted-foreground">Тип «{type}» пока не поддерживается.</p>
       </div>
     </div>
   )
@@ -114,11 +114,11 @@ export const Route = createFileRoute('/_auth/dashboard/investigations/$investiga
           </div>
         </div>
 
-        <h2 className="text-xl font-semibold text-foreground mb-2">Oops! Something went wrong</h2>
+        <h2 className="text-xl font-semibold text-foreground mb-2">Ой! Что-то пошло не так</h2>
 
         <p className="text-muted-foreground mb-6 text-sm leading-relaxed">
-          We couldn&apos;t load this investigation page. This might be due to a network issue,
-          invalid investigation ID, or the resource may not exist.
+          
+          Не удалось загрузить страницу расследования. Возможно, проблема в сети, неверный ID расследования или ресурс не существует.
         </p>
 
         <div className="space-y-3">
@@ -136,21 +136,21 @@ export const Route = createFileRoute('/_auth/dashboard/investigations/$investiga
                 d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
               />
             </svg>
-            Reload Page
+            Перезагрузить страницу
           </button>
           <Link to="/dashboard">
             <button className="w-full bg-muted hover:bg-muted/80 text-muted-foreground hover:text-foreground px-4 py-2 rounded-md font-medium transition-colors">
-              Go home
+              На главную
             </button>
           </Link>
         </div>
 
         <div className="mt-6 pt-4 border-t">
-          <p className="text-xs text-muted-foreground">If the problem persists, try:</p>
+          <p className="text-xs text-muted-foreground">Если проблема не исчезла, попробуйте:</p>
           <ul className="text-xs text-muted-foreground mt-2 space-y-1">
-            <li>• Checking your internet connection</li>
-            <li>• Verifying the investigation ID is correct</li>
-            <li>• Contacting support if the issue continues</li>
+            <li>• Проверьте подключение к интернету</li>
+            <li>• Проверьте корректность ID расследования</li>
+            <li>• Обратитесь в поддержку, если проблема не исчезнет</li>
           </ul>
         </div>
       </div>

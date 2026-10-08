@@ -129,11 +129,11 @@ const ConfirmDialog = ({
           <DialogClose asChild>
             <div>
               <Button onClick={onCancel} variant="secondary">
-                Cancel
+                Отмена
               </Button>
             </div>
           </DialogClose>
-          <Button onClick={onConfirm}>Continue</Button>
+          <Button onClick={onConfirm}>Продолжить</Button>
         </div>
       </DialogContent>
     </Dialog>

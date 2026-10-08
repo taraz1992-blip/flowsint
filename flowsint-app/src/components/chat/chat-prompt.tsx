@@ -61,7 +61,7 @@ export const ChatPanel = ({ onSend, isLoading }: ChatPanelProps) => {
             <ContextList context={displayItems} />
             {remainingCount > 0 && (
               <Badge variant="outline" className="text-xs">
-                +{remainingCount} more
+                +{remainingCount}  ещё
               </Badge>
             )}
             <Button
@@ -79,7 +79,7 @@ export const ChatPanel = ({ onSend, isLoading }: ChatPanelProps) => {
             <Textarea
               ref={textareaRef}
               autoFocus
-              placeholder="Ask me anything about your investigation..."
+              placeholder="Спросите меня о чём угодно по вашему расследованию..."
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
@@ -135,7 +135,7 @@ export const ContextList = memo(({ context }: { context: ChatContextFormat[] }) 
               className="flex items-center border border-border gap-1.5 text-xs"
             >
               <span style={{ background: color }} className="w-1.5 h-1.5 rounded-full" />
-              {item.nodeLabel || 'Unknown'}
+              {item.nodeLabel || 'Неизвестно'}
             </Badge>
           )
         }
@@ -150,9 +150,9 @@ export const ContextList = memo(({ context }: { context: ChatContextFormat[] }) 
             className="flex items-center border border-border gap-1.5 text-xs"
           >
             <span style={{ background: fromColor }} className="w-1.5 h-1.5 rounded-full" />
-            {item.fromLabel || 'Unknown'} {'->'}
+            {item.fromLabel || 'Неизвестно'} {'->'}
             <span style={{ background: toColor }} className="w-1.5 h-1.5 rounded-full" />
-            {item.toLabel || 'Unknown'}
+            {item.toLabel || 'Неизвестно'}
           </Badge>
         )
       })}

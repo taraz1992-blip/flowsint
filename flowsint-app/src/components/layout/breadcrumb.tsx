@@ -56,7 +56,7 @@ export function PathBreadcrumb() {
               <BreadcrumbItem className="min-w-0">
                 <BreadcrumbLink asChild>
                   <Link to="/dashboard/flows" className="truncate block font-medium">
-                    Flows
+                    Потоки
                   </Link>
                 </BreadcrumbLink>
               </BreadcrumbItem>
@@ -68,7 +68,7 @@ export function PathBreadcrumb() {
                       {isFlowLoading ? (
                         <Skeleton className="h-4 w-24" />
                       ) : (
-                        flow?.name || '(Unnamed flow)'
+                        flow?.name || '(Поток без названия)'
                       )}
                     </BreadcrumbPage>
                   </BreadcrumbItem>

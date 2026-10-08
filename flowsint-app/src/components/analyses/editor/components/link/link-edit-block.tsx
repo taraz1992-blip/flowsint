@@ -51,30 +51,30 @@ export const LinkEditBlock = React.forwardRef<HTMLDivElement, LinkEditorProps>(
             <Input
               type="url"
               required
-              placeholder="Enter URL"
+              placeholder="Введите URL"
               value={url}
               onChange={(e) => setUrl(e.target.value)}
             />
           </div>
 
           <div className="space-y-1">
-            <Label>Display Text (optional)</Label>
+            <Label>Отображаемый текст (необязательно)</Label>
             <Input
               type="text"
-              placeholder="Enter display text"
+              placeholder="Введите отображаемый текст"
               value={text}
               onChange={(e) => setText(e.target.value)}
             />
           </div>
 
           <div className="flex items-center space-x-2">
-            <Label>Open in New Tab</Label>
+            <Label>Открыть в новой вкладке</Label>
             <Switch checked={isNewTab} onCheckedChange={setIsNewTab} />
           </div>
 
           <div className="flex justify-end space-x-2">
             <Button type="button" onClick={handleSave}>
-              Save
+              Сохранить
             </Button>
           </div>
         </div>

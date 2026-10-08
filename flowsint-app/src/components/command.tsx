@@ -124,7 +124,7 @@ export function Command() {
         className="text-xs h-8 w-full max-w-3xs border flex rounded-full items-center justify-between hover:border-muted-foreground text-muted-foreground"
       >
         <span className="flex items-center gap-2">
-          <Search /> Search Flowsint{' '}
+          <Search />  Поиск по Flowsint{' '}
         </span>
         <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100">
           <span className="text-xs">⌘</span>J
@@ -132,7 +132,7 @@ export function Command() {
       </Button>
       <CommandDialog open={open} onOpenChange={setOpen}>
         <CommandInput
-          placeholder="Type a command or search..."
+          placeholder="Введите команду или запрос..."
           value={searchQuery}
           onValueChange={setSearchQuery}
         />
@@ -142,7 +142,7 @@ export function Command() {
           ) : (
             <>
               {filteredData.investigations.length === 0 && filteredData.analyses.length === 0 ? (
-                <CommandEmpty>No results found.</CommandEmpty>
+                <CommandEmpty>Ничего не найдено.</CommandEmpty>
               ) : (
                 <>
                   {filteredData.investigations.length > 0 && (
@@ -224,7 +224,7 @@ export function Command() {
                     >
                       <div className="flex items-center gap-2">
                         <Fingerprint className="h-4 w-4" />
-                        <span>All Investigations</span>
+                        <span>Все расследования</span>
                       </div>
                     </CommandItem>
                     <CommandItem
@@ -235,7 +235,7 @@ export function Command() {
                     >
                       <div className="flex items-center gap-2">
                         <Workflow className="h-4 w-4" />
-                        <span>Enrichers</span>
+                        <span>Обогатители</span>
                       </div>
                     </CommandItem>
                   </CommandGroup>

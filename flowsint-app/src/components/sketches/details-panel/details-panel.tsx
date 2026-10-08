@@ -171,7 +171,7 @@ function TitleInput({ value, onChange }: { value: string; onChange: (val: string
     return (
       <button onClick={() => setEditing(true)} className="min-w-0 flex-1 text-left">
         <span className="block truncate text-2xl font-bold">
-          {value || <span className="text-muted-foreground/40">Untitled</span>}
+          {value || <span className="text-muted-foreground/40">Без названия</span>}
         </span>
       </button>
     )
@@ -192,7 +192,7 @@ function TitleInput({ value, onChange }: { value: string; onChange: (val: string
           setEditing(false)
         }
       }}
-      placeholder="Untitled"
+      placeholder="Без названия"
     />
   )
 }
@@ -277,7 +277,7 @@ function PropertyInput({
         if (e.key === 'Enter') onBlur(draft)
       }}
       className="w-full bg-transparent outline-none placeholder:text-muted-foreground/30 focus:bg-muted/20 px-1 rounded transition-colors"
-      placeholder={placeholder ?? 'Empty'}
+      placeholder={placeholder ?? 'Пусто'}
     />
   )
 }
@@ -368,10 +368,10 @@ const DetailsPanel = memo(() => {
           queryClient.invalidateQueries({ queryKey: queryKeys.sketches.graph(sketchId, sketchId) })
         }
       } else {
-        toast.error('Failed to update')
+        toast.error('Не удалось обновить')
       }
     },
-    onError: () => toast.error('Failed to save')
+    onError: () => toast.error('Не удалось сохранить')
   })
 
   const saveState = useCallback(
@@ -489,7 +489,7 @@ const DetailsPanel = memo(() => {
     return (
       <div className="flex flex-col items-center justify-center h-full p-8">
         <MousePointer className="h-5 w-5 text-muted-foreground/40 mb-3" />
-        <p className="text-[13px] text-muted-foreground/60">Select a node</p>
+        <p className="text-[13px] text-muted-foreground/60">Выберите узел</p>
       </div>
     )
   }
@@ -534,7 +534,7 @@ const DetailsPanel = memo(() => {
           <LaunchFlow values={[node.id]} type={node.nodeType}>
             <Button className="rounded-full h-8 gap-1.5 px-4 text-sm" size="sm">
               <Rocket className="size-3.5" strokeWidth={1.7} />
-              Enrich
+              Обогатить
             </Button>
           </LaunchFlow>
         </div>
@@ -551,26 +551,26 @@ const DetailsPanel = memo(() => {
               value="properties"
               className="flex-1 rounded-none border-0 border-b-2 border-transparent data-[state=active]:border-foreground data-[state=active]:bg-transparent data-[state=active]:shadow-none text-xs h-full"
             >
-              Properties
+              Свойства
             </TabsTrigger>
             <TabsTrigger
               value="neighbors"
               className="flex-1 rounded-none border-0 border-b-2 border-transparent data-[state=active]:border-foreground data-[state=active]:bg-transparent data-[state=active]:shadow-none text-xs h-full"
             >
-              Neighbors
+              Соседи
             </TabsTrigger>
             <TabsTrigger
               value="relations"
               className="flex-1 rounded-none border-0 border-b-2 border-transparent data-[state=active]:border-foreground data-[state=active]:bg-transparent data-[state=active]:shadow-none text-xs h-full"
             >
-              Relations
+              Связи
             </TabsTrigger>
             {canEdit && (
               <TabsTrigger
                 value="appearance"
                 className="flex-1 rounded-none border-0 border-b-2 border-transparent data-[state=active]:border-foreground data-[state=active]:bg-transparent data-[state=active]:shadow-none text-xs h-full"
               >
-                Style
+                Стиль
               </TabsTrigger>
             )}
           </TabsList>
@@ -578,7 +578,7 @@ const DetailsPanel = memo(() => {
 
         {/* Properties tab */}
         <TabsContent value="properties" className="flex-1 min-h-0 overflow-y-auto mt-0 pb-6">
-          <CollapsibleSection label="Properties" defaultOpen noBorderTop>
+          <CollapsibleSection label="Свойства" defaultOpen noBorderTop>
             {propertiesFields.length > 0 ? (
               propertiesFields.map(([key, value]) => (
                 <PropertyRow key={key} label={key} copyValue={copyField(value)}>
@@ -594,7 +594,7 @@ const DetailsPanel = memo(() => {
                         className="scale-75"
                       />
                     ) : (
-                      <span className="text-muted-foreground">{value ? 'Yes' : 'No'}</span>
+                      <span className="text-muted-foreground">{value ? 'Да' : 'Нет'}</span>
                     )
                   ) : typeof value === 'number' ? (
                     <StatusCodeBadge statusCode={value} />
@@ -618,8 +618,8 @@ const DetailsPanel = memo(() => {
                         orientation="vertical"
                         placeholder={
                           (value as string[] | undefined)?.length === 0
-                            ? 'Empty'
-                            : `Enter ${key.toLowerCase()}`
+                            ? 'Пусто'
+                            : `Введите: ${key.toLowerCase()}`
                         }
                       />
                     ) : (
@@ -638,17 +638,17 @@ const DetailsPanel = memo(() => {
                 </PropertyRow>
               ))
             ) : (
-              <p className="px-6 py-2 text-sm text-muted-foreground/40">No properties</p>
+              <p className="px-6 py-2 text-sm text-muted-foreground/40">Нет свойств</p>
             )}
           </CollapsibleSection>
 
-          <CollapsibleSection label="Notes" defaultOpen>
+          <CollapsibleSection label="Заметки" defaultOpen>
             <div className="min-h-[120px]">
               <MinimalTiptapEditor
                 value={formData.notes}
                 onChange={canEdit ? handleNotesChange : undefined}
                 output="html"
-                placeholder={canEdit ? 'Write something...' : ''}
+                placeholder={canEdit ? 'Напишите что-нибудь...' : ''}
                 showToolbar={false}
                 editorContentClassName="px-6 py-3 !max-w-none prose-sm"
                 immediatelyRender={false}
@@ -658,7 +658,7 @@ const DetailsPanel = memo(() => {
           </CollapsibleSection>
 
           {metadataFields.length > 0 && (
-            <CollapsibleSection label="Metadata" defaultOpen={false}>
+            <CollapsibleSection label="Метаданные" defaultOpen={false}>
               {metadataFields.map(([key, value]) => (
                 <PropertyRow
                   key={key}
@@ -698,8 +698,8 @@ const DetailsPanel = memo(() => {
 
         {/* Appearance tab */}
         <TabsContent value="appearance" className="flex-1 min-h-0 overflow-y-auto mt-0 pb-6">
-          <CollapsibleSection label="Visual" defaultOpen noBorderTop>
-            <PropertyRow label={`Size (${nodeSize})`}>
+          <CollapsibleSection label="Визуальный" defaultOpen noBorderTop>
+            <PropertyRow label={`Размер (${nodeSize})`}>
               <Slider
                 value={[nodeSize]}
                 onValueChange={([val]) => handleSizeChange(val)}
@@ -709,7 +709,7 @@ const DetailsPanel = memo(() => {
               />
             </PropertyRow>
 
-            <PropertyRow label="Color">
+            <PropertyRow label="Цвет">
               <div className="flex items-center gap-1.5 flex-wrap">
                 {COLORS.map((color) => (
                   <button
@@ -727,7 +727,7 @@ const DetailsPanel = memo(() => {
               </div>
             </PropertyRow>
 
-            <PropertyRow label="Shape">
+            <PropertyRow label="Форма">
               <ToggleGroup
                 onValueChange={(value) => handleChange('nodeShape', value || null)}
                 type="single"
@@ -746,16 +746,16 @@ const DetailsPanel = memo(() => {
               </ToggleGroup>
             </PropertyRow>
 
-            <PropertyRow label="Icon">
+            <PropertyRow label="Иконка">
               <button
                 onClick={() => setOpenIconPicker(true)}
                 className="text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
-                {formData.nodeIcon || 'Default'}
+                {formData.nodeIcon || 'По умолчанию'}
               </button>
             </PropertyRow>
 
-            <PropertyRow label="Image">
+            <PropertyRow label="Изображение">
               <PropertyInput
                 value={formData.nodeImage || ''}
                 placeholder="URL..."

@@ -15,7 +15,7 @@ export function AnalysesSection({ analyses, canCreate = true }: AnalysesSectionP
   return (
     <section>
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-sm font-medium text-foreground">Analyses</h2>
+        <h2 className="text-sm font-medium text-foreground">Анализы</h2>
         {canCreate && (
           <NewAnalysis>
             <Button
@@ -24,7 +24,8 @@ export function AnalysesSection({ analyses, canCreate = true }: AnalysesSectionP
               className="h-7 text-xs text-muted-foreground hover:text-foreground gap-1"
             >
               <Plus className="w-3.5 h-3.5" />
-              New
+              
+              Новый
             </Button>
           </NewAnalysis>
         )}

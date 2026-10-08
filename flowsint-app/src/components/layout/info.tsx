@@ -17,85 +17,86 @@ const InfoDialog = () => {
         <DialogContent className="sm:max-w-2xl">
           <div className="p-2">
             <div className="p-2 text-sm space-y-4 overflow-y-auto max-h-[80vh]">
-              <h2 className="text-base font-semibold flex items-center gap-2">About Flowsint</h2>
+              <h2 className="text-base font-semibold flex items-center gap-2">О Flowsint</h2>
               <p>
-                <strong>Flowsint</strong> is an{' '}
-                <strong>investigation and intelligence platform</strong> built to support complex
-                research workflows involving{' '}
-                <strong>people, organizations, infrastructure, and online activity</strong>.
+                <strong>Flowsint</strong> — это <strong>платформа расследований и разведки</strong>,
+                созданная для сложных исследовательских процессов с участием{' '}
+                <strong>людей, организаций, инфраструктуры и онлайн-активности</strong>.
               </p>
 
               <p>
-                Whether you&apos;re conducting <strong>cyber investigations</strong>, mapping out{' '}
-                <strong>fraud networks</strong>, or gathering intelligence for{' '}
-                <strong>threat assessments</strong>, Flowsint helps you collect, visualize, and
-                understand fragmented data points in a structured and interactive way.
+                Проводите ли вы <strong>кибер-расследования</strong>, картируете{' '}
+                <strong>мошеннические сети</strong> или собираете данные для{' '}
+                <strong>оценки угроз</strong> — Flowsint помогает собирать, визуализировать и
+                осмысливать разрозненные данные в структурированном и интерактивном виде.
               </p>
 
-              <h3 className="font-semibold">What Flowsint Does</h3>
+              <h3 className="font-semibold">Что делает Flowsint</h3>
               <ul className="list-disc list-inside space-y-1">
                 <li>
-                  <strong>Connects scattered data</strong> — emails, domains, social accounts, IPs,
-                  phone numbers, addresses, and more — into a single{' '}
-                  <strong>investigative graph</strong>.
+                  <strong>Связывает разрозненные данные</strong> — адреса почты, домены, аккаунты в
+                  соцсетях, IP, номера телефонов, адреса и многое другое — в единый{' '}
+                  <strong>граф расследования</strong>.
                 </li>
                 <li>
-                  Offers <strong>visual enrichers</strong> to pivot from one entity to related ones:
-                  find <strong>connected individuals</strong>, discover{' '}
-                  <strong>infrastructure</strong>, uncover <strong>aliases</strong>.
+                  Предлагает <strong>визуальные обогатители</strong>, чтобы переходить от одной
+                  сущности к связанным: находить <strong>связанных лиц</strong>, обнаруживать{' '}
+                  <strong>инфраструктуру</strong>, раскрывать <strong>псевдонимы</strong>.
                 </li>
                 <li>
-                  <strong>Tracks and saves investigation states</strong> over time, letting you
-                  explore multiple hypotheses or revisit older threads without losing context.
+                  <strong>Отслеживает и сохраняет состояния расследования</strong> со временем, позволяя
+                  проверять разные гипотезы и возвращаться к старым линиям, не теряя контекст.
                 </li>
                 <li>
-                  Supports <strong>live data enrichment</strong> from custom or built-in enrichers,
-                  giving you <strong>actionable insights</strong> as you explore.
+                  Поддерживает <strong>обогащение данных в реальном времени</strong> с помощью
+                  собственных и встроенных обогатителей, давая <strong>практичные выводы</strong> по
+                  мере исследования.
                 </li>
               </ul>
 
-              <h3 className="font-semibold">Why Use Flowsint?</h3>
+              <h3 className="font-semibold">Зачем использовать Flowsint?</h3>
               <ul className="list-disc list-inside space-y-1">
                 <li>
-                  Built for <strong>speed and clarity</strong> — fast graph rendering, clean UI,
-                  responsive enrichers.
+                  Создан для <strong>скорости и ясности</strong> — быстрая отрисовка графа, чистый
+                  интерфейс, отзывчивые обогатители.
                 </li>
                 <li>
-                  <strong>Flexible graph model</strong> that mirrors how investigators think — not
-                  just tables and tags, but <strong>relationships</strong>.
+                  <strong>Гибкая графовая модель</strong>, отражающая то, как мыслят следователи: не
+                  просто таблицы и теги, а <strong>связи</strong>.
                 </li>
                 <li>
-                  Ideal for <strong>solo analysts and teams</strong> that need to move fast, explore
-                  freely, and make sense of <strong>partial or messy data</strong>.
+                  Подходит для <strong>аналитиков-одиночек и команд</strong>, которым нужно быстро
+                  двигаться, свободно исследовать и разбираться в{' '}
+                  <strong>неполных или хаотичных данных</strong>.
                 </li>
               </ul>
 
-              <h3 className="font-semibold">Use Cases</h3>
+              <h3 className="font-semibold">Сценарии использования</h3>
               <ul className="list-disc list-inside space-y-1">
                 <li>
-                  Mapping <strong>digital infrastructure</strong> of individuals or organizations
+                  Картирование <strong>цифровой инфраструктуры</strong> людей или организаций
                 </li>
                 <li>
-                  Investigating <strong>online fraud schemes</strong> or{' '}
-                  <strong>fake identities</strong>
+                  Расследование <strong>схем онлайн-мошенничества</strong> или{' '}
+                  <strong>поддельных личностей</strong>
                 </li>
                 <li>
-                  Uncovering <strong>links between actors</strong> across platforms
+                  Выявление <strong>связей между акторами</strong> на разных платформах
                 </li>
                 <li>
-                  Visualizing the reach of <strong>leaked or exposed data</strong>
+                  Оценка масштаба <strong>утёкших или открытых данных</strong>
                 </li>
                 <li>
-                  Tracking <strong>threat actor behavior</strong> across social and technical
-                  surfaces
+                  Отслеживание <strong>поведения акторов угроз</strong> в социальных и технических
+                  средах
                 </li>
               </ul>
 
               <p>
-                Flowsint is designed for <strong>professionals</strong> who need{' '}
-                <strong>full control</strong> over their investigation logic, from how data is
-                structured to how relationships are interpreted. It&apos;s not just a tool —
-                it&apos;s a <strong>flexible workspace</strong> for building intelligence.
+                Flowsint создан для <strong>профессионалов</strong>, которым нужен{' '}
+                <strong>полный контроль</strong> над логикой расследования: от структуры данных до
+                интерпретации связей. Это не просто инструмент, а{' '}
+                <strong>гибкое рабочее пространство</strong> для построения аналитики.
               </p>
             </div>
           </div>

@@ -26,7 +26,7 @@ const NewFlow = ({ children }: { children: ReactNode }) => {
     },
     onError: (error) => {
       toast.error(
-        'Failed to create flow: ' + (error instanceof Error ? error.message : 'Unknown error')
+        'Не удалось создать поток: ' + (error instanceof Error ? error.message : 'Неизвестная ошибка')
       )
     }
   })
@@ -35,16 +35,16 @@ const NewFlow = ({ children }: { children: ReactNode }) => {
     toast.promise(
       createFlowMutation.mutateAsync(
         JSON.stringify({
-          name: 'New flow',
-          description: 'A new example flow.',
+          name: 'Новый поток',
+          description: 'Новый пример потока.',
           category: [],
           flow_schema: {}
         })
       ),
       {
-        loading: 'Creating flow...',
-        success: 'Flow created successfully.',
-        error: 'Failed to create flow.'
+        loading: 'Создание потока...',
+        success: 'Поток успешно создан.',
+        error: 'Не удалось создать поток.'
       }
     )
   }, [createFlowMutation])

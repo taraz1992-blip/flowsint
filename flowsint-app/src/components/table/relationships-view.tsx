@@ -252,8 +252,8 @@ export default function RelationshipsTable() {
     const count = selectedEdges.length
     if (
       !(await confirm({
-        title: `You are about to delete ${count} relationship${count > 1 ? 's' : ''}?`,
-        message: 'The action is irreversible.'
+        title: `Вы собираетесь удалить связи: ${count}?`,
+        message: 'Это действие необратимо.'
       }))
     ) {
       return
@@ -271,9 +271,9 @@ export default function RelationshipsTable() {
         refetch()
       })(),
       {
-        loading: `Deleting ${count} relationship${count > 1 ? 's' : ''}...`,
-        success: `Relationship${count > 1 ? 's' : ''} deleted successfully.`,
-        error: 'Failed to delete relationships.'
+        loading: `Удаление связей: ${count}...`,
+        success: `Связи успешно удалены.`,
+        error: 'Не удалось удалить связи.'
       }
     )
   }, [selectedEdges, sketchId, confirm, removeEdges, clearSelectedEdges, refetch])
@@ -296,7 +296,7 @@ export default function RelationshipsTable() {
         {/* Header with stats */}
         <div className="flex items-center justify-between">
           <div className="space-y-1">
-            <h2 className="text-2xl font-bold tracking-tight">Relationships</h2>
+            <h2 className="text-2xl font-bold tracking-tight">Связи</h2>
             <p className="text-muted-foreground">
               <Skeleton className="h-4 w-32 inline-block" />
             </p>
@@ -312,7 +312,7 @@ export default function RelationshipsTable() {
           <div className="relative flex-1">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input
-              placeholder="Search relationships, nodes, or types..."
+              placeholder="Поиск связей, узлов или типов..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="pl-10"
@@ -322,10 +322,10 @@ export default function RelationshipsTable() {
           <Select value={selectedType} onValueChange={setSelectedType} disabled>
             <SelectTrigger className="w-48">
               <Filter className="h-4 w-4 mr-2 text-muted-foreground" />
-              <SelectValue placeholder="Filter by type" />
+              <SelectValue placeholder="Фильтр по типу" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="all">All types</SelectItem>
+              <SelectItem value="all">Все типы</SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -348,9 +348,10 @@ export default function RelationshipsTable() {
         <div className="text-center space-y-4">
           <Link className="mx-auto h-12 w-12 text-muted-foreground" />
           <div>
-            <h3 className="text-lg font-semibold">No relationships found</h3>
+            <h3 className="text-lg font-semibold">Связи не найдены</h3>
             <p className="text-muted-foreground">
-              This sketch doesn&apos;t have any relationships yet.
+              
+              В этом скетче пока нет связей.
             </p>
           </div>
         </div>
@@ -363,14 +364,14 @@ export default function RelationshipsTable() {
       {/* Header with stats */}
       <div className="flex items-center justify-between">
         <div className="space-y-1">
-          <h2 className="text-2xl font-bold tracking-tight">Relationships</h2>
+          <h2 className="text-2xl font-bold tracking-tight">Связи</h2>
           <p className="text-muted-foreground">
-            {filteredRelationships.length} of {relationships.length} relationships
+            {filteredRelationships.length}  из {relationships.length}  связей
           </p>
         </div>
         <Badge variant="secondary" className="flex items-center gap-2">
           <Users className="h-4 w-4" />
-          {relationships.length} total
+          {relationships.length}  всего
         </Badge>
       </div>
 
@@ -379,7 +380,7 @@ export default function RelationshipsTable() {
         <div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <Input
-            placeholder="Search relationships, nodes, or types..."
+            placeholder="Поиск связей, узлов или типов..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="pl-10"
@@ -388,10 +389,10 @@ export default function RelationshipsTable() {
         <Select value={selectedType} onValueChange={setSelectedType}>
           <SelectTrigger className="w-48">
             <Filter className="h-4 w-4 mr-2 text-muted-foreground" />
-            <SelectValue placeholder="Filter by type" />
+            <SelectValue placeholder="Фильтр по типу" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="all">All types</SelectItem>
+            <SelectItem value="all">Все типы</SelectItem>
             {nodeTypes.map((type) => (
               <SelectItem key={type} value={type}>
                 <span className="capitalize">{type}</span>
@@ -416,13 +417,14 @@ export default function RelationshipsTable() {
               onCheckedChange={handleSelectAll}
             />
             <span className="text-sm text-muted-foreground">
-              {selectedEdges.length > 0 ? `${selectedEdges.length} selected` : 'Select all'}
+              {selectedEdges.length > 0 ? `Выбрано: ${selectedEdges.length}` : 'Выбрать все'}
             </span>
           </div>
           {selectedEdges.length > 0 && (
             <Button onClick={handleDeleteSelected} variant="destructive" size="sm" className="h-8">
               <Trash2 className="h-3.5 w-3.5 mr-1" />
-              Delete {selectedEdges.length}
+              
+              Удалить {selectedEdges.length}
             </Button>
           )}
         </div>

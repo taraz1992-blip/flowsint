@@ -23,42 +23,42 @@ interface ColorPalette {
 
 const COLORS: ColorPalette[] = [
   {
-    label: 'Palette 1',
+    label: 'Палитра 1',
     inverse: 'hsl(var(--background))',
     colors: [
-      { cssVar: 'hsl(var(--foreground))', label: 'Default' },
-      { cssVar: 'var(--mt-accent-bold-blue)', label: 'Bold blue' },
-      { cssVar: 'var(--mt-accent-bold-teal)', label: 'Bold teal' },
-      { cssVar: 'var(--mt-accent-bold-green)', label: 'Bold green' },
-      { cssVar: 'var(--mt-accent-bold-orange)', label: 'Bold orange' },
-      { cssVar: 'var(--mt-accent-bold-red)', label: 'Bold red' },
-      { cssVar: 'var(--mt-accent-bold-purple)', label: 'Bold purple' }
+      { cssVar: 'hsl(var(--foreground))', label: 'По умолчанию' },
+      { cssVar: 'var(--mt-accent-bold-blue)', label: 'Жирный синий' },
+      { cssVar: 'var(--mt-accent-bold-teal)', label: 'Жирный бирюзовый' },
+      { cssVar: 'var(--mt-accent-bold-green)', label: 'Жирный зелёный' },
+      { cssVar: 'var(--mt-accent-bold-orange)', label: 'Жирный оранжевый' },
+      { cssVar: 'var(--mt-accent-bold-red)', label: 'Жирный красный' },
+      { cssVar: 'var(--mt-accent-bold-purple)', label: 'Жирный фиолетовый' }
     ]
   },
   {
-    label: 'Palette 2',
+    label: 'Палитра 2',
     inverse: 'hsl(var(--background))',
     colors: [
-      { cssVar: 'var(--mt-accent-gray)', label: 'Gray' },
-      { cssVar: 'var(--mt-accent-blue)', label: 'Blue' },
-      { cssVar: 'var(--mt-accent-teal)', label: 'Teal' },
-      { cssVar: 'var(--mt-accent-green)', label: 'Green' },
-      { cssVar: 'var(--mt-accent-orange)', label: 'Orange' },
-      { cssVar: 'var(--mt-accent-red)', label: 'Red' },
-      { cssVar: 'var(--mt-accent-purple)', label: 'Purple' }
+      { cssVar: 'var(--mt-accent-gray)', label: 'Серый' },
+      { cssVar: 'var(--mt-accent-blue)', label: 'Синий' },
+      { cssVar: 'var(--mt-accent-teal)', label: 'Бирюзовый' },
+      { cssVar: 'var(--mt-accent-green)', label: 'Зелёный' },
+      { cssVar: 'var(--mt-accent-orange)', label: 'Оранжевый' },
+      { cssVar: 'var(--mt-accent-red)', label: 'Красный' },
+      { cssVar: 'var(--mt-accent-purple)', label: 'Фиолетовый' }
     ]
   },
   {
-    label: 'Palette 3',
+    label: 'Палитра 3',
     inverse: 'hsl(var(--foreground))',
     colors: [
-      { cssVar: 'hsl(var(--background))', label: 'White', darkLabel: 'Black' },
-      { cssVar: 'var(--mt-accent-blue-subtler)', label: 'Blue subtle' },
-      { cssVar: 'var(--mt-accent-teal-subtler)', label: 'Teal subtle' },
-      { cssVar: 'var(--mt-accent-green-subtler)', label: 'Green subtle' },
-      { cssVar: 'var(--mt-accent-yellow-subtler)', label: 'Yellow subtle' },
-      { cssVar: 'var(--mt-accent-red-subtler)', label: 'Red subtle' },
-      { cssVar: 'var(--mt-accent-purple-subtler)', label: 'Purple subtle' }
+      { cssVar: 'hsl(var(--background))', label: 'Белый', darkLabel: 'Black' },
+      { cssVar: 'var(--mt-accent-blue-subtler)', label: 'Синий мягкий' },
+      { cssVar: 'var(--mt-accent-teal-subtler)', label: 'Бирюзовый мягкий' },
+      { cssVar: 'var(--mt-accent-green-subtler)', label: 'Зелёный мягкий' },
+      { cssVar: 'var(--mt-accent-yellow-subtler)', label: 'Жёлтый мягкий' },
+      { cssVar: 'var(--mt-accent-red-subtler)', label: 'Красный мягкий' },
+      { cssVar: 'var(--mt-accent-purple-subtler)', label: 'Фиолетовый мягкий' }
     ]
   }
 ]
@@ -150,8 +150,8 @@ export const SectionThree: React.FC<SectionThreeProps> = ({ editor, size, varian
     <Popover>
       <PopoverTrigger asChild>
         <ToolbarButton
-          tooltip="Text color"
-          aria-label="Text color"
+          tooltip="Цвет текста"
+          aria-label="Цвет текста"
           className="w-12"
           size={size}
           variant={variant}

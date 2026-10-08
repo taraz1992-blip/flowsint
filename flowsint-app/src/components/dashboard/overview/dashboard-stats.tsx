@@ -9,10 +9,10 @@ type DashboardStatsProps = {
 export function DashboardStats({ casesCount, activeCasesCount }: DashboardStatsProps) {
   const stats = useMemo(
     () => [
-      { label: 'Total Cases', value: casesCount, icon: FolderOpen },
-      { label: 'Active', value: activeCasesCount, icon: Clock },
-      { label: 'Analyses', value: '67', icon: FileText },
-      { label: 'Entities', value: '1,247', icon: Network }
+      { label: 'Всего дел', value: casesCount, icon: FolderOpen },
+      { label: 'Активно', value: activeCasesCount, icon: Clock },
+      { label: 'Анализы', value: '67', icon: FileText },
+      { label: 'Сущности', value: '1,247', icon: Network }
     ],
     [casesCount, activeCasesCount]
   )

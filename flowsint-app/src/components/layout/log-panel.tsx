@@ -34,8 +34,8 @@ export const LogPanel = memo(() => {
     if (!sketch_id) return
     if (
       !(await confirm({
-        title: 'Delete all logs',
-        message: 'Are you sure you want to delete all logs?'
+        title: 'Удалить все логи',
+        message: 'Вы уверены, что хотите удалить все логи?'
       }))
     )
       return

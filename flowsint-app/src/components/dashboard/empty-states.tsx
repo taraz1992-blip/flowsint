@@ -31,13 +31,13 @@ export function EmptyInvestigations({ onAction }: EmptyStateProps) {
           <path d="M32 24V36" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
         </svg>
       </div>
-      <h3 className="text-sm font-medium text-foreground mb-1">No investigations yet</h3>
+      <h3 className="text-sm font-medium text-foreground mb-1">Расследований пока нет</h3>
       <p className="text-sm text-muted-foreground text-center max-w-[240px] mb-5">
-        Create your first investigation to start tracking threats and entities
+        Создайте первое расследование, чтобы начать отслеживать угрозы и сущности
       </p>
       <Button onClick={onAction} size="sm" className="h-8 text-xs gap-1.5">
         <Plus className="w-3.5 h-3.5" />
-        New Investigation
+        Новое расследование
       </Button>
     </div>
   )
@@ -57,14 +57,14 @@ export function EmptySketches({ onAction }: EmptyStateProps) {
           <path d="M20 42H36" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
         </svg>
       </div>
-      <h3 className="text-sm font-medium text-foreground mb-1">No sketches</h3>
+      <h3 className="text-sm font-medium text-foreground mb-1">Нет скетчей</h3>
       <p className="text-xs text-muted-foreground text-center max-w-[200px] mb-4">
-        Visualize relationships between entities, infrastructure, and actors
+        Визуализируйте связи между сущностями, инфраструктурой и акторами
       </p>
       <NewSketch>
         <Button onClick={onAction} variant="ghost" size="sm" className="h-7 text-xs gap-1.5">
           <Plus className="w-3.5 h-3.5" />
-          Create sketch
+          Создать скетч
         </Button>
       </NewSketch>
     </div>
@@ -96,15 +96,15 @@ export function EmptyAnalyses({ onAction, canCreate = true }: EmptyStateProps) {
           <path d="M16 36H24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
         </svg>
       </div>
-      <h3 className="text-sm font-medium text-foreground mb-1">No analyses</h3>
+      <h3 className="text-sm font-medium text-foreground mb-1">Нет анализов</h3>
       <p className="text-xs text-muted-foreground text-center max-w-[200px] mb-4">
-        Document findings, patterns, and conclusions from your investigation
+        Фиксируйте находки, закономерности и выводы вашего расследования
       </p>
       {canCreate && (
         <NewAnalysis>
           <Button onClick={onAction} variant="ghost" size="sm" className="h-7 text-xs gap-1.5">
             <Plus className="w-3.5 h-3.5" />
-            Write analysis
+            Написать анализ
           </Button>
         </NewAnalysis>
       )}
@@ -129,13 +129,13 @@ export function EmptyEvidence({ onAction }: EmptyStateProps) {
           />
         </svg>
       </div>
-      <h3 className="text-sm font-medium text-foreground mb-1">No evidence</h3>
+      <h3 className="text-sm font-medium text-foreground mb-1">Нет доказательств</h3>
       <p className="text-xs text-muted-foreground text-center max-w-[180px] mb-4">
-        Upload files, screenshots, or artifacts related to this case
+        Загрузите файлы, скриншоты или артефакты по этому делу
       </p>
       <Button onClick={onAction} variant="ghost" size="sm" className="h-7 text-xs gap-1.5">
         <Upload className="w-3.5 h-3.5" />
-        Upload files
+        Загрузить файлы
       </Button>
     </div>
   )
@@ -155,11 +155,11 @@ export function EmptyTasks({ onAction }: EmptyStateProps) {
           <path d="M16 31H24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
         </svg>
       </div>
-      <h3 className="text-xs font-medium text-foreground mb-0.5">No tasks</h3>
-      <p className="text-xs text-muted-foreground text-center mb-3">Track work for this case</p>
+      <h3 className="text-xs font-medium text-foreground mb-0.5">Нет задач</h3>
+      <p className="text-xs text-muted-foreground text-center mb-3">Отслеживайте работу по этому делу</p>
       <Button onClick={onAction} variant="ghost" size="sm" className="h-6 text-xs px-2 gap-1">
         <Plus className="w-3 h-3" />
-        Add task
+        Добавить задачу
       </Button>
     </div>
   )
@@ -181,9 +181,9 @@ export function EmptyActivity() {
           />
         </svg>
       </div>
-      <h3 className="text-xs font-medium text-foreground mb-0.5">No activity yet</h3>
+      <h3 className="text-xs font-medium text-foreground mb-0.5">Активности пока нет</h3>
       <p className="text-xs text-muted-foreground text-center max-w-[160px]">
-        Actions on this case will appear here
+        Здесь появятся действия по этому делу
       </p>
     </div>
   )
@@ -200,9 +200,10 @@ export function EmptySearchResults() {
           <path d="M18 24H30" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
         </svg>
       </div>
-      <h3 className="text-sm font-medium text-foreground mb-1">No results found</h3>
+      <h3 className="text-sm font-medium text-foreground mb-1">Ничего не найдено</h3>
       <p className="text-sm text-muted-foreground text-center max-w-[220px]">
-        Try adjusting your search or filters to find what you&apos;re looking for
+        
+        Попробуйте изменить запрос или фильтры
       </p>
     </div>
   )

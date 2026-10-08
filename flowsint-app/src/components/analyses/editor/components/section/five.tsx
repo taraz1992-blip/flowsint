@@ -16,7 +16,7 @@ interface InsertElement extends FormatAction {
 const formatActions: InsertElement[] = [
   {
     value: 'codeBlock',
-    label: 'Code block',
+    label: 'Блок кода',
     icon: <Code className="size-5" />,
     action: (editor) => editor.chain().focus().toggleCodeBlock().run(),
     isActive: (editor) => editor.isActive('codeBlock'),
@@ -25,7 +25,7 @@ const formatActions: InsertElement[] = [
   },
   {
     value: 'blockquote',
-    label: 'Blockquote',
+    label: 'Цитата',
     icon: <Quote className="size-5" />,
     action: (editor) => editor.chain().focus().toggleBlockquote().run(),
     isActive: (editor) => editor.isActive('blockquote'),
@@ -34,7 +34,7 @@ const formatActions: InsertElement[] = [
   },
   {
     value: 'horizontalRule',
-    label: 'Divider',
+    label: 'Разделитель',
     icon: <Minus className="size-5" />,
     action: (editor) => editor.chain().focus().setHorizontalRule().run(),
     isActive: () => false,

@@ -84,9 +84,9 @@ export const useLinkCreation = (sketchId?: string) => {
         target: edge.target
       }
       toast.promise(sketchService.addEdge(sketchId, JSON.stringify(edgeData)), {
-        loading: 'Creating relation...',
-        success: 'Relation added.',
-        error: 'Failed to create relation.'
+        loading: 'Создание связи...',
+        success: 'Связь добавлена.',
+        error: 'Не удалось создать связь.'
       })
     },
     [sketchId]

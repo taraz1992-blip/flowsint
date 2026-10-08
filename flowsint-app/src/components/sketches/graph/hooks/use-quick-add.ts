@@ -144,7 +144,7 @@ export const useQuickAdd = (sketchId?: string) => {
         replaceNode(tempId, newNode.id, newNode.nodeProperties)
       }
     } catch {
-      toast.error('Could not create node.')
+      toast.error('Не удалось создать узел.')
     }
   }, [state.text, state.detection, state.graphPosition, sketchId, addNode, replaceNode])
 

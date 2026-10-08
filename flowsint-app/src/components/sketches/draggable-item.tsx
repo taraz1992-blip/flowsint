@@ -78,7 +78,7 @@ export const DraggableItem = memo(function DraggableItem({
           </button>
         </TooltipTrigger>
         <TooltipContent>
-          {disabled ? 'This item is not available' : 'Drag and drop to add to the graph'}
+          {disabled ? 'Этот элемент недоступен' : 'Перетащите, чтобы добавить на граф'}
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>

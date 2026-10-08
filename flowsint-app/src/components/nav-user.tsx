@@ -51,21 +51,21 @@ export function NavUser() {
             </div>
           </div>
         </DropdownMenuLabel>
-        <DropdownMenuLabel className="text-xs font-light opacity-60">Preferences</DropdownMenuLabel>
+        <DropdownMenuLabel className="text-xs font-light opacity-60">Предпочтения</DropdownMenuLabel>
         <div className="flex text-sm items-center justify-between px-3">
-          Theme
+          Тема
           <ModeToggle />
         </div>
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
           <Link to="/dashboard/profile">
             <UserIcon />
-            Profile
+            Профиль
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem onClick={logout}>
           <LogOut />
-          Log out
+          Выйти
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

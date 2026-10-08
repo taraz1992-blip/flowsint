@@ -69,11 +69,11 @@ function InvestigationForm({
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Investigation name</FormLabel>
+                <FormLabel>Название расследования</FormLabel>
                 <FormControl>
                   <Input
                     required
-                    placeholder="Fraud suspicion"
+                    placeholder="Подозрение на мошенничество"
                     disabled={isSubmitting}
                     {...field}
                   />
@@ -88,10 +88,10 @@ function InvestigationForm({
             name="description"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Description</FormLabel>
+                <FormLabel>Описание</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="Investigation into a phishing campaign via LinkedIn."
+                    placeholder="Расследование фишинговой кампании через LinkedIn."
                     disabled={isSubmitting}
                     {...field}
                   />
@@ -104,10 +104,10 @@ function InvestigationForm({
 
         <DialogFooter>
           <Button type="button" variant="outline" onClick={onCancel} disabled={isSubmitting}>
-            Cancel
+            Отмена
           </Button>
           <Button type="submit" disabled={isSubmitting}>
-            {isSubmitting ? 'Creating...' : 'Create Investigation'}
+            {isSubmitting ? 'Создание...' : 'Создать расследование'}
           </Button>
         </DialogFooter>
       </form>
@@ -143,14 +143,14 @@ export default function NewInvestigation({ children, noDropDown = false }: NewIn
     mutationFn: investigationService.create,
     onSuccess: (result) => {
       if ('id' in result && result.id) {
-        toast.success('New investigation created.')
+        toast.success('Новое расследование создано.')
         router.navigate({ to: `/dashboard/investigations/${result.id}` })
         // Invalidate investigations list
         queryClient.invalidateQueries({
           queryKey: queryKeys.investigations.list
         })
       } else {
-        toast.error(('error' in result && result.error) || 'Failed to create investigation')
+        toast.error(('error' in result && result.error) || 'Не удалось создать расследование')
       }
     },
     onError: (error) => {
@@ -179,8 +179,8 @@ export default function NewInvestigation({ children, noDropDown = false }: NewIn
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
-            <DialogTitle>New investigation</DialogTitle>
-            <DialogDescription>Create a new blank investigation.</DialogDescription>
+            <DialogTitle>Новое расследование</DialogTitle>
+            <DialogDescription>Создать новое пустое расследование.</DialogDescription>
           </DialogHeader>
           <InvestigationForm
             form={form}
@@ -199,7 +199,7 @@ export default function NewInvestigation({ children, noDropDown = false }: NewIn
         <DropdownMenuTrigger asChild>{children}</DropdownMenuTrigger>
         <DropdownMenuContent align="end">
           <DropdownMenuItem onSelect={() => setOpen(true)}>
-            New investigation
+            Новое расследование
             <span className="ml-auto text-xs text-muted-foreground">⌘ E</span>
           </DropdownMenuItem>
         </DropdownMenuContent>
@@ -207,8 +207,8 @@ export default function NewInvestigation({ children, noDropDown = false }: NewIn
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
-            <DialogTitle>New investigation</DialogTitle>
-            <DialogDescription>Create a new blank investigation.</DialogDescription>
+            <DialogTitle>Новое расследование</DialogTitle>
+            <DialogDescription>Создать новое пустое расследование.</DialogDescription>
           </DialogHeader>
           <InvestigationForm
             form={form}

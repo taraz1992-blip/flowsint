@@ -56,7 +56,7 @@ export default function RawMaterial() {
         <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
         <Input
           type="text"
-          placeholder="Search enrichers..."
+          placeholder="Поиск обогатителей..."
           className="pl-8 border! border-border"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
@@ -89,7 +89,8 @@ export default function RawMaterial() {
         ))}
         {Object.keys(filteredEnrichers).length === 0 && (
           <div className="text-center py-4 text-muted-foreground">
-            No enrichers found matching &quot;{searchTerm}&quot;
+            
+            Нет обогатителей по запросу «{searchTerm}&quot;
           </div>
         )}
       </div>

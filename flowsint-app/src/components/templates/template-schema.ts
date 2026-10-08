@@ -7,20 +7,20 @@ export const templateSchema = {
     name: {
       type: 'string',
       minLength: 1,
-      description: 'Name of the template'
+      description: 'Название шаблона'
     },
     description: {
       type: 'string',
-      description: 'Description of the template'
+      description: 'Описание шаблона'
     },
     category: {
       type: 'string',
       minLength: 1,
-      description: 'Category of the template'
+      description: 'Категория шаблона'
     },
     version: {
       type: 'number',
-      description: 'Version of the template'
+      description: 'Версия шаблона'
     },
     input: {
       type: 'object',
@@ -29,12 +29,12 @@ export const templateSchema = {
       properties: {
         type: {
           type: 'string',
-          description: 'Flowsint Type the template takes as input'
+          description: 'Тип Flowsint, который шаблон принимает на вход'
         },
         key: {
           type: 'string',
           default: 'nodeLabel',
-          description: 'Key to use for input mapping'
+          description: 'Ключ для сопоставления входных данных'
         }
       }
     },
@@ -49,21 +49,21 @@ export const templateSchema = {
             type: 'string',
             minLength: 1,
             maxLength: 128,
-            description: 'Name of the secret (used as {{secrets.NAME}} in template)'
+            description: 'Название секрета (используется как {{secrets.NAME}} в шаблоне)'
           },
           required: {
             type: 'boolean',
             default: true,
-            description: 'Whether this secret is required for the template'
+            description: 'Обязателен ли этот секрет для шаблона'
           },
           description: {
             type: 'string',
-            description: 'Description of what this secret is used for'
+            description: 'Описание того, для чего используется этот секрет'
           }
         }
       },
       default: [],
-      description: 'List of secrets required by this template (fetched from vault)'
+      description: 'Список секретов, необходимых этому шаблону (берутся из хранилища)'
     },
     request: {
       type: 'object',
@@ -73,34 +73,34 @@ export const templateSchema = {
         method: {
           type: 'string',
           enum: ['GET', 'POST'],
-          description: 'HTTP method'
+          description: 'HTTP-метод'
         },
         url: {
           type: 'string',
-          description: 'URL template with {{key}} placeholders'
+          description: 'Шаблон URL с плейсхолдерами {{key}}'
         },
         headers: {
           type: 'object',
           additionalProperties: { type: 'string' },
           default: {},
-          description: 'HTTP headers'
+          description: 'HTTP-заголовки'
         },
         params: {
           type: 'object',
           additionalProperties: { type: 'string' },
           default: {},
-          description: 'Query parameters'
+          description: 'Параметры запроса'
         },
         body: {
           type: ['string', 'null'],
-          description: 'Request body (for POST requests)'
+          description: 'Тело запроса (для POST-запросов)'
         },
         timeout: {
           type: 'number',
           minimum: 1,
           maximum: 300,
           default: 30,
-          description: 'Request timeout in seconds'
+          description: 'Таймаут запроса в секундах'
         }
       }
     },
@@ -111,16 +111,16 @@ export const templateSchema = {
       properties: {
         type: {
           type: 'string',
-          description: 'Flowsint Type that the template returns'
+          description: 'Тип Flowsint, который возвращает шаблон'
         },
         is_array: {
           type: 'boolean',
           default: false,
-          description: 'Whether the response is an array that should produce multiple outputs'
+          description: 'Является ли ответ массивом, который должен давать несколько результатов'
         },
         array_path: {
           type: ['string', 'null'],
-          description: "Dot-notation path to array in response (e.g., 'data.results')"
+          description: "Путь через точку к массиву в ответе (например, 'data.results')"
         }
       }
     },
@@ -132,13 +132,13 @@ export const templateSchema = {
         expect: {
           type: 'string',
           enum: ['json', 'xml', 'text'],
-          description: 'Expected response format'
+          description: 'Ожидаемый формат ответа'
         },
         map: {
           type: 'object',
           additionalProperties: { type: 'string' },
           default: {},
-          description: 'Mapping from output type attributes to response keys'
+          description: 'Сопоставление атрибутов выходного типа с ключами ответа'
         }
       }
     },
@@ -151,23 +151,23 @@ export const templateSchema = {
           minimum: 0,
           maximum: 10,
           default: 3,
-          description: 'Maximum number of retry attempts'
+          description: 'Максимальное число повторных попыток'
         },
         backoff_factor: {
           type: 'number',
           minimum: 0.1,
           maximum: 10,
           default: 0.5,
-          description: 'Multiplier for exponential backoff (seconds)'
+          description: 'Множитель экспоненциальной задержки (секунды)'
         },
         retry_on_status: {
           type: 'array',
           items: { type: 'integer' },
           default: [429, 500, 502, 503, 504],
-          description: 'HTTP status codes that should trigger a retry'
+          description: 'HTTP-коды статуса, при которых нужен повтор'
         }
       },
-      description: 'Retry configuration for failed requests'
+      description: 'Настройка повторов для неудачных запросов'
     }
   }
 }

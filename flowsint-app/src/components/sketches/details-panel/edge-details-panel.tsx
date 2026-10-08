@@ -63,11 +63,11 @@ const EdgeDetailsPanel = memo(() => {
             data: { label: newLabel }
           })
         )
-        toast.success('Relationship updated successfully.')
+        toast.success('Связь успешно обновлена.')
       } catch {
         // Rollback on error
         updateEdge(edge.id, { label: previousLabel })
-        toast.error('Failed to update relationship.')
+        toast.error('Не удалось обновить связь.')
       }
     }
   }, [edge, updateEdge, sketchId])
@@ -84,8 +84,8 @@ const EdgeDetailsPanel = memo(() => {
 
     if (
       !(await confirm({
-        title: 'You are about to delete this relationship?',
-        message: 'The action is irreversible.'
+        title: 'Вы собираетесь удалить эту связь?',
+        message: 'Это действие необратимо.'
       }))
     ) {
       return
@@ -104,9 +104,9 @@ const EdgeDetailsPanel = memo(() => {
         )
       })(),
       {
-        loading: 'Deleting relationship...',
-        success: 'Relationship deleted successfully.',
-        error: 'Failed to delete relationship.'
+        loading: 'Удаление связи...',
+        success: 'Связь успешно удалена.',
+        error: 'Не удалось удалить связь.'
       }
     )
   }, [edge, sketchId, confirm, removeEdges, setCurrentEdgeId])
@@ -129,9 +129,9 @@ const EdgeDetailsPanel = memo(() => {
         <div className="w-12 h-12 bg-muted rounded-full flex items-center justify-center mb-4">
           <MousePointer className="h-4 w-4 text-muted-foreground" />
         </div>
-        <h3 className="text-lg font-semibold text-foreground mb-2">No relationship selected</h3>
+        <h3 className="text-lg font-semibold text-foreground mb-2">Связь не выбрана</h3>
         <p className="text-sm text-muted-foreground max-w-xs">
-          Click on any relationship in the graph to view its details
+          Нажмите на любую связь в графе, чтобы увидеть её детали
         </p>
       </div>
     )
@@ -168,7 +168,7 @@ const EdgeDetailsPanel = memo(() => {
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p>Delete relationship</p>
+                  <p>Удалить связь</p>
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>
@@ -190,9 +190,9 @@ const EdgeDetailsPanel = memo(() => {
                 <SourceIcon className="h-3 w-3" />
               </div>
               <div className="flex-1 min-w-0 text-left">
-                <p className="text-[10px] text-muted-foreground mb-0.5">Source</p>
+                <p className="text-[10px] text-muted-foreground mb-0.5">Источник</p>
                 <p className="text-xs font-medium truncate group-hover:text-primary transition-colors">
-                  {sourceNode?.nodeLabel || 'Unknown'}
+                  {sourceNode?.nodeLabel || 'Неизвестно'}
                 </p>
               </div>
             </button>
@@ -208,9 +208,9 @@ const EdgeDetailsPanel = memo(() => {
                 <TargetIcon className="h-3 w-3" />
               </div>
               <div className="flex-1 min-w-0 text-left">
-                <p className="text-[10px] text-muted-foreground mb-0.5">Target</p>
+                <p className="text-[10px] text-muted-foreground mb-0.5">Цель</p>
                 <p className="text-xs font-medium truncate group-hover:text-primary transition-colors">
-                  {targetNode?.nodeLabel || 'Unknown'}
+                  {targetNode?.nodeLabel || 'Неизвестно'}
                 </p>
               </div>
             </button>
@@ -222,11 +222,11 @@ const EdgeDetailsPanel = memo(() => {
           {/* Label */}
           <div className="flex w-full bg-card items-center divide-x divide-border border-b border-border p-0">
             <div className="w-1/2 px-3 py-1.5 text-xs text-muted-foreground font-normal truncate">
-              Label
+              Метка
             </div>
             <div className="w-1/2 px-3 py-1.5 text-xs font-medium flex items-center justify-between min-w-0 gap-1">
               <div className="truncate font-semibold">
-                {edge.label || <span className="italic text-muted-foreground">N/A</span>}
+                {edge.label || <span className="italic text-muted-foreground">Н/Д</span>}
               </div>
               {edge.label && <CopyButton className="h-5 w-5 shrink-0" content={edge.label} />}
             </div>
@@ -236,7 +236,7 @@ const EdgeDetailsPanel = memo(() => {
           {edge.type && (
             <div className="flex w-full bg-card items-center divide-x divide-border border-b border-border p-0">
               <div className="w-1/2 px-3 py-1.5 text-xs text-muted-foreground font-normal truncate">
-                Type
+                Тип
               </div>
               <div className="w-1/2 px-3 py-1.5 text-xs font-medium flex items-center justify-between min-w-0">
                 <Badge variant="secondary" className="truncate text-[10px] px-1.5 py-0">
@@ -250,7 +250,7 @@ const EdgeDetailsPanel = memo(() => {
           {edge.caption && (
             <div className="flex w-full bg-card items-center divide-x divide-border border-b border-border p-0">
               <div className="w-1/2 px-3 py-1.5 text-xs text-muted-foreground font-normal truncate">
-                Caption
+                Подпись
               </div>
               <div className="w-1/2 px-3 py-1.5 text-xs font-medium flex items-center justify-between min-w-0 gap-1">
                 <div className="truncate font-semibold">{edge.caption}</div>
@@ -263,7 +263,7 @@ const EdgeDetailsPanel = memo(() => {
           {edge.date && (
             <div className="flex w-full bg-card items-center divide-x divide-border border-b border-border p-0">
               <div className="w-1/2 px-3 py-1.5 text-xs text-muted-foreground font-normal truncate">
-                Date
+                Дата
               </div>
               <div className="w-1/2 px-3 py-1.5 text-xs font-medium flex items-center justify-between min-w-0 gap-1">
                 <div className="truncate font-semibold">{edge.date}</div>
@@ -276,7 +276,7 @@ const EdgeDetailsPanel = memo(() => {
           {edge.confidence_level !== undefined && edge.confidence_level !== null && (
             <div className="flex w-full bg-card items-center divide-x divide-border border-b border-border p-0">
               <div className="w-1/2 px-3 py-1.5 text-xs text-muted-foreground font-normal truncate">
-                Confidence
+                Достоверность
               </div>
               <div className="w-1/2 px-3 py-1.5 text-xs font-medium flex items-center justify-between min-w-0 gap-1">
                 <div className="flex items-center gap-1.5 min-w-0">

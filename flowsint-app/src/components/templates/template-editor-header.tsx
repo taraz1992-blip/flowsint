@@ -61,10 +61,10 @@ export function TemplateEditorHeader({
           onClick={onNavigateBack}
           className="text-muted-foreground hover:text-foreground transition-colors"
         >
-          Templates
+          Шаблоны
         </button>
         <ChevronRight className="h-3.5 w-3.5 text-muted-foreground/40" />
-        <span className="font-medium">{isEditMode ? templateName : 'New Template'}</span>
+        <span className="font-medium">{isEditMode ? templateName : 'Новый шаблон'}</span>
 
         {isEditMode ? (
           hasChanges ? (
@@ -72,7 +72,7 @@ export function TemplateEditorHeader({
               variant="outline"
               className="ml-1 text-[10px] bg-amber-500/10 text-amber-600 border-amber-500/20"
             >
-              Unsaved
+              Не сохранено
             </Badge>
           ) : (
             !hasErrors && (
@@ -81,7 +81,7 @@ export function TemplateEditorHeader({
                 className="ml-1 text-[10px] bg-emerald-500/10 text-emerald-600 border-emerald-500/20"
               >
                 <CheckCircle2 className="h-2.5 w-2.5 mr-0.5" />
-                Saved
+                Сохранено
               </Badge>
             )
           )
@@ -90,7 +90,7 @@ export function TemplateEditorHeader({
             variant="outline"
             className="ml-1 text-[10px] bg-blue-500/10 text-blue-600 border-blue-500/20"
           >
-            Draft
+            Черновик
           </Badge>
         )}
       </div>
@@ -113,7 +113,7 @@ export function TemplateEditorHeader({
               ) : (
                 <>
                   <CheckCircle2 className="h-3.5 w-3.5" />
-                  Valid
+                  Корректно
                 </>
               )}
             </Button>
@@ -121,7 +121,7 @@ export function TemplateEditorHeader({
           <PopoverContent align="end" className="w-80 p-0">
             <div className="p-3 border-b">
               <p className="text-sm font-medium">
-                {hasErrors ? 'Validation Errors' : 'Validation Passed'}
+                {hasErrors ? 'Ошибки валидации' : 'Валидация пройдена'}
               </p>
             </div>
             {hasErrors ? (
@@ -138,7 +138,8 @@ export function TemplateEditorHeader({
                     <div key={`e-${i}`} className="flex gap-2 text-xs">
                       <AlertCircle className="h-3.5 w-3.5 text-destructive shrink-0 mt-0.5" />
                       <span className="text-destructive">
-                        Line {error.startLineNumber}: {error.message}
+                        
+                        Линия {error.startLineNumber}: {error.message}
                       </span>
                     </div>
                   ))}
@@ -146,7 +147,7 @@ export function TemplateEditorHeader({
             ) : (
               <div className="p-3">
                 <p className="text-xs text-muted-foreground">
-                  All required fields are present and valid.
+                  Все обязательные поля заполнены и корректны.
                 </p>
               </div>
             )}
@@ -165,10 +166,10 @@ export function TemplateEditorHeader({
               className="h-7 gap-1.5 text-xs"
             >
               <Sparkles className="h-3.5 w-3.5" />
-              Generate
+              Сгенерировать
             </Button>
           </TooltipTrigger>
-          <TooltipContent>Focus AI assistant</TooltipContent>
+          <TooltipContent>Фокус на ИИ-ассистенте</TooltipContent>
         </Tooltip>
 
         <div className="w-px h-4 bg-border mx-0.5" />
@@ -180,7 +181,7 @@ export function TemplateEditorHeader({
               {copied ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
             </Button>
           </TooltipTrigger>
-          <TooltipContent>Copy YAML</TooltipContent>
+          <TooltipContent>Копировать YAML</TooltipContent>
         </Tooltip>
 
         {/* Save */}
@@ -197,7 +198,7 @@ export function TemplateEditorHeader({
               ) : (
                 <Save className="h-3.5 w-3.5" />
               )}
-              Save Enricher
+              Сохранить обогатитель
             </Button>
           </TooltipTrigger>
           <TooltipContent>
@@ -223,7 +224,7 @@ export function TemplateEditorHeader({
                   <Trash2 className="h-3.5 w-3.5" />
                 </Button>
               </TooltipTrigger>
-              <TooltipContent>Delete template</TooltipContent>
+              <TooltipContent>Удалить шаблон</TooltipContent>
             </Tooltip>
           </>
         )}

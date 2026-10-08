@@ -25,11 +25,11 @@ const GraphNavigation = () => {
       >
         <TabsList className="w-full p-0 rounded-none my-0 border-b">
           <TabsTrigger value="entities">
-            <Users className="h-3 w-3 opacity-60" /> Entities
+            <Users className="h-3 w-3 opacity-60" />  Сущности
           </TabsTrigger>
           {canEdit && (
             <TabsTrigger value="items">
-              <UserPlus className="h-3 w-3 opacity-60" /> Add
+              <UserPlus className="h-3 w-3 opacity-60" />  Добавить
             </TabsTrigger>
           )}
         </TabsList>

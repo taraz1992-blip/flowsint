@@ -53,23 +53,23 @@ export function TemplateTestPanel({
       <ResizablePanel defaultSize={30} minSize={20}>
         <div className="h-full p-6 flex flex-col gap-6 overflow-y-auto">
           <div>
-            <h3 className="text-lg font-semibold mb-1">Test your template</h3>
+            <h3 className="text-lg font-semibold mb-1">Протестируйте шаблон</h3>
             <p className="text-sm text-muted-foreground">
-              Enter a test value to simulate the enricher request.
+              Введите тестовое значение, чтобы смоделировать запрос обогатителя.
             </p>
           </div>
 
           <div className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="test-input">
-                Input Value
+                Входное значение
                 {validationData?.input?.key && (
                   <span className="text-muted-foreground ml-1">({validationData.input.key})</span>
                 )}
               </Label>
               <Input
                 id="test-input"
-                placeholder={`Enter ${validationData?.input?.type || 'value'}...`}
+                placeholder={`Введите ${validationData?.input?.type || 'значение'}...`}
                 value={testInput}
                 onChange={(e) => onTestInputChange(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && onRunTest()}
@@ -78,16 +78,16 @@ export function TemplateTestPanel({
 
             {paramKeys.length > 0 && (
               <div className="space-y-2">
-                <Label className="text-muted-foreground">Query Parameters</Label>
+                <Label className="text-muted-foreground">Параметры запроса</Label>
                 <div className="border rounded-md overflow-hidden">
                   <table className="w-full text-sm">
                     <thead>
                       <tr className="bg-muted/50 border-b">
                         <th className="text-left px-3 py-1.5 text-xs font-medium text-muted-foreground w-1/3">
-                          Key
+                          Ключ
                         </th>
                         <th className="text-left px-3 py-1.5 text-xs font-medium text-muted-foreground">
-                          Value
+                          Значение
                         </th>
                       </tr>
                     </thead>
@@ -104,7 +104,7 @@ export function TemplateTestPanel({
                             </td>
                             <td className="px-1 py-1">
                               <Input
-                                placeholder={String(defaultValue) || 'Value'}
+                                placeholder={String(defaultValue) || 'Значение'}
                                 value={testParams[paramKey] ?? ''}
                                 onChange={(e) =>
                                   onTestParamsChange({
@@ -126,7 +126,7 @@ export function TemplateTestPanel({
 
             {validationData?.request?.url && (
               <div className="space-y-2">
-                <Label className="text-muted-foreground">Request URL</Label>
+                <Label className="text-muted-foreground">URL запроса</Label>
                 <code className="block text-xs bg-muted p-2 rounded break-all">
                   {buildPreviewUrl()}
                 </code>
@@ -141,12 +141,13 @@ export function TemplateTestPanel({
               {isTesting ? (
                 <>
                   <Loader2 className="h-4 w-4 animate-spin" />
-                  Testing...
+                  
+                  Тестирование...
                 </>
               ) : (
                 <>
                   <Play className="h-4 w-4" />
-                  Run test
+                  Запустить тест
                 </>
               )}
             </Button>
@@ -154,7 +155,7 @@ export function TemplateTestPanel({
 
           {hasErrors && (
             <div className="p-3 rounded-lg bg-destructive/10 border border-destructive/20">
-              <p className="text-sm text-destructive">Fix validation errors before testing.</p>
+              <p className="text-sm text-destructive">Исправьте ошибки валидации перед тестированием.</p>
             </div>
           )}
         </div>
@@ -176,7 +177,7 @@ export function TemplateTestPanel({
               <div className="flex-1 flex items-center justify-center">
                 <div className="text-center text-muted-foreground">
                   <FlaskConical className="h-12 w-12 mx-auto mb-4 opacity-20" />
-                  <p className="text-sm">Run a test to see the response here.</p>
+                  <p className="text-sm">Запустите тест, чтобы увидеть ответ здесь.</p>
                 </div>
               </div>
             ) : (
@@ -192,12 +193,12 @@ export function TemplateTestPanel({
                     {testResult.success ? (
                       <>
                         <CheckCircle2 className="h-5 w-5 text-emerald-500" />
-                        <span className="font-medium text-emerald-600">Request Successful</span>
+                        <span className="font-medium text-emerald-600">Запрос выполнен</span>
                       </>
                     ) : (
                       <>
                         <XCircle className="h-5 w-5 text-destructive" />
-                        <span className="font-medium text-destructive">Request Failed</span>
+                        <span className="font-medium text-destructive">Запрос не удался</span>
                       </>
                     )}
                   </div>
@@ -211,7 +212,7 @@ export function TemplateTestPanel({
                       <>
                         <ResizablePanel defaultSize={50} minSize={20}>
                           <div className="h-full flex flex-col">
-                            <Label className="shrink-0 mb-2 block">Raw response</Label>
+                            <Label className="shrink-0 mb-2 block">Сырой ответ</Label>
                             <div className="flex-1 min-h-0 rounded-md border overflow-hidden">
                               <JsonViewer data={testResult.data.raw_results} />
                             </div>
@@ -225,7 +226,7 @@ export function TemplateTestPanel({
                     {testResult?.data?.results != null && (
                       <ResizablePanel defaultSize={50} minSize={20}>
                         <div className="h-full flex flex-col">
-                          <Label className="shrink-0 mb-2 block">Inserted nodes</Label>
+                          <Label className="shrink-0 mb-2 block">Вставленные узлы</Label>
                           <div className="flex-1 min-h-0 rounded-md border overflow-hidden">
                             <JsonViewer data={testResult.data.results} />
                           </div>

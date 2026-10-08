@@ -177,7 +177,7 @@ export const TextBubbleMenu: React.FC<TextBubbleMenuProps> = ({ editor }) => {
                 onClick={() => editor.chain().focus().setParagraph().run()}
               >
                 <Pilcrow className="size-4" />
-                Paragraph
+                Абзац
               </button>
               <button
                 type="button"
@@ -186,7 +186,8 @@ export const TextBubbleMenu: React.FC<TextBubbleMenuProps> = ({ editor }) => {
                 onClick={() => editor.chain().focus().setHeading({ level: 1 }).run()}
               >
                 <Heading1 className="size-4" />
-                Heading 1
+                
+                Заголовок 1
               </button>
               <button
                 type="button"
@@ -195,7 +196,8 @@ export const TextBubbleMenu: React.FC<TextBubbleMenuProps> = ({ editor }) => {
                 onClick={() => editor.chain().focus().setHeading({ level: 2 }).run()}
               >
                 <Heading2 className="size-4" />
-                Heading 2
+                
+                Заголовок 2
               </button>
               <button
                 type="button"
@@ -204,7 +206,8 @@ export const TextBubbleMenu: React.FC<TextBubbleMenuProps> = ({ editor }) => {
                 onClick={() => editor.chain().focus().setHeading({ level: 3 }).run()}
               >
                 <Heading3 className="size-4" />
-                Heading 3
+                
+                Заголовок 3
               </button>
             </div>
           </PopoverContent>

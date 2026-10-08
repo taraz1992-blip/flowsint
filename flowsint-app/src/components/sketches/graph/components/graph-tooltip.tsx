@@ -27,7 +27,7 @@ export const GraphTooltip: React.FC<GraphTooltipProps> = ({ tooltip }) => {
         </span>
         <span className="flex items-center gap-1">
           <span className="flex items-center gap-1 opacity-60">
-            <Share2 className="h-3 w-3" /> connections:
+            <Share2 className="h-3 w-3" />  связи:
           </span>{' '}
           <span className="font-medium">{tooltip.data.connections}</span>
         </span>

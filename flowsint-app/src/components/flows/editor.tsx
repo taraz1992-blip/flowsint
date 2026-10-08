@@ -100,12 +100,12 @@ const FlowEditor = memo(({ initialEdges, initialNodes, theme, flow }: FlowEditor
   const createFlowMutation = useMutation({
     mutationFn: flowService.create,
     onSuccess: (data) => {
-      toast.success('Enricher saved successfully.')
+      toast.success('Обогатитель успешно сохранён.')
       router.navigate({ to: `/dashboard/flows/${data.id}` })
     },
     onError: (error) => {
       toast.error(
-        'Error creating enricher: ' + (error instanceof Error ? error.message : 'Unknown error')
+        'Ошибка создания обогатителя: ' + (error instanceof Error ? error.message : 'Неизвестная ошибка')
       )
     }
   })
@@ -115,7 +115,7 @@ const FlowEditor = memo(({ initialEdges, initialNodes, theme, flow }: FlowEditor
     mutationFn: ({ flowId, body }: { flowId: string; body: BodyInit }) =>
       flowService.update(flowId, body),
     onSuccess: () => {
-      toast.success('Enricher saved successfully.')
+      toast.success('Обогатитель успешно сохранён.')
       // Invalidate the flow detail query
       if (flowId) {
         queryClient.invalidateQueries({
@@ -125,7 +125,7 @@ const FlowEditor = memo(({ initialEdges, initialNodes, theme, flow }: FlowEditor
     },
     onError: (error) => {
       toast.error(
-        'Error saving enricher: ' + (error instanceof Error ? error.message : 'Unknown error')
+        'Ошибка сохранения обогатителя: ' + (error instanceof Error ? error.message : 'Неизвестная ошибка')
       )
     }
   })
@@ -135,7 +135,7 @@ const FlowEditor = memo(({ initialEdges, initialNodes, theme, flow }: FlowEditor
     mutationFn: flowService.delete,
     onSuccess: () => {
       router.navigate({ to: '/dashboard/flows' })
-      toast.success('Flow deleted successfully.')
+      toast.success('Поток успешно удалён.')
       // Invalidate flows list
       queryClient.invalidateQueries({
         queryKey: queryKeys.flows.list
@@ -143,7 +143,7 @@ const FlowEditor = memo(({ initialEdges, initialNodes, theme, flow }: FlowEditor
     },
     onError: (error) => {
       toast.error(
-        'Error deleting flow: ' + (error instanceof Error ? error.message : 'Unknown error')
+        'Ошибка удаления потока: ' + (error instanceof Error ? error.message : 'Неизвестная ошибка')
       )
     }
   })
@@ -158,7 +158,7 @@ const FlowEditor = memo(({ initialEdges, initialNodes, theme, flow }: FlowEditor
     },
     onError: (error) => {
       toast.error(
-        'Error computing flow: ' + (error instanceof Error ? error.message : 'Unknown error')
+        'Ошибка расчёта потока: ' + (error instanceof Error ? error.message : 'Неизвестная ошибка')
       )
     }
   })
@@ -244,7 +244,7 @@ const FlowEditor = memo(({ initialEdges, initialNodes, theme, flow }: FlowEditor
       if (enricherData.type === 'type') {
         const existsType = nodes.find((node) => node.data.type === 'type')
         if (existsType) {
-          return toast.error('Only one type node is allowed')
+          return toast.error('Допускается только один узел типа')
         }
       }
       const position = reactFlowInstance.screenToFlowPosition({
@@ -341,7 +341,7 @@ const FlowEditor = memo(({ initialEdges, initialNodes, theme, flow }: FlowEditor
       try {
         const inputType = nodes.find((node) => node.data.type === 'type')?.data?.class_name
         if (!inputType) {
-          toast.error('Make sure your enricher contains an input type.')
+          toast.error('Убедитесь, что в обогатителе указан тип входных данных.')
           return
         }
 
@@ -378,8 +378,8 @@ const FlowEditor = memo(({ initialEdges, initialNodes, theme, flow }: FlowEditor
     if (!flowId) return
     if (
       await confirm({
-        title: 'Are you sure you want to delete this flow ?',
-        message: "All of the flow's settings will be lost."
+        title: 'Вы уверены, что хотите удалить этот поток?',
+        message: "Все настройки потока будут потеряны."
       })
     ) {
       setLoading(true)
@@ -391,7 +391,7 @@ const FlowEditor = memo(({ initialEdges, initialNodes, theme, flow }: FlowEditor
   // #### Flow Computation ####
   const handleComputeFlow = useCallback(async () => {
     if (!flowId) {
-      toast.error('Save the flow first to compute it.')
+      toast.error('Сначала сохраните поток, чтобы выполнить расчёт.')
       return
     }
     await handleSaveFlow()
@@ -646,7 +646,7 @@ const FlowEditor = memo(({ initialEdges, initialNodes, theme, flow }: FlowEditor
             >
               {isSimulating ? (
                 <Button size="sm" variant="outline" className="h-7" onClick={pauseSimulation}>
-                  <Pause className="h-4 w-4 mr-1" /> Pause
+                  <Pause className="h-4 w-4 mr-1" />  Пауза
                 </Button>
               ) : (
                 <Button
@@ -656,27 +656,27 @@ const FlowEditor = memo(({ initialEdges, initialNodes, theme, flow }: FlowEditor
                   onClick={handleComputeFlow}
                   data-tour-id="compute-button"
                 >
-                  <Play className="h-4 w-4 mr-1" /> Compute
+                  <Play className="h-4 w-4 mr-1" />  Рассчитать
                 </Button>
               )}
               <Button size="sm" variant="outline" className="h-7" onClick={skipToEnd}>
-                <SkipForward className="h-4 w-4 mr-1" /> Skip
+                <SkipForward className="h-4 w-4 mr-1" />  Пропустить
               </Button>
               <Button size="sm" variant="outline" className="h-7" onClick={resetSimulation}>
-                <RefreshCw className="h-4 w-4 mr-1" /> Reset
+                <RefreshCw className="h-4 w-4 mr-1" />  Сброс
               </Button>
               <Select
                 value={String(simulationSpeed)}
                 onValueChange={(value) => setSimulationSpeed(Number(value))}
               >
                 <SelectTrigger className="!h-7">
-                  <SelectValue placeholder="Select speed" />
+                  <SelectValue placeholder="Выберите скорость" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="2000">Slow</SelectItem>
-                  <SelectItem value="1000">Normal</SelectItem>
-                  <SelectItem value="750">Fast</SelectItem>
-                  <SelectItem value="400">Very fast</SelectItem>
+                  <SelectItem value="2000">Медленно</SelectItem>
+                  <SelectItem value="1000">Обычно</SelectItem>
+                  <SelectItem value="750">Быстро</SelectItem>
+                  <SelectItem value="400">Очень быстро</SelectItem>
                 </SelectContent>
               </Select>
             </Panel>

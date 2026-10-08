@@ -27,7 +27,7 @@ export function TypePreview({
     <div className="space-y-6">
       {/* Entity card preview */}
       <div>
-        <p className="text-xs font-medium text-muted-foreground mb-3">Entity card</p>
+        <p className="text-xs font-medium text-muted-foreground mb-3">Карточка сущности</p>
         <div className="border border-border/60 rounded-xl p-5 bg-card max-w-sm">
           <div className="flex items-start gap-3.5">
             <div
@@ -38,10 +38,10 @@ export function TypePreview({
             </div>
             <div className="min-w-0 flex-1">
               <div className="flex items-center gap-2">
-                <h4 className="font-semibold text-sm truncate">{name || 'Untitled type'}</h4>
+                <h4 className="font-semibold text-sm truncate">{name || 'Тип без названия'}</h4>
                 {status === 'draft' && (
                   <span className="shrink-0 text-[10px] font-medium uppercase tracking-wide text-muted-foreground border border-border/60 rounded px-1.5 py-0.5">
-                    Draft
+                    Черновик
                   </span>
                 )}
               </div>
@@ -49,7 +49,7 @@ export function TypePreview({
                 <p className="text-xs text-muted-foreground/70 mt-0.5 truncate">{category}</p>
               )}
               <p className="text-xs text-muted-foreground mt-0.5 line-clamp-2">
-                {description || 'No description'}
+                {description || 'Нет описания'}
               </p>
             </div>
           </div>
@@ -67,7 +67,7 @@ export function TypePreview({
               ))}
               {validFields.length > 4 && (
                 <p className="text-[10px] text-muted-foreground/50">
-                  +{validFields.length - 4} more fields
+                  +{validFields.length - 4}  ещё полей
                 </p>
               )}
             </div>
@@ -77,7 +77,7 @@ export function TypePreview({
 
       {/* Graph node preview */}
       <div>
-        <p className="text-xs font-medium text-muted-foreground mb-3">Graph node</p>
+        <p className="text-xs font-medium text-muted-foreground mb-3">Узел графа</p>
         <div className="flex items-center gap-3 p-4 border border-border/60 rounded-xl bg-card max-w-[200px]">
           <div
             className="rounded-full flex items-center justify-center shrink-0"
@@ -86,7 +86,7 @@ export function TypePreview({
             <Icon className="text-white" size={18} />
           </div>
           <div className="min-w-0">
-            <p className="text-xs font-medium truncate">{name || 'Untitled'}</p>
+            <p className="text-xs font-medium truncate">{name || 'Без названия'}</p>
             <p className="text-[10px] text-muted-foreground">
               {validFields.length} field{validFields.length !== 1 ? 's' : ''}
             </p>

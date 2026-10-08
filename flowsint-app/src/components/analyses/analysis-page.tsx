@@ -28,7 +28,7 @@ export const AnalysisPage = ({
   }
 
   if (isError) {
-    return <div className="text-sm text-destructive">Error loading analysis.</div>
+    return <div className="text-sm text-destructive">Ошибка загрузки анализа.</div>
   }
 
   const handleAnalysisUpdate = () => {

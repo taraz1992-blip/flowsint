@@ -26,8 +26,8 @@ const ImageEditDialog = ({ editor, size, variant }: ImageEditDialogProps) => {
       <DialogTrigger asChild>
         <ToolbarButton
           isActive={editor.isActive('image')}
-          tooltip="Image"
-          aria-label="Image"
+          tooltip="Изображение"
+          aria-label="Изображение"
           size={size}
           variant={variant}
         >
@@ -36,9 +36,9 @@ const ImageEditDialog = ({ editor, size, variant }: ImageEditDialogProps) => {
       </DialogTrigger>
       <DialogContent className="sm:max-w-lg">
         <DialogHeader>
-          <DialogTitle>Select image</DialogTitle>
+          <DialogTitle>Выберите изображение</DialogTitle>
           <DialogDescription className="sr-only">
-            Upload an image from your computer
+            Загрузите изображение с компьютера
           </DialogDescription>
         </DialogHeader>
         <ImageEditBlock editor={editor} close={() => setOpen(false)} />

@@ -35,71 +35,71 @@ const updatePosition = (editor: Editor, element: HTMLElement) => {
 
 const slashCommandItems: SlashCommandItem[] = [
   {
-    title: 'Heading 1',
-    description: 'Large section heading',
+    title: 'Заголовок 1',
+    description: 'Крупный заголовок раздела',
     category: 'Hierarchy',
     icon: 'Heading1',
     command: (editor) => editor.chain().focus().setHeading({ level: 1 }).run()
   },
   {
-    title: 'Heading 2',
-    description: 'Medium section heading',
+    title: 'Заголовок 2',
+    description: 'Средний заголовок раздела',
     category: 'Hierarchy',
     icon: 'Heading2',
     command: (editor) => editor.chain().focus().setHeading({ level: 2 }).run()
   },
   {
-    title: 'Heading 3',
-    description: 'Small section heading',
+    title: 'Заголовок 3',
+    description: 'Мелкий заголовок раздела',
     category: 'Hierarchy',
     icon: 'Heading3',
     command: (editor) => editor.chain().focus().setHeading({ level: 3 }).run()
   },
   {
-    title: 'Bullet List',
-    description: 'Create a simple bullet list',
+    title: 'Маркированный список',
+    description: 'Создать простой маркированный список',
     category: 'Lists',
     icon: 'List',
     command: (editor) => editor.chain().focus().toggleBulletList().run()
   },
   {
-    title: 'Numbered List',
-    description: 'Create a numbered list',
+    title: 'Нумерованный список',
+    description: 'Создать нумерованный список',
     category: 'Lists',
     icon: 'ListOrdered',
     command: (editor) => editor.chain().focus().toggleOrderedList().run()
   },
   {
-    title: 'Task List',
-    description: 'Create a task checklist',
+    title: 'Список задач',
+    description: 'Создать чек-лист задач',
     category: 'Lists',
     icon: 'ListTodo',
     command: (editor) => editor.chain().focus().toggleTaskList().run()
   },
   {
-    title: 'Blockquote',
-    description: 'Add a quote block',
+    title: 'Цитата',
+    description: 'Добавить блок цитаты',
     category: 'Blocks',
     icon: 'Quote',
     command: (editor) => editor.chain().focus().toggleBlockquote().run()
   },
   {
-    title: 'Code Block',
-    description: 'Add a code snippet',
+    title: 'Блок кода',
+    description: 'Добавить фрагмент кода',
     category: 'Blocks',
     icon: 'Code',
     command: (editor) => editor.chain().focus().toggleCodeBlock().run()
   },
   {
-    title: 'Divider',
-    description: 'Add a horizontal divider',
+    title: 'Разделитель',
+    description: 'Добавить горизонтальный разделитель',
     category: 'Blocks',
     icon: 'Minus',
     command: (editor) => editor.chain().focus().setHorizontalRule().run()
   },
   {
-    title: 'Image',
-    description: 'Upload or embed an image',
+    title: 'Изображение',
+    description: 'Загрузить или встроить изображение',
     category: 'Media',
     icon: 'ImageIcon',
     command: (editor) => {

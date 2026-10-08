@@ -16,7 +16,7 @@ export function SketchesSection({ sketches, canCreate = true }: SketchesSectionP
   return (
     <section className="my-4">
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-sm font-medium text-foreground">Sketches</h2>
+        <h2 className="text-sm font-medium text-foreground">Скетчи</h2>
         {!isEmpty && canCreate && (
           <NewSketch>
             <Button
@@ -25,7 +25,8 @@ export function SketchesSection({ sketches, canCreate = true }: SketchesSectionP
               className="h-7 text-xs text-muted-foreground hover:text-foreground gap-1"
             >
               <Plus className="w-3.5 h-3.5" />
-              New
+              
+              Новый
             </Button>
           </NewSketch>
         )}
@@ -35,7 +36,7 @@ export function SketchesSection({ sketches, canCreate = true }: SketchesSectionP
         canCreate ? (
           <EmptySketches />
         ) : (
-          <div className="text-sm text-muted-foreground py-4">No sketches yet.</div>
+          <div className="text-sm text-muted-foreground py-4">Скетчей пока нет.</div>
         )
       ) : (
         <div style={{ containerType: 'inline-size' }}>
@@ -117,7 +118,7 @@ export function SketchesSection({ sketches, canCreate = true }: SketchesSectionP
                   {sketch.description ? (
                     sketch.description
                   ) : (
-                    <span className="italic">No description provided.</span>
+                    <span className="italic">Описание не указано.</span>
                   )}
                 </p>
                 <div className="flex items-center justify-between text-xs text-muted-foreground">

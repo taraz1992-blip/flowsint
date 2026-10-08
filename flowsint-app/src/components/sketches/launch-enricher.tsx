@@ -146,8 +146,8 @@ const LaunchEnricherOrFlowPanel = memo(
           </SheetTrigger>
           <SheetContent className="sm:max-w-xl">
             <SheetHeader>
-              <SheetTitle>Select an enricher</SheetTitle>
-              <SheetDescription>Choose an enricher to launch from the list below.</SheetDescription>
+              <SheetTitle>Выберите обогатитель</SheetTitle>
+              <SheetDescription>Выберите обогатитель для запуска из списка ниже.</SheetDescription>
             </SheetHeader>
 
             {/* Tabs */}
@@ -160,7 +160,7 @@ const LaunchEnricherOrFlowPanel = memo(
                     onClick={(e) => e.stopPropagation()}
                   >
                     <Zap className="h-3 w-3 mr-1" />
-                    Enrichers
+                    Обогатители
                   </TabsTrigger>
                   <TabsTrigger
                     value="flows"
@@ -168,7 +168,7 @@ const LaunchEnricherOrFlowPanel = memo(
                     onClick={(e) => e.stopPropagation()}
                   >
                     <FileCode2 className="h-3 w-3 mr-1" />
-                    Flows
+                    Потоки
                   </TabsTrigger>
                 </TabsList>
               </Tabs>
@@ -184,7 +184,7 @@ const LaunchEnricherOrFlowPanel = memo(
                     <Search className="absolute left-2 top-1/2 transform -translate-y-1/2 h-3 w-3 text-muted-foreground" />
                     <Input
                       type="search"
-                      placeholder="Search enrichers..."
+                      placeholder="Поиск обогатителей..."
                       value={enrichersSearchQuery}
                       onChange={(e) => setEnrichersSearchQuery(e.target.value)}
                       className="h-8 pl-7 text-sm"
@@ -244,7 +244,7 @@ const LaunchEnricherOrFlowPanel = memo(
                                 <CardTitle className="text-base flex items-center gap-1.5">
                                   {enricher.name}
                                   {enricher.params_schema?.length ? (
-                                    <span title="Requires configuration">
+                                    <span title="Требуется настройка">
                                       <Settings className="h-3 w-3 text-muted-foreground shrink-0" />
                                     </span>
                                   ) : null}
@@ -253,7 +253,7 @@ const LaunchEnricherOrFlowPanel = memo(
 
                               {enricher.description && (
                                 <CardDescription className="text-sm pl-7">
-                                  {enricher.description || 'No description available'}
+                                  {enricher.description || 'Описание недоступно'}
                                 </CardDescription>
                               )}
                             </div>
@@ -273,18 +273,18 @@ const LaunchEnricherOrFlowPanel = memo(
                         </div>
                         <div className="space-y-2">
                           <h3 className="text-lg font-semibold">
-                            {enrichersSearchQuery ? 'No enrichers found' : 'No enrichers available'}
+                            {enrichersSearchQuery ? 'Обогатители не найдены' : 'Нет доступных обогатителей'}
                           </h3>
                           <p className="text-sm text-muted-foreground max-w-sm mx-auto">
                             {enrichersSearchQuery
-                              ? 'Try adjusting your search terms or browse all available enrichers.'
-                              : 'Enrichers are automated data processing tools that can enrich your investigation data.'}
+                              ? 'Попробуйте изменить запрос или просмотрите все доступные обогатители.'
+                              : 'Обогатители — это автоматические инструменты обработки данных, которые могут обогащать данные вашего расследования.'}
                           </p>
                         </div>
                         {!enrichersSearchQuery && (
                           <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
                             <Sparkles className="h-3 w-3" />
-                            <span>Enrichers will appear here when available</span>
+                            <span>Обогатители появятся здесь, когда будут доступны</span>
                           </div>
                         )}
                       </div>
@@ -301,7 +301,7 @@ const LaunchEnricherOrFlowPanel = memo(
                     <Search className="absolute left-2 top-1/2 transform -translate-y-1/2 h-3 w-3 text-muted-foreground" />
                     <Input
                       type="search"
-                      placeholder="Search flows..."
+                      placeholder="Поиск потоков..."
                       value={flowsSearchQuery}
                       onChange={(e) => setFlowsSearchQuery(e.target.value)}
                       className="h-8 pl-7 text-sm"
@@ -361,17 +361,19 @@ const LaunchEnricherOrFlowPanel = memo(
 
                               {flow.description && (
                                 <CardDescription className="text-sm pl-7">
-                                  {flow.description || 'No description available'}
+                                  {flow.description || 'Описание недоступно'}
                                 </CardDescription>
                               )}
 
                               <div className="flex flex-col space-y-1 text-xs text-muted-foreground pl-7">
                                 <div>
-                                  Created{' '}
+                                  
+                                  Создано{' '}
                                   {formatDistanceToNow(flow.created_at, { addSuffix: true })}
                                 </div>
                                 <div>
-                                  Updated{' '}
+                                  
+                                  Обновлено{' '}
                                   {formatDistanceToNow(flow.last_updated_at, { addSuffix: true })}
                                 </div>
                               </div>
@@ -392,24 +394,24 @@ const LaunchEnricherOrFlowPanel = memo(
                         </div>
                         <div className="space-y-2">
                           <h3 className="text-lg font-semibold">
-                            {flowsSearchQuery ? 'No flows found' : 'No flows available'}
+                            {flowsSearchQuery ? 'Потоки не найдены' : 'Нет доступных потоков'}
                           </h3>
                           <p className="text-sm text-muted-foreground max-w-sm mx-auto">
                             {flowsSearchQuery
-                              ? 'Try adjusting your search terms or browse all available flows.'
-                              : 'Flows are custom automation sequences that combine multiple transforms and data sources.'}
+                              ? 'Попробуйте изменить запрос или просмотрите все доступные потоки.'
+                              : 'Потоки — это пользовательские цепочки автоматизации, объединяющие несколько преобразований и источников данных.'}
                           </p>
                         </div>
                         {!flowsSearchQuery && (
                           <div className="space-y-4">
                             <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
                               <Zap className="h-3 w-3" />
-                              <span>Create your first flow to get started</span>
+                              <span>Создайте первый поток, чтобы начать</span>
                             </div>
                             <Link to="/dashboard/flows">
                               <Button className="gap-2">
                                 <PlusIcon className="h-4 w-4" />
-                                Create your first flow
+                                Создайте первый поток
                               </Button>
                             </Link>
                           </div>
@@ -423,14 +425,14 @@ const LaunchEnricherOrFlowPanel = memo(
 
             <SheetFooter>
               <Button variant="outline" onClick={handleCloseModal} className="mr-2">
-                Cancel
+                Отмена
               </Button>
               <Button
                 onClick={handleLaunchPanel}
                 disabled={!selectedEnricher}
                 className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary"
               >
-                Launch enricher
+                Запустить обогатитель
               </Button>
             </SheetFooter>
           </SheetContent>

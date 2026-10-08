@@ -131,7 +131,7 @@ function EnricherParamsForm({
           render={({ field: { onChange, value, ref } }) => (
             <Select onValueChange={onChange} value={value || ''}>
               <SelectTrigger ref={ref} id={param.name} className="w-full">
-                <SelectValue placeholder={`Select ${param.name}`} />
+                <SelectValue placeholder={`Выберите ${param.name}`} />
               </SelectTrigger>
               <SelectContent>
                 {param.options?.map((option) => (
@@ -161,9 +161,10 @@ function EnricherParamsForm({
     <form onSubmit={handleSubmit(onSubmit)} className="flex min-h-0 flex-1 flex-col">
       <SheetHeader>
         <SheetTitle>
-          Configure <span className="text-primary">{enricherName}</span>
+          
+          Настроить <span className="text-primary">{enricherName}</span>
         </SheetTitle>
-        <SheetDescription>Set the parameters for this enricher, then launch it.</SheetDescription>
+        <SheetDescription>Задайте параметры этого обогатителя и запустите его.</SheetDescription>
       </SheetHeader>
 
       <div className="grow space-y-4 overflow-auto px-4">
@@ -186,9 +187,9 @@ function EnricherParamsForm({
 
       <SheetFooter>
         <Button type="button" variant="outline" onClick={onCancel}>
-          Cancel
+          Отмена
         </Button>
-        <Button type="submit">Launch enricher</Button>
+        <Button type="submit">Запустить обогатитель</Button>
       </SheetFooter>
     </form>
   )

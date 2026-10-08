@@ -14,8 +14,8 @@ const TestFlow = memo(({ open, setOpen, type, loading, onSubmit }: TestFlowProps
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent>
-        <DialogTitle>Test flow</DialogTitle>
-        <DialogDescription>Fill the required data</DialogDescription>
+        <DialogTitle>Протестировать поток</DialogTitle>
+        <DialogDescription>Заполните обязательные данные</DialogDescription>
         <DynamicForm currentNodeType={type} isForm={true} loading={loading} onSubmit={onSubmit} />
       </DialogContent>
     </Dialog>

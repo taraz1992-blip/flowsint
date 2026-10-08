@@ -96,7 +96,7 @@ export const useFlowStore = create<EnricherState>((set, get) => ({
   },
   onConnect: (connection: Connection) => {
     if ([connection.targetHandle, 'Any'].includes(connection.sourceHandle)) {
-      toast.error(`Cannot connect ${connection.sourceHandle} to ${connection.targetHandle}.`)
+      toast.error(`Невозможно соединить ${connection.sourceHandle} с ${connection.targetHandle}.`)
       return
     }
     const edge: FlowEdge = {
@@ -122,7 +122,7 @@ export const useFlowStore = create<EnricherState>((set, get) => ({
       set({ selectedNode: node })
     }
     if (openParamsDialog && !get().selectedNode) {
-      toast.error('Please select a node first to configure its parameters.')
+      toast.error('Сначала выберите узел, чтобы настроить его параметры.')
       return
     }
     set({ openParamsDialog })
@@ -133,7 +133,7 @@ export const useFlowStore = create<EnricherState>((set, get) => ({
       set({ selectedNode: node })
     }
     if (openFlowSheet && !get().selectedNode) {
-      toast.error('Please select a node first to add a connector.')
+      toast.error('Сначала выберите узел, чтобы добавить коннектор.')
       return
     }
     set({ openFlowSheet })

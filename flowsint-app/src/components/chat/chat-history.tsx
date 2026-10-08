@@ -40,7 +40,7 @@ const ChatHistory = ({
             <Button variant="ghost" size="icon" className="h-6 w-6" onClick={() => setView('chat')}>
               <ArrowLeft className="h-3 w-3" />
             </Button>
-            <span className="opacity-60">Chat history</span>
+            <span className="opacity-60">История чатов</span>
           </div>
         </div>
       </div>
@@ -69,9 +69,9 @@ const ChatHistory = ({
             </div>
           </div>
           <div className="space-y-2 max-w-sm">
-            <h3 className="text-lg font-semibold text-foreground">No conversations yet</h3>
+            <h3 className="text-lg font-semibold text-foreground">Диалогов пока нет</h3>
             <p className="text-sm opacity-70">
-              Start chatting with AI to analyze your investigation data and get insights. Your
+              Начните общаться с ИИ, чтобы анализировать данные расследования и получать выводы. Ваши
               conversation history will appear here.
             </p>
           </div>
@@ -82,7 +82,7 @@ const ChatHistory = ({
               onClick={handleCreateNewChat}
               className="bg-gradient-to-r from-primary/10 to-primary/5 border-primary/20 hover:from-primary/20 hover:to-primary/10"
             >
-              Start your first chat
+              Начните первый чат
             </Button>
           </div>
         </div>
@@ -109,8 +109,8 @@ const ChatItem = ({
       e.stopPropagation()
       if (
         await confirm({
-          title: 'Are you sure you want to delete this chat?',
-          message: 'This action is irreversible.'
+          title: 'Вы уверены, что хотите удалить этот чат?',
+          message: 'Это действие необратимо.'
         })
       ) {
         await deleteChatMutation.mutateAsync(chat.id)

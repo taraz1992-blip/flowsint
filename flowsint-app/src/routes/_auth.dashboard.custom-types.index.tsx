@@ -46,10 +46,10 @@ function CustomTypesPage() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['custom-types'] })
       queryClient.invalidateQueries({ queryKey: ['actionItems'] })
-      toast.success('Custom type deleted successfully')
+      toast.success('Пользовательский тип успешно удалён')
     },
     onError: (error: Error) => {
-      toast.error(`Failed to delete custom type: ${error.message}`)
+      toast.error(`Не удалось удалить пользовательский тип: ${error.message}`)
     }
   })
 
@@ -59,8 +59,8 @@ function CustomTypesPage() {
   const handleDelete = async (customType: CustomType) => {
     if (
       await confirm({
-        title: 'Are you sure you want to delete this custom type ?',
-        message: 'this action is irreversible.'
+        title: 'Вы уверены, что хотите удалить этот пользовательский тип?',
+        message: 'это действие необратимо.'
       })
     )
       confirmDelete(customType)
@@ -73,8 +73,8 @@ function CustomTypesPage() {
 
   return (
     <PageLayout
-      title="Custom types"
-      description="Create and manage your custom data types."
+      title="Пользовательские типы"
+      description="Создавайте пользовательские типы данных и управляйте ими."
       isLoading={isLoading}
       loadingComponent={
         <div className="p-2">
@@ -84,8 +84,8 @@ function CustomTypesPage() {
       error={error}
       errorComponent={
         <ErrorState
-          title="Couldn't load custom types"
-          description="Something went wrong while fetching data. Please try again."
+          title="Не удалось загрузить пользовательские типы"
+          description="Что-то пошло не так при загрузке данных. Попробуйте ещё раз."
           error={error}
           onRetry={() => refetch()}
         />
@@ -97,7 +97,7 @@ function CustomTypesPage() {
           onClick={() => navigate({ to: '/dashboard/custom-types/new' })}
         >
           <PlusIcon className="w-4 h-4 mr-2" />
-          New custom type
+          Новый пользовательский тип
         </Button>
       }
     >
@@ -106,10 +106,10 @@ function CustomTypesPage() {
           <div className="rounded-full bg-muted/50 p-4 mb-4">
             <FileX className="w-8 h-8 text-muted-foreground" />
           </div>
-          <h3 className="text-xl font-semibold mb-2">No custom types yet</h3>
+          <h3 className="text-xl font-semibold mb-2">Пользовательских типов пока нет</h3>
           <p className="text-muted-foreground mb-6 max-w-md">
-            Get started by creating your first custom type. Custom types allow you to define your
-            own data structures for use in flows and investigations.
+            
+            Начните с создания первого пользовательского типа. Пользовательские типы позволяют задавать собственные структуры данных для потоков и расследований.
           </p>
           <Button
             onClick={() =>
@@ -120,16 +120,16 @@ function CustomTypesPage() {
             }
           >
             <PlusIcon className="w-4 h-4 mr-2" />
-            Create your first custom type
+            Создайте первый пользовательский тип
           </Button>
         </div>
       ) : (
         <Tabs defaultValue="all" className="w-full">
           <TabsList>
-            <TabsTrigger value="all">All ({customTypes.length})</TabsTrigger>
-            <TabsTrigger value="published">Published ({publishedTypes.length})</TabsTrigger>
-            <TabsTrigger value="draft">Drafts ({draftTypes.length})</TabsTrigger>
-            <TabsTrigger value="archived">Archived ({archivedTypes.length})</TabsTrigger>
+            <TabsTrigger value="all">Все ({customTypes.length})</TabsTrigger>
+            <TabsTrigger value="published">Опубликованные ({publishedTypes.length})</TabsTrigger>
+            <TabsTrigger value="draft">Черновики ({draftTypes.length})</TabsTrigger>
+            <TabsTrigger value="archived">В архиве ({archivedTypes.length})</TabsTrigger>
           </TabsList>
 
           <TabsContent value="all" className="mt-6">
@@ -164,7 +164,7 @@ function CustomTypesList({ types, onDelete, navigate }: CustomTypesListProps) {
     return (
       <div className="flex flex-col items-center justify-center py-12 text-center">
         <FileX className="w-12 h-12 text-muted-foreground mb-4" />
-        <p className="text-muted-foreground">No custom types in this category</p>
+        <p className="text-muted-foreground">В этой категории нет пользовательских типов</p>
       </div>
     )
   }
@@ -179,7 +179,7 @@ function CustomTypesList({ types, onDelete, navigate }: CustomTypesListProps) {
                 <div className="space-y-1 flex-1">
                   <CardTitle className="text-lg">{customType.name}</CardTitle>
                   <CardDescription className="line-clamp-2">
-                    {customType.description || 'No description'}
+                    {customType.description || 'Нет описания'}
                   </CardDescription>
                 </div>
                 {getStatusBadge(customType.status)}
@@ -189,7 +189,8 @@ function CustomTypesList({ types, onDelete, navigate }: CustomTypesListProps) {
               <div className="flex items-center gap-2 text-sm text-muted-foreground mb-4">
                 <Clock className="w-4 h-4" />
                 <span>
-                  Updated{' '}
+                  
+                  Обновлено{' '}
                   {formatDistanceToNow(new Date(customType.updated_at), { addSuffix: true })}
                 </span>
               </div>
@@ -201,7 +202,7 @@ function CustomTypesList({ types, onDelete, navigate }: CustomTypesListProps) {
                   onClick={() => navigate({ to: `/dashboard/custom-types/${customType.id}` })}
                 >
                   <Edit className="w-4 h-4 mr-2" />
-                  Edit
+                  Изменить
                 </Button>
                 <Button variant="outline" size="sm" onClick={() => onDelete(customType)}>
                   <Trash2 className="w-4 h-4" />

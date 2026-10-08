@@ -49,7 +49,7 @@ export function CopyButton({
           size={label ? 'default' : size}
           variant="ghost"
           onClick={handleCopy}
-          aria-label="Copy content"
+          aria-label="Копировать содержимое"
         >
           {isCopied ? (
             <CheckIcon className="!h-3.5 !w-3.5 text-primary" />
@@ -59,7 +59,7 @@ export function CopyButton({
           {label && <span className="text-xs">{label}</span>}
         </Button>
       </TooltipTrigger>
-      <TooltipContent>Copied !</TooltipContent>
+      <TooltipContent>Скопировано!</TooltipContent>
     </Tooltip>
   )
 }

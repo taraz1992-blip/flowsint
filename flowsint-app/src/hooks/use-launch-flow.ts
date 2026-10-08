@@ -33,11 +33,11 @@ export function useLaunchFlow(askUser: boolean = false) {
     flow_id: string,
     sketch_id: string | null | undefined
   ) => {
-    if (!sketch_id) return toast.error('Could not find the graph.')
+    if (!sketch_id) return toast.error('Не удалось найти граф.')
     if (askUser) {
       const confirmed = await confirm({
-        title: `${flow_id} scan`,
-        message: `You're about to launch ${flow_id} flow on ${node_ids.length} items.`
+        title: `Сканирование: ${flow_id}`,
+        message: `Вы собираетесь запустить поток ${flow_id} для элементов: ${node_ids.length}.`
       })
       if (!confirmed) return
     }
@@ -45,7 +45,7 @@ export function useLaunchFlow(askUser: boolean = false) {
     const count = node_ids.length
 
     toast.promise(launchFlowMutation.mutateAsync({ flowId: flow_id, body }), {
-      loading: 'Loading...',
+      loading: 'Загрузка...',
       success: () => `Flow ${flow_id} has been launched on ${count} node${count > 1 ? 's' : ''}.`,
       error: () => `An error occurred launching flow.`
     })

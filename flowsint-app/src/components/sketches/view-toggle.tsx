@@ -9,10 +9,10 @@ interface ViewToggleProps {
 }
 
 const views = [
-  { value: 'graph', icon: NetworkIcon, label: 'Graph' },
-  { value: 'table', icon: List, label: 'Table' },
-  { value: 'relationships', icon: ArrowRightLeft, label: 'Relationships' },
-  { value: 'map', icon: MapPin, label: 'Map' }
+  { value: 'graph', icon: NetworkIcon, label: 'Граф' },
+  { value: 'table', icon: List, label: 'Таблица' },
+  { value: 'relationships', icon: ArrowRightLeft, label: 'Связи' },
+  { value: 'map', icon: MapPin, label: 'Карта' }
 ] as const
 
 export function ViewToggle({ view, setView }: ViewToggleProps) {

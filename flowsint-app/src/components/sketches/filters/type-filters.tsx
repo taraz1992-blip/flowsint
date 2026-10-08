@@ -8,9 +8,9 @@ type TypeFiltersProps = {
 const TypeFilters = ({ filters, toggleTypeFilter }: TypeFiltersProps) => {
   return (
     <div className="space-y-2">
-      <p className="opacity-90 text-sm">Filter by entity type</p>
+      <p className="opacity-90 text-sm">Фильтр по типу сущности</p>
       {filters.types.length === 0 ? (
-        <p className="text-muted-foreground text-xs">No filter to display.</p>
+        <p className="text-muted-foreground text-xs">Нет фильтров для отображения.</p>
       ) : (
         <ul className="grid grid-cols-3 gap-2">
           {filters.types.map((filter) => (

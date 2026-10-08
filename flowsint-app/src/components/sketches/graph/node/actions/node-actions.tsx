@@ -71,8 +71,8 @@ const NodeActions = memo(
       if (!node.id || !sketchId) return
       if (
         !(await confirm({
-          title: `You are about to delete this node ?`,
-          message: 'The action is irreversible.'
+          title: `Вы собираетесь удалить этот узел?`,
+          message: 'Это действие необратимо.'
         }))
       )
         return
@@ -82,9 +82,9 @@ const NodeActions = memo(
           return sketchService.deleteNodes(sketchId, JSON.stringify({ nodeIds: [node.id] }))
         })(),
         {
-          loading: `Deleting ${node.nodeProperties.label}...`,
-          success: 'Node deleted successfully.',
-          error: 'Failed to delete node.'
+          loading: `Удаление: ${node.nodeProperties.label}...`,
+          success: 'Узел успешно удалён.',
+          error: 'Не удалось удалить узел.'
         }
       )
     }
@@ -119,12 +119,12 @@ const NodeActions = memo(
         <DropdownMenuContent align="end" className="min-w-[140px]">
           <DropdownMenuItem onClick={handleOpenMainDialog}>
             <Plus className="h-3.5 w-3.5 mr-2" />
-            Add relation
+            Добавить связь
           </DropdownMenuItem>
           {Boolean(settings?.general?.showFlow?.value) && (
             <DropdownMenuItem onClick={handleAskAI}>
               <Sparkles className="h-3.5 w-3.5 mr-2" />
-              Ask AI
+              Спросить ИИ
             </DropdownMenuItem>
           )}
           <DropdownMenuSub>
@@ -158,7 +158,7 @@ const NodeActions = memo(
             className="text-destructive focus:text-destructive"
           >
             <Trash2 className="h-3.5 w-3.5 mr-2" />
-            Delete
+            Удалить
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

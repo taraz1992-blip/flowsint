@@ -25,9 +25,9 @@ function ErrorComponent() {
           <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-destructive/10">
             <AlertTriangle className="h-6 w-6 text-destructive" />
           </div>
-          <CardTitle className="text-xl">Something went wrong</CardTitle>
+          <CardTitle className="text-xl">Что-то пошло не так</CardTitle>
           <CardDescription>
-            We encountered an unexpected error. Please try again or navigate to a safe location.
+            Произошла непредвиденная ошибка. Попробуйте ещё раз или перейдите в безопасное место.
           </CardDescription>
         </CardHeader>
 
@@ -35,7 +35,7 @@ function ErrorComponent() {
           <Link to="/dashboard">
             <Button className="flex-1">
               <Home className="mr-2 h-4 w-4" />
-              Go to Dashboard
+              Перейти на панель
             </Button>
           </Link>
         </CardFooter>

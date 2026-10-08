@@ -25,11 +25,11 @@ const FlowNavigation = () => {
       >
         <TabsList className="w-full p-0 rounded-none my-0 border-b shrink-0">
           <TabsTrigger value="flows">
-            <Users className="h-3 w-3 opacity-60" /> Flows
+            <Users className="h-3 w-3 opacity-60" />  Потоки
           </TabsTrigger>
           {flowId && (
             <TabsTrigger value="items">
-              <UserPlus className="h-3 w-3 opacity-60" /> Items
+              <UserPlus className="h-3 w-3 opacity-60" />  Элементы
             </TabsTrigger>
           )}
         </TabsList>

@@ -33,15 +33,15 @@ export const LinkPopoverBlock: React.FC<LinkPopoverBlockProps> = ({ url, onClear
   return (
     <div className="flex h-10 overflow-hidden rounded-mdbg-background p-2 shadow-lg">
       <div className="inline-flex items-center gap-1">
-        <ToolbarButton tooltip="Edit link" onClick={onEdit} className="w-auto px-2">
-          Edit link
+        <ToolbarButton tooltip="Изменить ссылку" onClick={onEdit} className="w-auto px-2">
+          Изменить ссылку
         </ToolbarButton>
         <Separator orientation="vertical" />
-        <ToolbarButton tooltip="Open link in a new tab" onClick={handleOpenLink}>
+        <ToolbarButton tooltip="Открыть ссылку в новой вкладке" onClick={handleOpenLink}>
           <ExternalLink className="size-4" />
         </ToolbarButton>
         <Separator orientation="vertical" />
-        <ToolbarButton tooltip="Clear link" onClick={onClear}>
+        <ToolbarButton tooltip="Убрать ссылку" onClick={onClear}>
           <Unlink className="size-4" />
         </ToolbarButton>
         <Separator orientation="vertical" />

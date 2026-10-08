@@ -66,15 +66,15 @@ export function SaveModal({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Save Flow</DialogTitle>
+          <DialogTitle>Сохранить поток</DialogTitle>
           <DialogDescription>
-            Give your flow a name and description before saving.
+            Задайте потоку название и описание перед сохранением.
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
           <div className="grid gap-2">
             <Label htmlFor="name" className="flex items-center justify-between">
-              Name
+              Название
               {nameError && <span className="text-xs text-destructive">{nameError}</span>}
             </Label>
             <Input
@@ -84,17 +84,17 @@ export function SaveModal({
                 setName(e.target.value)
                 if (e.target.value.trim()) setNameError('')
               }}
-              placeholder="Enter flow name"
+              placeholder="Введите название потока"
               className={nameError ? 'border-destructive' : ''}
             />
           </div>
           <div className="grid gap-2">
-            <Label htmlFor="description">Description</Label>
+            <Label htmlFor="description">Описание</Label>
             <Textarea
               id="description"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              placeholder="Enter a description (optional)"
+              placeholder="Введите описание (необязательно)"
               className="resize-none"
               rows={3}
             />
@@ -102,10 +102,10 @@ export function SaveModal({
         </div>
         <DialogFooter>
           <Button variant="outline" onClick={() => onOpenChange(false)}>
-            Cancel
+            Отмена
           </Button>
           <Button onClick={handleSave} disabled={isLoading}>
-            {isLoading ? 'Saving...' : 'Save flow'}
+            {isLoading ? 'Сохранение...' : 'Сохранить поток'}
           </Button>
         </DialogFooter>
       </DialogContent>

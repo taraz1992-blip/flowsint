@@ -99,7 +99,7 @@ const createExtensions = ({
     },
     onValidationError(errors) {
       errors.forEach((error) => {
-        toast.error('Image validation error', {
+        toast.error('Ошибка проверки изображения', {
           position: 'bottom-right',
           description: error.reason
         })
@@ -113,7 +113,7 @@ const createExtensions = ({
       }
       toast.success(mapping[action], {
         position: 'bottom-right',
-        description: 'Image action success'
+        description: 'Действие с изображением выполнено'
       })
     },
     onActionError(error, { action }) {
@@ -122,7 +122,7 @@ const createExtensions = ({
         copyLink: 'Copy Link',
         download: 'Download'
       }
-      toast.error(`Failed to ${mapping[action]}`, {
+      toast.error(`Не удалось выполнить: ${mapping[action]}`, {
         position: 'bottom-right',
         description: error.message
       })
@@ -152,7 +152,7 @@ const createExtensions = ({
     },
     onValidationError: (errors) => {
       errors.forEach((error) => {
-        toast.error('Image validation error', {
+        toast.error('Ошибка проверки изображения', {
           position: 'bottom-right',
           description: error.reason
         })

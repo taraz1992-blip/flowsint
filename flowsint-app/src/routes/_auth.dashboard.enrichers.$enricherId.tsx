@@ -21,14 +21,14 @@ export const Route = createFileRoute('/_auth/dashboard/enrichers/$enricherId')({
     <div className="h-full w-full flex items-center justify-center">
       <div className="flex flex-col items-center gap-4">
         <Loader />
-        <p className="text-muted-foreground">Loading template...</p>
+        <p className="text-muted-foreground">Загрузка шаблона...</p>
       </div>
     </div>
   ),
   errorComponent: ({ error }) => (
     <div className="h-full w-full flex items-center justify-center">
       <div className="text-center">
-        <h2 className="text-lg font-semibold text-destructive mb-2">Error loading template</h2>
+        <h2 className="text-lg font-semibold text-destructive mb-2">Ошибка загрузки шаблона</h2>
         <p className="text-muted-foreground">{error.message}</p>
       </div>
     </div>

@@ -32,7 +32,7 @@ export default function KeySelector({
   return (
     <Select onValueChange={handleValueChange} value={value?.id || ''} disabled={isLoading}>
       <SelectTrigger className="w-full">
-        <SelectValue placeholder="Select a key" />
+        <SelectValue placeholder="Выберите ключ" />
       </SelectTrigger>
       <SelectContent>
         {keys.map((key: KeyType) => (

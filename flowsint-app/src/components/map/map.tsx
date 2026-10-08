@@ -338,7 +338,7 @@ export const MapFromAddress: React.FC<MapFromAddressProps> = ({
       <div className="h-full w-full flex items-center justify-center">
         <div className="text-center space-y-3">
           <LoadingSpinner size="lg" className="mx-auto" />
-          <p className="text-muted-foreground">Loading map data...</p>
+          <p className="text-muted-foreground">Загрузка данных карты...</p>
         </div>
       </div>
     )
@@ -365,8 +365,8 @@ export const MapFromAddress: React.FC<MapFromAddressProps> = ({
             </svg>
           </div>
           <div>
-            <p className="font-medium text-foreground">Unable to load map</p>
-            <p className="text-sm text-muted-foreground">Could not find some addresses.</p>
+            <p className="font-medium text-foreground">Не удалось загрузить карту</p>
+            <p className="text-sm text-muted-foreground">Не удалось найти некоторые адреса.</p>
           </div>
         </div>
       </div>
@@ -380,8 +380,8 @@ export const MapFromAddress: React.FC<MapFromAddressProps> = ({
         <div className="text-center space-y-4">
           <MapPin className="mx-auto h-12 w-12 text-muted-foreground" />
           <div>
-            <h3 className="text-lg font-semibold">No location to display</h3>
-            <p className="text-muted-foreground">This sketch doesn&apos;t have any location yet.</p>
+            <h3 className="text-lg font-semibold">Нет локаций для отображения</h3>
+            <p className="text-muted-foreground">В этом скетче пока нет локаций.</p>
           </div>
         </div>
       </div>
@@ -400,9 +400,9 @@ export const MapFromAddress: React.FC<MapFromAddressProps> = ({
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="standard">Standard</SelectItem>
+              <SelectItem value="standard">Стандартная</SelectItem>
               <SelectItem value="voyager">Voyager</SelectItem>
-              <SelectItem value="satellite">Satellite</SelectItem>
+              <SelectItem value="satellite">Спутник</SelectItem>
             </SelectContent>
           </Select>
         </div>*/}

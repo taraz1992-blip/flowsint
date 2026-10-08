@@ -69,7 +69,7 @@ export const useIcon = (type: IconType, options?: UseIconOptions) => {
               maxWidth: imageSize,
               maxHeight: imageSize
             }}
-            alt={`${type} icon`}
+            alt={`Иконка ${type}`}
           />
         )
 
@@ -90,7 +90,7 @@ export const useIcon = (type: IconType, options?: UseIconOptions) => {
                 maxWidth: borderedImageSize,
                 maxHeight: borderedImageSize
               }}
-              alt={`${type} icon`}
+              alt={`Иконка ${type}`}
             />
           )
 

@@ -41,7 +41,7 @@ export const useChat = () => {
     onError: (error) => {
       console.error('Chat error:', error)
       toast.error(
-        'Failed to get AI response: ' + (error instanceof Error ? error.message : 'Unknown error')
+        'Не удалось получить ответ ИИ: ' + (error instanceof Error ? error.message : 'Неизвестная ошибка')
       )
     }
   })
@@ -74,12 +74,12 @@ export const useChat = () => {
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: queryKeys.chats.list })
       setCurrentChatId(data.id)
-      toast.success('New chat created successfully!')
+      toast.success('Новый чат успешно создан!')
     },
     onError: (error) => {
       console.error('Error creating chat:', error)
       toast.error(
-        'Failed to create chat: ' + (error instanceof Error ? error.message : 'Unknown error')
+        'Не удалось создать чат: ' + (error instanceof Error ? error.message : 'Неизвестная ошибка')
       )
     }
   })
@@ -92,19 +92,19 @@ export const useChat = () => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: queryKeys.chats.list })
-      toast.success('Chat deleted successfully!')
+      toast.success('Чат успешно удалён!')
     },
     onError: (error) => {
       console.error('Error deleting chat:', error)
       toast.error(
-        'Failed to delete chat: ' + (error instanceof Error ? error.message : 'Unknown error')
+        'Не удалось удалить чат: ' + (error instanceof Error ? error.message : 'Неизвестная ошибка')
       )
     }
   })
 
   const handleSendMessage = async (text: string, context?: string[]) => {
     if (!text.trim()) {
-      toast.error('Please enter a prompt')
+      toast.error('Введите запрос')
       return
     }
 
@@ -117,7 +117,7 @@ export const useChat = () => {
       try {
         const newChat = await createChatMutation.mutateAsync({
           title: chatTitle,
-          description: 'Chat created from analysis'
+          description: 'Чат создан из анализа'
         })
         if (!newChat?.id) return
         // sendMessage will fire once transport updates via the new currentChatId
@@ -151,7 +151,7 @@ export const useChat = () => {
     try {
       await createChatMutation.mutateAsync({
         title: chatTitle,
-        description: 'Chat created from analysis'
+        description: 'Чат создан из анализа'
       })
     } catch (error) {
       console.error('Failed to create new chat:', error)
@@ -160,7 +160,7 @@ export const useChat = () => {
 
   const deleteCurrentChat = async () => {
     if (!currentChatId) {
-      toast.error('No chat to delete')
+      toast.error('Нет чата для удаления')
       return
     }
     try {

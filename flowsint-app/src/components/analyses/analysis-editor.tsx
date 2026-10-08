@@ -125,7 +125,7 @@ export const AnalysisEditor = ({
     },
     onError: (error) => {
       toast.error(
-        'Failed to save analysis: ' + (error instanceof Error ? error.message : 'Unknown error')
+        'Не удалось сохранить анализ: ' + (error instanceof Error ? error.message : 'Неизвестная ошибка')
       )
       setSaveStatus('unsaved')
     }
@@ -167,11 +167,11 @@ export const AnalysisEditor = ({
         queryKey: queryKeys.analyses.byInvestigation(investigationId || '')
       })
       onAnalysisDelete?.(investigationId)
-      toast.success('Analysis deleted')
+      toast.success('Анализ удалён')
     },
     onError: (error) => {
       toast.error(
-        'Failed to delete analysis: ' + (error instanceof Error ? error.message : 'Unknown error')
+        'Не удалось удалить анализ: ' + (error instanceof Error ? error.message : 'Неизвестная ошибка')
       )
     }
   })
@@ -195,11 +195,11 @@ export const AnalysisEditor = ({
         return oldData.map((item) => (item.id === data.id ? data : item))
       })
       onAnalysisUpdate?.(data)
-      toast.success('Title updated')
+      toast.success('Заголовок обновлён')
     },
     onError: (error) => {
       toast.error(
-        'Failed to update title: ' + (error instanceof Error ? error.message : 'Unknown error')
+        'Не удалось обновить заголовок: ' + (error instanceof Error ? error.message : 'Неизвестная ошибка')
       )
     }
   })
@@ -214,13 +214,13 @@ export const AnalysisEditor = ({
 
   const deleteAnalysis = async () => {
     if (!analysis?.id) {
-      toast.error('No analysis selected')
+      toast.error('Анализ не выбран')
       return
     }
     if (
       !(await confirm({
-        title: 'Delete analysis',
-        message: 'Are you sure you want to delete this analysis?'
+        title: 'Удалить анализ',
+        message: 'Вы уверены, что хотите удалить этот анализ?'
       }))
     ) {
       return
@@ -304,12 +304,12 @@ export const AnalysisEditor = ({
                         >
                           <div className="flex flex-col items-start truncate text-ellipsis">
                             <span className="font-medium truncate text-ellipsis">
-                              {analysisItem.title || 'Untitled'}
+                              {analysisItem.title || 'Без названия'}
                             </span>
                             <span className="text-xs text-muted-foreground">
                               {analysisItem.id === currentAnalysisId
-                                ? 'Current'
-                                : 'Switch to this analysis'}
+                                ? 'Текущий'
+                                : 'Перейти к этому анализу'}
                             </span>
                           </div>
                         </Button>
@@ -346,7 +346,7 @@ export const AnalysisEditor = ({
                     className={`text-md font-medium truncate min-w-0 flex-1 ${canEdit ? 'cursor-pointer hover:text-primary' : ''}`}
                     onClick={canEdit ? () => setIsEditingTitle(true) : undefined}
                   >
-                    {titleValue || 'Untitled Analysis'}
+                    {titleValue || 'Анализ без названия'}
                   </span>
                 )}
               </div>
@@ -376,7 +376,7 @@ export const AnalysisEditor = ({
                           }}
                         >
                           <ExternalLink className="w-4 h-4 mr-2" strokeWidth={1.5} />
-                          Open in full page
+                          Открыть на всю страницу
                         </Link>
                       </DropdownMenuItem>
                     )}
@@ -387,7 +387,7 @@ export const AnalysisEditor = ({
                         disabled={createMutation.isPending}
                       >
                         <PlusIcon className="w-4 h-4 mr-2" strokeWidth={1.5} />
-                        New analysis
+                        Новый анализ
                       </DropdownMenuItem>
                     )}
                     {analysis && (
@@ -399,7 +399,7 @@ export const AnalysisEditor = ({
                           variant="destructive"
                         >
                           <Trash2 className="w-4 h-4 mr-2" strokeWidth={1.5} />
-                          Delete analysis
+                          Удалить анализ
                         </DropdownMenuItem>
                       </>
                     )}
@@ -433,7 +433,7 @@ export const AnalysisEditor = ({
               className="w-full h-full"
               editorContentClassName="p-5 min-h-[300px]"
               output="json"
-              placeholder={canEdit ? 'Enter your analysis...' : ''}
+              placeholder={canEdit ? 'Введите ваш анализ...' : ''}
               autofocus={canEdit}
               showToolbar={canEdit && showToolbar}
               editorClassName="focus:outline-hidden"
@@ -443,7 +443,7 @@ export const AnalysisEditor = ({
           </div>
         ) : (
           <div className="flex flex-col items-center justify-center h-full text-muted-foreground space-y-3">
-            <div>No analysis selected.</div>
+            <div>Анализ не выбран.</div>
             {canEdit && (
               <Button
                 className="shadow-none"
@@ -452,7 +452,7 @@ export const AnalysisEditor = ({
                 disabled={createMutation.isPending}
               >
                 <PlusIcon className="w-4 h-4 mr-2" strokeWidth={1.5} />
-                Create your first analysis
+                Создайте первый анализ
               </Button>
             )}
           </div>

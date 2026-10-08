@@ -85,7 +85,7 @@ function FloatingChat() {
               </TooltipTrigger>
               <TooltipContent side="left">
                 <div className="text-center">
-                  <div>Toggle assistant</div>
+                  <div>Показать/скрыть ассистента</div>
                   <div className="text-xs opacity-70">{keyboardShortcut}</div>
                 </div>
               </TooltipContent>
@@ -116,7 +116,7 @@ function FloatingChat() {
                             size="icon"
                             className="h-6 w-6"
                             onClick={handleCreateNewChat}
-                            title="Create new chat"
+                            title="Создать новый чат"
                           >
                             <Plus className="h-3 w-3" />
                           </Button>
@@ -130,7 +130,7 @@ function FloatingChat() {
                             size="icon"
                             className="h-6 w-6"
                             onClick={() => setView('history')}
-                            title="Create new chat"
+                            title="Создать новый чат"
                           >
                             <History className="h-3 w-3 opacity-60" />
                           </Button>
@@ -174,10 +174,10 @@ function FloatingChat() {
                               </div>
                               <div className="space-y-2 max-w-sm">
                                 <h3 className="text-lg font-semibold text-foreground">
-                                  No conversations yet
+                                  Диалогов пока нет
                                 </h3>
                                 <p className="text-sm opacity-70">
-                                  Start chatting with AI to analyze your investigation data and get
+                                  Начните общаться с ИИ, чтобы анализировать данные расследования и получать
                                   insights. Your conversation history will appear here.
                                 </p>
                               </div>
@@ -188,7 +188,7 @@ function FloatingChat() {
                                   onClick={handleCreateNewChat}
                                   className="bg-linear-to-r from-primary/10 to-primary/5 border-primary/20 hover:from-primary/20 hover:to-primary/10"
                                 >
-                                  Start your first chat
+                                  Начните первый чат
                                 </Button>
                               </div>
                             </>
@@ -196,33 +196,35 @@ function FloatingChat() {
                             <>
                               <div className="space-y-2 max-w-sm">
                                 <h3 className="text-lg font-semibold text-foreground">
-                                  Start your conversation with{' '}
+                                  
+                                  Начните диалог с{' '}
                                   <span className="text-primary">Flo</span>
                                 </h3>
                                 <p className="text-sm opacity-70">
-                                  Ask me anything about your investigation. Here are some examples:
+                                  Спросите меня о чём угодно по вашему расследованию. Вот несколько примеров:
                                 </p>
                               </div>
                               <div className="mt-6 space-y-3 max-w-md">
                                 <div className="text-xs space-y-1">
-                                  <p className="font-medium text-left">Analysis & Insights</p>
+                                  <p className="font-medium text-left">Анализ и выводы</p>
                                   <ul className="space-y-1 text-left opacity-60">
                                     <li>
-                                      • &quot;Analyze the connections between these entities&quot;
+                                      
+                                      • «Проанализируй связи между этими сущностями»
                                     </li>
-                                    <li>• &quot;What patterns do you see in this data?&quot;</li>
+                                    <li>• «Какие закономерности ты видишь в этих данных?»</li>
                                     <li>
-                                      • &quot;Summarize the key findings from this
-                                      investigation&quot;
+                                      
+                                      • «Подведи итоги ключевых находок этого расследования»
                                     </li>
                                   </ul>
                                 </div>
                                 <div className="text-xs space-y-1">
-                                  <p className="font-medium text-left">Investigation Help</p>
+                                  <p className="font-medium text-left">Справка по расследованиям</p>
                                   <ul className="space-y-1 text-left opacity-60">
-                                    <li>• &quot;Suggest next steps for this investigation&quot;</li>
-                                    <li>• &quot;What should I look for next?&quot;</li>
-                                    <li>• &quot;Help me organize this investigation&quot;</li>
+                                    <li>• «Предложи следующие шаги по этому расследованию»</li>
+                                    <li>• «Что мне искать дальше?»</li>
+                                    <li>• «Помоги организовать это расследование»</li>
                                   </ul>
                                 </div>
                               </div>

@@ -55,9 +55,9 @@ export function CreateRelationDialog() {
         return sketchService.addEdge(sketchId as string, JSON.stringify(newEdgeObject))
       })(),
       {
-        loading: 'Creating relation...',
-        success: 'Relation successfully added.',
-        error: 'Unexpected error during relation creation.'
+        loading: 'Создание связи...',
+        success: 'Связь успешно добавлена.',
+        error: 'Непредвиденная ошибка при создании связи.'
       }
     )
   }
@@ -68,14 +68,14 @@ export function CreateRelationDialog() {
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
             <GitPullRequestArrow className="h-4 w-4" />
-            New relationship
+            Новая связь
           </DialogTitle>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4 w-full">
           {/* Selected Nodes Display */}
           <div className="space-y-2 w-full">
             <Label className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-              Selected Nodes ({selectedNodes.length})
+              Выбранные узлы ({selectedNodes.length})
             </Label>
             <div className="flex w-full overflow-x-auto gap-2 min-w-0">
               {selectedNodes.map((node) => (
@@ -90,11 +90,11 @@ export function CreateRelationDialog() {
               htmlFor="relation-type"
               className="text-xs font-medium text-muted-foreground uppercase tracking-wide"
             >
-              Relationship Type
+              Тип связи
             </Label>
             <Input
               id="relation-type"
-              placeholder="e.g., IS_RELATED_TO, WORKS_FOR, OWNS"
+              placeholder="напр., IS_RELATED_TO, WORKS_FOR, OWNS"
               value={relationType}
               onChange={(e) => setRelationType(e.target.value)}
               className="w-full h-9 text-sm"
@@ -105,7 +105,7 @@ export function CreateRelationDialog() {
           {/* Visual Preview (one-way with switch) */}
           <div className="space-y-2">
             <Label className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-              Preview
+              Предпросмотр
             </Label>
             {/* Switch control outside of the preview box */}
             <div className="flex justify-end">
@@ -115,11 +115,11 @@ export function CreateRelationDialog() {
                 size="sm"
                 className="border"
                 onClick={() => setIsReversed((v) => !v)}
-                aria-label="Switch direction"
-                title="Switch direction"
+                aria-label="Сменить направление"
+                title="Сменить направление"
               >
                 <ArrowLeftRight className="h-4 w-4 mr-1" />
-                <span>Switch direction</span>
+                <span>Сменить направление</span>
               </Button>
             </div>
             <div className="p-3 border rounded-md bg-muted/20">
@@ -160,10 +160,10 @@ export function CreateRelationDialog() {
               size="sm"
               onClick={() => setOpenAddRelationDialog(false)}
             >
-              Cancel
+              Отмена
             </Button>
             <Button type="submit" size="sm" disabled={!relationType.trim()}>
-              Create
+              Создать
             </Button>
           </DialogFooter>
         </form>

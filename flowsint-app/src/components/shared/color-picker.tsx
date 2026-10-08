@@ -89,7 +89,7 @@ export function ColorPicker({
       </PopoverTrigger>
       <PopoverContent className="w-[280px] p-3" align={align}>
         <div className="space-y-3">
-          <p className="text-xs font-medium text-muted-foreground">Color</p>
+          <p className="text-xs font-medium text-muted-foreground">Цвет</p>
           <div className="grid grid-cols-10 gap-1.5">
             {PRESET_COLORS.map((color) => (
               <button

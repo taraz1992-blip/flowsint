@@ -32,29 +32,29 @@ export const GraphEmptyState: React.FC<GraphEmptyStateProps> = ({
             />
           </svg>
         </div>
-        <h3 className="text-lg font-semibold text-foreground mb-2">No data to visualize</h3>
+        <h3 className="text-lg font-semibold text-foreground mb-2">Нет данных для визуализации</h3>
         <p className="text-sm text-muted-foreground mb-4">
-          Start your investigation by adding nodes to see them displayed in the graph view.
+          Начните расследование с добавления узлов, чтобы увидеть их на графе.
         </p>
         <div className="space-y-2 text-xs text-muted-foreground mb-6">
           <p>
-            <strong>Tip:</strong> Use the search bar to find entities or import data to get started
+            <strong>Совет:</strong>  Найдите сущности через поиск или импортируйте данные, чтобы начать
           </p>
           <p>
-            <strong>Explore:</strong> Try searching for domains, emails, or other entities
+            <strong>Изучить:</strong>  Попробуйте искать домены, адреса почты или другие сущности
           </p>
           <p>
-            <strong>Labels:</strong> Zoom in (over 2x) to see all labels, icons, and edges
+            <strong>Метки:</strong>  Приблизьте (больше 2x), чтобы увидеть все подписи, иконки и рёбра
           </p>
         </div>
         <div className="flex flex-col justify-center gap-1">
           <Button onClick={onOpenAddDialog}>
             <Plus />
-            Add your first item
+            Добавьте первый элемент
           </Button>
-          <span className="opacity-60">or</span>
+          <span className="opacity-60">или</span>
           <Button variant="secondary" onClick={onOpenImportDialog}>
-            <Upload /> Import data
+            <Upload />  Импорт данных
           </Button>
         </div>
       </div>

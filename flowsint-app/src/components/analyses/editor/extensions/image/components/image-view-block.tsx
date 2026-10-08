@@ -232,7 +232,7 @@ export const ImageViewBlock: React.FC<NodeViewProps> = ({
               {imageState.error && (
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
                   <Info className="size-8 text-destructive" />
-                  <p className="mt-2 text-sm text-muted-foreground">Failed to load image</p>
+                  <p className="mt-2 text-sm text-muted-foreground">Не удалось загрузить изображение</p>
                 </div>
               )}
 
@@ -290,7 +290,7 @@ export const ImageViewBlock: React.FC<NodeViewProps> = ({
             <ActionWrapper>
               <ActionButton
                 icon={<Trash2 className="size-4" />}
-                tooltip="Remove image"
+                tooltip="Убрать изображение"
                 onClick={onRemoveImg}
               />
             </ActionWrapper>

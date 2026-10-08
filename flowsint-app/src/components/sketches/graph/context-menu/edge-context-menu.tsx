@@ -92,11 +92,11 @@ export default function EdgeContextMenu({
             data: { label: newLabel }
           })
         )
-        toast.success('Relationship updated successfully.')
+        toast.success('Связь успешно обновлена.')
       } catch {
         // Rollback on error
         updateEdge(edge.id, { label: previousLabel })
-        toast.error('Failed to update relationship.')
+        toast.error('Не удалось обновить связь.')
       }
     }
   }, [edge, updateEdge, sketchId, setMenu, onSubmitNew])
@@ -115,8 +115,8 @@ export default function EdgeContextMenu({
       const count = edgeIds.length
       if (
         !(await confirm({
-          title: `You are about to delete ${count} relationship${count > 1 ? 's' : ''}?`,
-          message: 'The action is irreversible.'
+          title: `Вы собираетесь удалить связи: ${count}?`,
+          message: 'Это действие необратимо.'
         }))
       ) {
         return
@@ -129,9 +129,9 @@ export default function EdgeContextMenu({
           return sketchService.deleteEdges(sketchId, JSON.stringify({ relationshipIds: edgeIds }))
         })(),
         {
-          loading: `Deleting ${count} relationship${count > 1 ? 's' : ''}...`,
-          success: `Relationship${count > 1 ? 's' : ''} deleted successfully.`,
-          error: 'Failed to delete relationship.'
+          loading: `Удаление связей: ${count}...`,
+          success: `Связи успешно удалены.`,
+          error: 'Не удалось удалить связь.'
         }
       )
     },
@@ -163,7 +163,7 @@ export default function EdgeContextMenu({
       <div className="px-3 py-1 flex items-center justify-between shrink-0">
         <div className="flex text-xs items-center gap-1 truncate">
           {isMultiSelect ? (
-            <span className="block truncate">{edgeIds.length} relationships selected</span>
+            <span className="block truncate">{edgeIds.length}  связей выбрано</span>
           ) : (
             <div className="p-1">
               <Input

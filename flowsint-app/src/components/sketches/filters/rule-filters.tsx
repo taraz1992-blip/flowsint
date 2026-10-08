@@ -53,7 +53,7 @@ function RuleFilters({ filters, setFilters }: RuleFiltersProps) {
   return (
     <div className="space-y-4">
       <div className="flex justify-between items-center">
-        <p className="opacity-90 text-sm">Filter by rule</p>
+        <p className="opacity-90 text-sm">Фильтр по правилу</p>
 
         <div className="flex gap-2">
           <Button
@@ -62,7 +62,7 @@ function RuleFilters({ filters, setFilters }: RuleFiltersProps) {
             size="sm"
             onClick={addRule}
           >
-            <Plus className="text-muted-foreground !h-3 !w-3" /> New rule
+            <Plus className="text-muted-foreground !h-3 !w-3" />  Новое правило
           </Button>
 
           <Button
@@ -72,13 +72,13 @@ function RuleFilters({ filters, setFilters }: RuleFiltersProps) {
             size="sm"
             onClick={applyChanges}
           >
-            Apply
+            Применить
           </Button>
         </div>
       </div>
 
       {rules.length === 0 ? (
-        <p className="text-xs text-muted-foreground">Start by adding a filter rule.</p>
+        <p className="text-xs text-muted-foreground">Начните с добавления правила фильтра.</p>
       ) : (
         <ul className="space-y-2">
           {rules.map((rule) => (

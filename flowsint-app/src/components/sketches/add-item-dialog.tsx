@@ -78,7 +78,7 @@ export default function AddItemDialog() {
 
   const handleAddNode = async (data: any) => {
     if (!currentNodeType || !sketch_id) {
-      toast.error('Invalid node type or sketch ID.')
+      toast.error('Неверный тип узла или ID скетча.')
       return
     }
 
@@ -140,12 +140,12 @@ export default function AddItemDialog() {
     setOpenMainDialog(false)
     setOpenFormDialog(false)
     // Show optimistic success message
-    toast(`New ${type.toLowerCase()} added to sketch.`, {
+    toast(`Новый узел (${type.toLowerCase()}) добавлен в скетч.`, {
       description: relatedNodeToAdd
-        ? `A new ${type.toLowerCase()} "${label}" was added to relation ${relatedNodeToAdd.nodeLabel}.`
-        : `A new ${type.toLowerCase()} "${label}" was added.`,
+        ? `Новый узел (${type.toLowerCase()}) «${label}» добавлен к связи ${relatedNodeToAdd.nodeLabel}.`
+        : `Новый узел (${type.toLowerCase()}) «${label}» добавлен.`,
       action: {
-        label: 'Beautify layout',
+        label: 'Улучшить раскладку',
         onClick: () => regenerateLayout(currentLayoutType)
       }
     })
@@ -172,7 +172,7 @@ export default function AddItemDialog() {
       }
     } catch (error) {
       console.error(error)
-      toast.error('Failed to sync node with server. Please refresh.')
+      toast.error('Не удалось синхронизировать узел с сервером. Обновите страницу.')
     }
     // finally {
     //   setTimeout(() => {
@@ -191,7 +191,7 @@ export default function AddItemDialog() {
         <div className="flex items-center justify-center h-32">
           <div className="text-center">
             <p className="text-sm text-muted-foreground">
-              {search ? `No types match "${search}"` : 'No action items available'}
+              {search ? `Нет типов по запросу «${search}»` : 'Нет доступных действий'}
             </p>
           </div>
         </div>
@@ -226,7 +226,7 @@ export default function AddItemDialog() {
         <DialogContent className="sm:max-w-[800px] h-[80vh] overflow-hidden flex flex-col">
           <DialogTitle className="flex items justify-between">
             <div className="flex items-center">
-              {relatedNodeToAdd ? `Add a relation to ` : 'Select an item to insert'}
+              {relatedNodeToAdd ? `Добавить связь для ` : 'Выберите элемент для вставки'}
               {relatedNodeToAdd && (
                 <span className="text-primary truncate max-w-[50%] text-ellipsis font-semibold ml-1">
                   {relatedNodeToAdd.nodeLabel}
@@ -241,14 +241,14 @@ export default function AddItemDialog() {
                 className="flex items-center gap-2 rounded"
               >
                 <Download className="h-4 w-4" />
-                Import entities
+                Импорт сущностей
               </Button>
             </div>
           </DialogTitle>
           <DialogDescription>
             {relatedNodeToAdd
-              ? 'Choose what type of relation to add to this node.'
-              : 'Choose an item to insert manually, or import data from a file.'}
+              ? 'Выберите, какой тип связи добавить к этому узлу.'
+              : 'Выберите элемент для ручной вставки или импортируйте данные из файла.'}
           </DialogDescription>
 
           <div className="relative">
@@ -257,7 +257,7 @@ export default function AddItemDialog() {
               autoFocus
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search types..."
+              placeholder="Поиск типов..."
               className="pl-8"
             />
           </div>
@@ -284,7 +284,7 @@ export default function AddItemDialog() {
       <Dialog open={openFormDialog} onOpenChange={setOpenFormDialog}>
         <DialogContent className="max-h-[95vh] flex flex-col">
           <DialogTitle>
-            {currentNodeType && <>Add {currentNodeType.label.toLowerCase()}</>}
+            {currentNodeType && <>Добавить {currentNodeType.label.toLowerCase()}</>}
           </DialogTitle>
           <DialogDescription>{currentNodeType?.description}</DialogDescription>
           {currentNodeType && (
@@ -326,11 +326,11 @@ function ActionCard({ item, onSelect }: ActionCardProps) {
         <div className="font-medium text-sm">{item.label}</div>
         <div className="text-sm mt-2 opacity-60">{item.description}</div>
         <Badge variant="outline" className="mt-2">
-          {item.fields.length} fields
+          {item.fields.length}  полей
         </Badge>
         {item.disabled && (
           <Badge variant="outline" className="mt-2 absolute top-2 left-2">
-            Soon
+            Скоро
           </Badge>
         )}
       </CardContent>

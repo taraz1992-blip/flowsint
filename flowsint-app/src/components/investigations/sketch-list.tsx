@@ -38,8 +38,8 @@ const SketchList = () => {
   if (error)
     return (
       <ErrorState
-        title="Couldn't load sketches"
-        description="Something went wrong while fetching data. Please try again."
+        title="Не удалось загрузить скетчи"
+        description="Что-то пошло не так при загрузке данных. Попробуйте ещё раз."
         error={error}
         onRetry={() => refetch()}
       />
@@ -55,7 +55,7 @@ const SketchList = () => {
         <Input
           type="search"
           className="!border border-border h-7"
-          placeholder="Search..."
+          placeholder="Поиск..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
@@ -103,18 +103,18 @@ const SketchList = () => {
             <Waypoints className="h-10 w-10 text-yellow-500" />
             <div className="space-y-1">
               <h3 className="text-sm font-semibold text-foreground">
-                {searchQuery ? 'No matching sketches' : 'No sketches yet'}
+                {searchQuery ? 'Нет подходящих скетчей' : 'Скетчей пока нет'}
               </h3>
               <p className="text-xs opacity-70 max-w-xs">
                 {searchQuery
-                  ? "Try adjusting your search query to find what you're looking for."
-                  : "This investigation doesn't contain any sketch. Sketches let you organize and visualize your data as graphs."}
+                  ? "Попробуйте изменить поисковый запрос."
+                  : "В этом расследовании нет скетчей. Скетчи помогают организовать и визуализировать данные в виде графов."}
               </p>
             </div>
             <NewSketch>
               <Button size="sm" variant="outline">
                 <PlusIcon className="w-4 h-4 mr-2" />
-                Create your first sketch
+                Создайте первый скетч
               </Button>
             </NewSketch>
           </div>

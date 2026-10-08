@@ -49,9 +49,9 @@ export function MergeDialog() {
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault()
-    if (!preview) return toast.error('No preview available.')
+    if (!preview) return toast.error('Предпросмотр недоступен.')
     if (!selectedNodes.every((n) => n.nodeType === selectedNodes[0].nodeType))
-      return toast.error('Cannot merge entities of different types.')
+      return toast.error('Нельзя объединить сущности разных типов.')
     const entitiesToMerge = selectedNodes.map((node) => node.id)
     // Extract only id and data to avoid circular references from neighbors/links
     const body = JSON.stringify({
@@ -67,8 +67,8 @@ export function MergeDialog() {
         setOpenMergeDialog(false)
       })(),
       {
-        loading: 'Merging entities...',
-        success: 'Entities successfully merged.',
+        loading: 'Объединение сущностей...',
+        success: 'Сущности успешно объединены.',
         error: (error) => {
           console.log(error)
           return 'Unexpected error during merging.'
@@ -83,7 +83,8 @@ export function MergeDialog() {
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
             <Merge className="h-4 w-4" />
-            Merging {selectedNodes.length} entities
+            
+            Объединение {selectedNodes.length}  сущностей
           </DialogTitle>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4 w-full overflow-hidden">
@@ -91,26 +92,26 @@ export function MergeDialog() {
           <div className="space-y-2 w-full">
             <Alert className="">
               <Info />
-              <AlertTitle>Heads up!</AlertTitle>
+              <AlertTitle>Внимание!</AlertTitle>
               <AlertDescription>
-                When merging, you can choose which entity is prioritary, simply click it in the list
-                below. Also keep in mind:
+                При объединении можно выбрать приоритетную сущность — просто нажмите на неё в списке
+                ниже. Также учтите:
                 <div>
                   <ul className="ml-2 !list-disc">
                     <li>
-                      All <span className="font-semibold">attributes</span> will be merged, and the
-                      matching ones values will be based on the prioritary entity
+                      Все <span className="font-semibold">атрибуты</span> будут объединены, а значения
+                      совпадающих атрибутов будут взяты у приоритетной сущности
                     </li>
                     <li>
-                      Only one node will be kept, and all{' '}
-                      <span className="font-semibold">relationships</span> will be merged
+                      Останется только один узел, а все{' '}
+                      <span className="font-semibold">связи</span> будут объединены
                     </li>
                   </ul>
                 </div>
               </AlertDescription>
             </Alert>
             <Label className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-              Selected Nodes ({selectedNodes.length})
+              Выбранные узлы ({selectedNodes.length})
             </Label>
             <RadioGroup
               className="flex overflow-x-auto w-full gap-2"
@@ -130,7 +131,7 @@ export function MergeDialog() {
           </div>
           {preview && old && (
             <div className="space-y-2 text-sm">
-              <p>Merged attributes</p>
+              <p>Объединённые атрибуты</p>
               <div className="rounded-md border overflow-hidden">
                 <KeyValueDisplayDiff
                   oldRecord={old.nodeProperties}
@@ -146,10 +147,10 @@ export function MergeDialog() {
               size="sm"
               onClick={() => setOpenMergeDialog(false)}
             >
-              Cancel
+              Отмена
             </Button>
             <Button type="submit" size="sm">
-              Merge ({selectedNodes.length})
+              Объединить ({selectedNodes.length})
             </Button>
           </DialogFooter>
         </form>

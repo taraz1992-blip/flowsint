@@ -44,14 +44,14 @@ export const EnricherItem = memo(({ enricher }: { enricher: any }) => {
             <p className=" line-clamp-2">{enricher.name}</p>
           </CardTitle>
           <CardDescription className="line-clamp-2">
-            {enricher.description || 'No description provided'}
+            {enricher.description || 'Описание не указано'}
           </CardDescription>
         </CardHeader>
         <CardContent className="pb-2">
           <div className="flex items-center text-sm text-muted-foreground">
             <FileCode2 className="h-4 w-4 mr-1" />
             <span>
-              {stepsCount} {stepsCount === 1 ? 'step' : 'steps'}
+              {stepsCount} {stepsCount === 1 ? 'шаг' : 'шагов'}
             </span>
           </div>
         </CardContent>

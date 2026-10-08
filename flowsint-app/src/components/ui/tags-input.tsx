@@ -70,7 +70,7 @@ function TagsInput({
             disabled={disabled}
           >
             <X className="h-3 w-3" />
-            <span className="sr-only">Delete tag {tag}</span>
+            <span className="sr-only">Удалить тег {tag}</span>
           </Button>
         </Badge>
       ))}
@@ -83,7 +83,7 @@ function TagsInput({
           onKeyDown={handleKeyDown}
           onBlur={addTag}
           className="w-full bg-transparent outline-none placeholder:text-muted-foreground/30 focus:bg-muted/20 px-1 rounded transition-colors"
-          placeholder={placeholder ?? 'Empty'}
+          placeholder={placeholder ?? 'Пусто'}
         />
       ) : (
         <Input
